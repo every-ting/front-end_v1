@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import '../styles/variables.scss';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color:transparent;
+  user-select: none;
+  overflow: none;
+  -webkit-overflow-scrolling: none;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+input,
+button {
+  outline: none;
+}
+
+body,
+html {
+  height: 100%;
+  background-color: $base-color;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  touch-action: pan-y
+}
+::-webkit-scrollbar {
+  display: none;
+}
+::selection {
+  background-color: transparent;
+}

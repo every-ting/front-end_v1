@@ -1,0 +1,50 @@
+@mixin flex($justify: center, $align: center, $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin font($size: 16px, $height: 1, $spacing: normal, $weight: 500) {
+  font-size: $size;
+  font-weight: $weight;
+  letter-spacing: $spacing;
+  line-height: $height;
+}
+
+@mixin position(
+  $position: relative,
+  $top: 0px,
+  $right: 0px,
+  $bottom: 0px,
+  $left: 0px
+) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin noDrag(
+  $webkit: none,
+  $khtml: none,
+  $moz: none,
+  $o: none,
+  $user: none
+) {
+  -webkit-user-drag: $webkit;
+  -khtml-user-drag: $khtml;
+  -moz-user-drag: $moz;
+  -o-user-drag: $o;
+  user-drag: $user;
+}
+
+$base-color: #ebebeb;
+$main-color: #434343;
+$point-color-1: #ed6161;
+$point-color-2: #f09900;
+$point-color-3: #3f9e12;
+$button-base-color: $base-color;
+$button-main-color: $main-color;
+$button-point-color: #d9d9d9;
