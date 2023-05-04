@@ -1,6 +1,8 @@
 import React from 'react';
 import './ChatPage.scss';
 import { Link } from 'react-router-dom';
+import SectionToggle from '../../components/sectionToggle/SectionToggle';
+
 const chatMember = [
   {
     imageUrl: 'user.png',
@@ -98,14 +100,7 @@ const ChatPage = () => {
   return (
     <div className="chatContainer">
       <div className="section">
-        <div className="sectionToggle">
-          <div className="sectionToggleItem active">
-            <span>Chat</span>
-          </div>
-          <div className="sectionToggleItem">
-            <span>Group</span>
-          </div>
-        </div>
+        <SectionToggle />
         <ul className="listGroup list-group-flush">
           {chatMember.map((value, index) => (
             // Start Single Demo
@@ -117,7 +112,7 @@ const ChatPage = () => {
                   className="roundedCircle"
                 />
               </figure>
-              <Link to={`/chat/${index}`} className="chatBox">
+              <Link to={`/chatRoom/${index}`} className="chatBox">
                 <h3 className="fw-700 mb-0 mt-1">
                   <span className="nameText">{value.name}</span>
                 </h3>
