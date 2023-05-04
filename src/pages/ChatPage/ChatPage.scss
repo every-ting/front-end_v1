@@ -14,27 +14,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    .sectionToggle {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-      height: 60px;
-      border-bottom: 1px solid #ebebeb;
-      .sectionToggleItem {
-        cursor: pointer;
-        span {
-          font-size: 16px;
-          font-weight: 600;
-          color: #000;
-        }
-        &.active {
-          span {
-            color: #000;
-          }
-        }
-      }
-    }
+    
     .listGroup {
       height: calc(100% - 60px);
       overflow-y: auto;
