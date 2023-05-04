@@ -1,0 +1,30 @@
+@import 'src/styles/variables.scss';
+.sectionToggleContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.sectionToggle {
+  display: flex;
+  width: 90vw;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.sectionToggleItem {
+  width: 45vw;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.sectionToggleItem.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.sectionToggleItem:not(.active):hover {
+  background-color: #eee;
+}
