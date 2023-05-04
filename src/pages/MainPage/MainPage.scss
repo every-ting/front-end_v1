@@ -1,6 +1,132 @@
 @import '../../styles/variables.scss';
 
-.mainContainer {
 
-  background-color: $point-color-1;
+.mainContainer {
+  padding: 0 20px;
+  .matchCountWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #e7e7e7;
+    .matchCountText {
+      font-size: 20px;
+      font-weight: bold;
+      color: #000;
+    }
+    .matchCountNum {
+      font-size: 16px;
+      font-weight: bold;
+      color: #000;
+    }
+  }
+  .recommendSliderContaioner {
+    padding: 20px 0;
+    .recommendHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      .recommendHeaderText {
+        font-size: 20px;
+        font-weight: bold;
+        color: #000;
+      }
+      .recommendHeaderLink {
+        font-size: 16px;
+        font-weight: bold;
+        color: #000;
+      }
+    }
+    .recomendSliderWrapper {
+      display: flex;
+      overflow-x: scroll;
+      border-bottom: 1px solid #e7e7e7;
+      padding-bottom: 20px;
+      .recommendSliderItem {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        margin-right: 20px;
+        .recommendSliderItemImg {
+          width: 370px;
+          height: 250px;
+          border-radius: 7%;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .recommendSliderItemText {
+          text-align: left;
+          margin-top: 10px;
+          .recommendSliderItemTitle {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+          }
+          .recommendSliderItemSub {
+            font-size: 14px;
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+  .recommendContainer {
+    padding: 20px 0;
+    .recommendHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      .recommendHeaderText {
+        font-size: 20px;
+        font-weight: bold;
+        color: #000;
+      }
+      .recommendHeaderLink {
+        font-size: 16px;
+        font-weight: bold;
+        color: #000;
+      }
+    }
+    .recommendWrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+      .recommendItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .recommendItemImg {
+          width: 25vw;
+          height: 25vw;
+          border-radius: 10px;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .recommendItemText {
+          text-align: center;
+          margin-top: 10px;
+          .recommendItemTitle {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+          }
+          .recommendItemSub {
+            font-size: 14px;
+            color: #000;
+          }
+        }
+      }
+    }
+  }
 }
+
