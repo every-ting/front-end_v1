@@ -9,7 +9,7 @@
 .chat-wrapper {
   position: relative;
   width: 100%;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 50px);
   overflow-y: auto;
   background-color: #fff;
   color: #000;
@@ -25,8 +25,15 @@
 
 .message-item {
   display: flex;
+  width: 45vw;
   flex-direction: column;
   margin-bottom: 1rem;
+}
+
+.outgoing-message {
+  position: relative;
+  display: inline-block;
+  float: right;
 }
 
 .message-user {
@@ -50,6 +57,7 @@
 }
 
 .message-wrap {
+  width: 45vw;
   padding: 0.75rem;
   border-radius: 0.5rem;
   background-color: #f6f6f6;
@@ -59,7 +67,6 @@
 
 .outgoing-message .message-wrap {
   background-color: #d1e7ff;
-  float: right;
 }
 
 .time {
