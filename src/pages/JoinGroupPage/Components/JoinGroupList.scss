@@ -1,0 +1,82 @@
+
+.groupListContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-top: 5vh;
+}
+
+.section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.GroupList {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.GroupHeader {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  border-bottom: 1px solid #d2d2d2;
+}
+
+.GroupHeader__text {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.GroupItem {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #d2d2d2;
+  padding: 10px;
+}
+
+.GroupItem__image {
+  width: 10vw;
+  height: 10vw;
+  border-radius: 10px !important;
+}
+
+
+.GroupItem__text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.GroupItem__name {
+  font-size: 18px;
+  font-weight: bold;
+  
+}
+
+.GroupItem__label {
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.GroupItem__button {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
