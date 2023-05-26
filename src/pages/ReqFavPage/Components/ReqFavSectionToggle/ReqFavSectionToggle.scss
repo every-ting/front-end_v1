@@ -1,0 +1,30 @@
+@import 'src/styles/variables.scss';
+.reqFavReqFavSectionToggleContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.reqFavSectionToggle {
+  display: flex;
+  width: 70vw;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.reqFavSectionToggleItem {
+  width: 35vw;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.reqFavSectionToggleItem.active {
+  background-color: $point-color-3;
+  color: #fff;
+}
+
+.reqFavSectionToggleItem:not(.active):hover {
+  background-color: #eee;
+}
