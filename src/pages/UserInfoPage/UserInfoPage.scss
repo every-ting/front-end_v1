@@ -1,0 +1,126 @@
+
+.userInfoContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.userInfoTextContainer {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.userInfoTextTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.userInfoTextSub {
+  font-size: 14px;
+  color: #828282;
+}
+
+.userInfoInputContainer {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.userInfoInputItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.userInfoInputBox {
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid #bdbdbd;
+  padding-left: 16px;
+}
+
+@media (min-width: 768px) {
+  .userInfoContainer {
+    width: 50%;
+    height: 100%;
+  }
+
+  .userInfoInputContainer {
+    width: 100%;
+  }
+
+  .userInfoInputItem {
+    width: 100%;
+  }
+
+  .userInfoInputBox {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .userInfoContainer {
+    width: 30%;
+    height: 100%;
+  }
+
+  .userInfoInputContainer {
+    width: 100%;
+  }
+
+  .userInfoInputItem {
+    width: 100%;
+  }
+
+  .userInfoInputBox {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .userInfoContainer {
+    width: 30%;
+    height: 100%;
+  }
+
+  .userInfoInputContainer {
+    width: 100%;
+  }
+
+  .userInfoInputItem {
+    width: 100%;
+  }
+
+  .userInfoInputBox {
+    width: 100%;
+  }
+}
+.userInfoSubmitBtnWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  .userInfoSubmitBtn {
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}

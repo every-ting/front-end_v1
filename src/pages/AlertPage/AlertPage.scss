@@ -1,0 +1,63 @@
+
+.alertContainer {
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f5;
+  padding-top: 0.5vh;
+}
+
+.alertBody {
+  margin-top: 100px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.alertBodyItem {
+  width: 90%;
+  height: 70px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alertBodyItemText {
+  margin-left: 10px;
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.alertBodyItemTitle {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.alertBodyItemCreatedAt {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.alertBodyItemButton {
+  width: 60px;
+  height: 40px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff6b6b;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
