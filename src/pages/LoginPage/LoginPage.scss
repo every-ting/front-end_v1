@@ -1,0 +1,79 @@
+
+.loginContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.LogoImageWrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.LogoImageWrapper img {
+  width: 100px;
+  height: 100px;
+}
+
+.loginText {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.socailLoginWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.socailLoginBtnWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.socailLoginBtn {
+  width: 90%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.socailLoginBtn img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.socailLoginBtn p {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.socailLoginBtn:first-child {
+  background-color: #ffe812;
+}
+
+
+.socailLoginBtn:last-child {
+  background-color: #e2e2e2;
+}
+
+.socailLoginBtn:last-child p {
+  color: #000;
+}

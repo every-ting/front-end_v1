@@ -3,6 +3,9 @@
 
 .mainContainer {
   padding: 0 20px;
+  background-color: #fff;
+  padding-top: 10vw;
+
   .matchCountWrapper {
     display: flex;
     flex-direction: column;
@@ -15,8 +18,9 @@
       color: #000;
     }
     .matchCountNum {
+      margin-top: 3.5vw;
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 400;
       color: #000;
     }
   }
@@ -49,8 +53,8 @@
         align-items: baseline;
         margin-right: 20px;
         .recommendSliderItemImg {
-          width: 370px;
-          height: 250px;
+          width: 290px;
+          height: 200px;
           border-radius: 7%;
           overflow: hidden;
           img {

@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './MainPage.scss';
+import { motion } from 'framer-motion';
 
 const MainPage = () => {
   return (
-    <div className="mainContainer">
+    <motion.div
+      className="mainContainer"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="matchCountWrapper">
         <div className="matchCountText">오늘 매칭수</div>
         <div className="matchCountNum">1,004</div>
@@ -87,7 +93,7 @@ const MainPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

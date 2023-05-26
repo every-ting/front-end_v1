@@ -97,10 +97,13 @@
 
 .chat-form {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .chat-form button {
+  width: 10vw;
   border: none;
   background-color: transparent;
   margin-right: 0.5rem;
@@ -115,7 +118,10 @@
 .text-grey-600 {
   color: #666;
 }
-
+.form-group {
+  width: 80vw;
+  margin-bottom: 0.5rem;
+}
 .form-group input[type="text"] {
   border: none;
   padding: 0.5rem;
