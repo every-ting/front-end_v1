@@ -1,0 +1,50 @@
+.reqFavContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+}
+
+.reqFavHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.reqFavBackButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 13vw;
+  width: 13vw;
+  background-color: #ebebeb;
+  border-radius: 50%;
+  margin-right: 4vw;
+}
+
+.reqFavBackButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.reqFavBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+  width: 100%;
+  margin-top: 50px;
+}

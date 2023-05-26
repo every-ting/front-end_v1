@@ -1,0 +1,157 @@
+
+.userVerifyContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.userVerifyTextContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userVerifyTextTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 16px;
+}
+
+.userVerifyTextSub {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 16px;
+}
+
+.userVerifyTextEmail {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 16px;
+}
+
+.userVerifyCodeContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.userVerifyCodeItem {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.userVerifyCodeBox {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+  border: 1px solid #bdbdbd;
+  border-radius: 11px;
+}
+
+.userVerifyCodeText {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.userVerifyCodeResendContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.userVerifyCodeResendText {
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+}
+
+.userVerifyInputKeyPadContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.userVerifyInputKeyPadItem {
+  width: 33.333%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.userVerifyInputKeyPadBox {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+}
+
+.userVerifyInputKeyPadText {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.userVerifyButtonWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.userVerifyButton {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #62626296;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+}

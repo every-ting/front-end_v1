@@ -1,0 +1,41 @@
+
+.settingContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  .settingBody {
+    margin-top: 100px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #8f8f8f;
+    .settingBodyItem {
+      width: 100%;
+      padding: 0 20px;
+      height: 40px;
+      border-bottom: 1px solid #e6e6e6;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  .settingFooter {
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .settingFooterItem {
+      display: flex;
+      .settingFooterItemTitle {
+        color: #999;
+        font-size: 12px;
+        &:first-child {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
