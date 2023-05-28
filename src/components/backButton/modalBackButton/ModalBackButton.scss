@@ -1,0 +1,34 @@
+@import '../../../styles/variables.scss';
+
+.modalBackButtonContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 101;
+  .modalBackButton {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid #d4d4d4;
+    border-radius: 50%;
+    background-color: #ebebeb;
+    font-size: 20px;
+    color: #000000;
+    cursor: pointer;
+  }
+  .modalBackButtonHeader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+  }
+}
