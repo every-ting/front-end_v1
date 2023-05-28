@@ -1,0 +1,92 @@
+
+//style
+.filterModal {
+  width: 100%;
+  height: 80%;
+  position: fixed;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
+  .filterModalContainer {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px;
+    overflow-y: scroll;
+    .filterModalHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      .filterModalHeaderTitle {
+        font-size: 20px;
+        font-weight: 700;
+        color: #000;
+      }
+      .filterModalHeaderCloseButton {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+          background-color: #333;
+        }
+        .filterModalHeaderCloseButtonIcon {
+          font-size: 20px;
+          color: #fff;
+        }
+      }
+    }
+    .filterModalBody {
+      margin-bottom: 20px;
+      .filterModalBodyTitle {
+        font-size: 18px;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 10px;
+      }
+      .filterModalBodyContent {
+        display: flex;
+        flex-wrap: wrap;
+        .filterModalBodyContentItem {
+          width: 80px;
+          height: 30px;
+          border-radius: 20px;
+          background-color: #eee;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 10px;
+          margin-bottom: 10px;
+          font-size: 14px;
+          font-weight: 700;
+          color: #000;
+          cursor: pointer;
+          &:hover {
+            background-color: #ddd;
+          }
+        }
+      }
+    }
+    .filterSubmitButton {
+      width: 100%;
+      height: 50px;
+      border-radius: 20px;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      &:hover {
+        background-color: #333;
+      }
+    }
+  }}

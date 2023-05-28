@@ -1,0 +1,72 @@
+
+.appHeaderContainer {
+  position: fixed;
+  padding-top: 3vh;
+  padding-bottom: 1vh;
+  width: 100%;
+  height: 10vh;
+  background-color: #fff;
+  border-bottom: 1px solid #ebebeb;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.appHeaderWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.appHeaderTitle {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.appHeaderTitleText {
+  color: #000;
+}
+
+.appHeaderMenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appHeaderMenuItem {
+  margin-left: 20px;
+  font-size: 20px;
+  color: #000;
+}
+
+.appHeaderMenuItem:first-child {
+  margin-left: 0;
+}
+
+.appHeaderMenuItem a {
+  color: #000;
+}
+
+.appHeaderMenuItem a:hover {
+  color: #000;
+}
+
+.appHeaderMenuItem a:active {
+  color: #000;
+}
+
+.appHeaderMenuItem a:focus {
+  color: #000;
+}
+
+.appHeaderMenuItem a:visited {
+  color: #000;
+}
+
+.appHeaderMenuItem svg {
+  width: 20px;
+  height: 20px;
+}
