@@ -13,7 +13,6 @@ const RoutesPath = () => {
   const location = useLocation();
   const [visibleNav, setVisibleNav] = useState(true);
   useEffect(() => {
-    console.log(location.pathname);
     location.pathname.includes('/chatRoom/')
       ? setVisibleNav(false)
       : setVisibleNav(true);
