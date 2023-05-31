@@ -11,12 +11,15 @@
 
 .LogoImageWrapper {
   width: 100%;
-  text-align: center;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .LogoImageWrapper img {
-  width: 100px;
-  height: 100px;
+  object-fit: cover;
+
 }
 
 .loginText {

@@ -7,27 +7,41 @@ const JoinGroupList = () => {
   useEffect(() => {
     getGroups().then(result => {
       setGroupData(result[1].data.content);
-      console.log(result[1].data);
     });
   }, []);
   return (
     <>
       <div className="groupListContainer">
         <div className="section">
-          <div className="GroupList">
-            <div className="GroupHeader" />
+          <div className="groupList">
+            <div className="groupHeader" />
             {groupData?.map(request => (
-              <div className="GroupItem" key={request.id}>
-                <div className="GroupItem__image">
+              <div className="groupItem" key={request.group.id}>
+                <div className="groupItem__image">
                   <img src="assets/images/user.png" alt="user" />
                 </div>
-                <div className="GroupItem__text">
-                  <div className="GroupItem__name">{request.groupName}</div>
-                  <div className="GroupItem__label">{request.gender}</div>
-                  <div className="GroupItem__label">{request.numOfMember}</div>
-                  <div className="GroupItem__label">{request.school}</div>
+                <div className="groupItem__text">
+                  <div className="groupItem__name">
+                    {request.group.groupName}
+                  </div>
+                  <div className="groupItem__label">
+                    <p className="groupItem__label__text">
+                      {request.group.gender}
+                    </p>
+                  </div>
+                  <div className="groupItem__label">
+                    <p className="groupItem__label__text">
+                      {request.group.memberCount}/
+                      {request.group.memberSizeLimit}
+                    </p>
+                  </div>
+                  <div className="groupItem__label">
+                    <p className="groupItem__label__text">
+                      {request.group.school}
+                    </p>
+                  </div>
                 </div>
-                <div className="GroupItem__button">
+                <div className="groupItem__button">
                   <button className="acceptBtn">request</button>
                 </div>
               </div>

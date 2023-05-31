@@ -70,3 +70,18 @@ export const getGroupMembers = async groupId => {
     return [true, e.message];
   }
 };
+
+export const getGroupMembersRequest = async groupId => {
+  try {
+    const response = await basicApi.get(
+      `${API.getGroupMembersRequest}/${groupId}/members/requests`
+    );
+    if (response.status === 200) {
+      return [false, response.data];
+    } else {
+      return [response.data.error, response.data.message];
+    }
+  } catch (e) {
+    return [true, e.message];
+  }
+};

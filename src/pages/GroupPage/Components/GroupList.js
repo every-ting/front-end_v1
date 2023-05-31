@@ -61,9 +61,12 @@ const GroupList = () => {
             {joinedGroupData?.map(request => (
               <motion.div
                 className="joinedGroupItem"
-                key={request.id}
+                key={request.group.id}
                 onClick={() => {
-                  handleGroupItemClick(request.groupName, request.id);
+                  handleGroupItemClick(
+                    request.group.groupName,
+                    request.group.id
+                  );
                 }}
                 variants={groupItem}
               >
@@ -78,23 +81,23 @@ const GroupList = () => {
                 <div className="joinedGroupItem__text__wrapper">
                   <div className="joinedGroupItem__header">
                     <div className="joinedGroupItem__header__name">
-                      {request.groupName}
+                      {request.group.groupName}
                     </div>
                     <div className="joinedGroupItem__header__num">
-                      총 인원 : {request.numOfMember}
+                      총 인원 : {request.group.numOfMember}
                     </div>
                   </div>
                   <div className="joinedGroupItem__text">
                     <div className="joinedGroupItem__label">
                       <p className="joinedGroupItem__label__text">
-                        {request.gender}
+                        {request.group.gender}
                       </p>
                     </div>
                   </div>
                   <div className="joinedGroupItem__text">
                     <div className="joinedGroupItem__label">
                       <p className="joinedGroupItem__label__text">
-                        {request.school}{' '}
+                        {request.group.school}{' '}
                       </p>
                     </div>
                   </div>

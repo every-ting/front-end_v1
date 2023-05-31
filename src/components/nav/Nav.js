@@ -20,7 +20,7 @@ const Nav = () => {
               <p className="navMenuText">소개팅</p>
             </Link>
             <Link to="/" className="navLogo">
-              Ting
+              <img src="assets/images/TING.png" alt="logo" />
             </Link>
 
             <Link to="/chat" className="navMenuList">

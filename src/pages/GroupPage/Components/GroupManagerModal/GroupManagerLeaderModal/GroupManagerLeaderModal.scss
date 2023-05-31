@@ -1,4 +1,4 @@
-@import '../../../../styles/variables.scss';
+@import '../../../../../styles/variables.scss';
 
 .groupManagerModalContainer {
   position: fixed;
@@ -8,6 +8,7 @@
   width: 100vw;
   height: 100vh;
   background-color: #fff;
+  overflow: auto;
 }
 
 .groupManagerHeader {

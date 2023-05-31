@@ -4,6 +4,9 @@ import './MainPage.scss';
 import { motion } from 'framer-motion';
 
 const MainPage = () => {
+  const code = new URL(window.location.href).searchParams.get('code');
+
+  console.log(code);
   return (
     <motion.div
       className="mainContainer"
