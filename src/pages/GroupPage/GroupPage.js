@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './GroupPage.scss';
 import AppHeader from '../../components/appHeader/AppHeader';
 import CreateGroupButton from './Components/GroupButton/CreateGroupButton';
 import JoinGroupButton from './Components/GroupButton/JoinGroupButton';
 import GroupList from './Components/GroupList';
+import { getGroupsMy } from './GroupPageController';
 import { motion } from 'framer-motion';
 
 const GroupPage = () => {
+  const [joinedGroupData, setJoinedGroupData] = useState();
+  const [renderGroupList, setRenderGroupList] = useState(false);
+
+  useEffect(() => {
+    getGroupsMy().then(result => {
+      setJoinedGroupData(result[1].data);
+      setRenderGroupList(true);
+    });
+  }, []);
+
   return (
     <motion.div
       className="groupContainer"
@@ -22,7 +33,7 @@ const GroupPage = () => {
         </div>
         <div className="groupContent__body">
           <div className="groupContent__body__title">내가 속한 팀</div>
-          <GroupList />
+          {renderGroupList && <GroupList joinedGroupData={joinedGroupData} />}
         </div>
       </div>
     </motion.div>

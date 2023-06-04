@@ -1,0 +1,39 @@
+.requestJoinGroupContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  overflow: auto;
+  
+  .requestJoinGroupContent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+  }
+  
+  .requestJoinGroupContent__header {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10vw;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1px solid #e9ecef;
+  }
+  
+  .requestJoinGroupContent__body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+  }
+}

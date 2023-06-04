@@ -1,9 +1,19 @@
 import React from 'react';
 import './ChatRoomPage.scss';
+import BackButton from '../../components/backButton/commonBackButton/BackButton';
+import { motion } from 'framer-motion';
+import { IoArrowRedoCircleSharp } from 'react-icons/io5';
+import { MdOutlinePhotoSizeSelectActual } from 'react-icons/md';
 
 const ChatRoomPage = () => {
   return (
-    <div className="chatRoomContainer">
+    <motion.div
+      className="chatRoomContainer"
+      initial={{ opacity: 0, marginRight: 1000 }}
+      animate={{ opacity: 1, marginRight: 0 }}
+      transition={{ duration: 0.7, stiffness: 50 }}
+    >
+      <BackButton />
       <div className="chat-wrapper pt-0 w-100 position-relative scroll-bar bg-white theme-dark-bg">
         <div className="chat-body p-3 ">
           <div className="messages-content pb-5">
@@ -106,17 +116,17 @@ const ChatRoomPage = () => {
       >
         <form className="chat-form">
           <button className="bg-grey float-left">
-            <i className="ti-microphone text-grey-600" />
+            <MdOutlinePhotoSizeSelectActual />
           </button>
           <div className="form-group">
             <input type="text" placeholder="Start typing.." />
           </div>
           <button className="bg-current">
-            <i className="ti-arrow-right text-white" />
+            <IoArrowRedoCircleSharp />
           </button>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

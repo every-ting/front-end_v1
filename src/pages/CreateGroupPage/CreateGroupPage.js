@@ -15,7 +15,7 @@ const CreateGroupPage = () => {
     const data = {
       groupName: groupName,
       gender: 'MEN', // 유저의 성별이 입력됨
-      numOfMember: groupNumOfMember,
+      memberSizeLimit: groupNumOfMember,
       school: groupSchool,
       memo: groupMemo,
     };

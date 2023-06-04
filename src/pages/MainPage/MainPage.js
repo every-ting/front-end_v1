@@ -1,20 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './MainPage.scss';
+import { motion } from 'framer-motion';
 
 const MainPage = () => {
+  const code = new URL(window.location.href).searchParams.get('code');
+
+  console.log(code);
   return (
-    <div className="mainContainer">
+    <motion.div
+      className="mainContainer"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className="matchCountWrapper">
         <div className="matchCountText">오늘 매칭수</div>
         <div className="matchCountNum">1,004</div>
       </div>
       <div className="recommendSliderContaioner">
         <div className="recommendHeader">
-          <p className="recommendHeaderText">Recommendations</p>
-          <Link to="/recommendations" className="recommendHeaderLink">
+          <p className="recommendHeaderText">추천 목록</p>
+          {/* <Link to="/recommendations" className="recommendHeaderLink">
             More +
-          </Link>
+          </Link> */}
         </div>
         <div className="recomendSliderWrapper">
           <div className="recommendSliderItem">
@@ -50,10 +59,10 @@ const MainPage = () => {
       </div>
       <div className="recommendContainer">
         <div className="recommendHeader">
-          <p className="recommendHeaderText">Recommendations</p>
-          <Link to="/recommendations" className="recommendHeaderLink">
+          <p className="recommendHeaderText">추천</p>
+          {/* <Link to="/recommendations" className="recommendHeaderLink">
             More +
-          </Link>
+          </Link> */}
         </div>
         <div className="recommendWrapper">
           <div className="recommendItem">
@@ -87,7 +96,7 @@ const MainPage = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

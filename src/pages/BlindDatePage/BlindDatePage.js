@@ -6,12 +6,7 @@ import BlindDateList from './Components/BlindDateList';
 
 const DatePage = () => {
   return (
-    <motion.div
-      className="blindDateContainer"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <motion.div className="blindDateContainer">
       <AppHeader title="소개팅" />
       <div className="blindDateContent">
         <div className="blindDateContent__body">

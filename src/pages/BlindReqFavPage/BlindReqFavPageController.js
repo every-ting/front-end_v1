@@ -1,3 +1,6 @@
+// getBlindRequests: '/blind/requests',
+// getBlindLikes: '/blind/likes',
+
 import API from '../../api';
 import { basicApi } from '../../libs/config';
 
@@ -28,10 +31,9 @@ import { basicApi } from '../../libs/config';
 //   }
 // };
 
-export const getGroupsMy = async () => {
-  console.log('asdf');
+export const getBlindRequests = async () => {
   try {
-    const response = await basicApi.get(`${API.getGroupsMy}`);
+    const response = await basicApi.get(`${API.getBlindRequests}`);
     if (response.status === 200) {
       return [false, response.data];
     } else {
@@ -42,40 +44,9 @@ export const getGroupsMy = async () => {
   }
 };
 
-export const getGroups = async () => {
-  console.log('asasddf');
+export const getBlindLikes = async () => {
   try {
-    const response = await basicApi.get(`${API.getGroups}`);
-    if (response.status === 200) {
-      return [false, response.data];
-    } else {
-      return [response.data.error, response.data.message];
-    }
-  } catch (e) {
-    return [true, e.message];
-  }
-};
-
-export const getGroupMembers = async groupId => {
-  try {
-    const response = await basicApi.get(
-      `${API.getGroupMembers}/${groupId}/members`
-    );
-    if (response.status === 200) {
-      return [false, response.data];
-    } else {
-      return [response.data.error, response.data.message];
-    }
-  } catch (e) {
-    return [true, e.message];
-  }
-};
-
-export const getGroupMembersRequest = async groupId => {
-  try {
-    const response = await basicApi.get(
-      `${API.getGroupMembersRequest}/${groupId}/members/requests`
-    );
+    const response = await basicApi.get(`${API.getBlindLikes}`);
     if (response.status === 200) {
       return [false, response.data];
     } else {
