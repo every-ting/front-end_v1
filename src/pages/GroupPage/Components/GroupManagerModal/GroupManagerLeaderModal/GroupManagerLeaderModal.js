@@ -11,7 +11,7 @@ const GroupManagerLeaderModal = ({
 }) => {
   const [leader, setLeader] = useState('');
   useEffect(() => {
-    console.log(groupMembersData);
+    console.log('groupMembersData', groupMembersData);
     setLeader(groupMembersData.filter(item => item.role === 'LEADER'));
   }, []);
 

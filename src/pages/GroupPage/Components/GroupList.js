@@ -1,47 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import './GroupList.scss';
-import { getGroupsMy } from '../GroupPageController';
-import { useNavigate } from 'react-router-dom';
 import GroupManagerModal from './GroupManagerModal/GroupManagerModal';
 import { getGroupMembers } from '../GroupPageController';
 import { motion } from 'framer-motion';
 
-const GroupList = () => {
-  const [joinedGroupData, setJoinedGroupData] = useState();
+const GroupList = ({ joinedGroupData }) => {
   const [isGroupManagerModal, setIsGroupManagerModal] = useState(0);
   const [groupName, setGroupName] = useState('');
   const [groupMembersData, setGroupMembersData] = useState();
 
-  const navigate = useNavigate();
-
-  const groupList = {
-    hidden: { opacity: 0 },
-    show: {
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.12,
-        ease: 'easeInOut',
-        duration: 1,
+        duration: 0.2,
+        when: 'beforeChildren',
+        staggerChildren: 0.1,
       },
     },
   };
 
-  const groupItem = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1 },
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
   };
-
-  // const joinedGroupData = [
-  //   { id: 1, name: 'Hurin Seary', age: 24 },
-  //   { id: 2, name: 'John Doe', age: 32 },
-  //   { id: 3, name: 'Jane Smith', age: 27 },
-  // ];
-  useEffect(() => {
-    getGroupsMy().then(result => {
-      setJoinedGroupData(result[1].data);
-    });
-  }, []);
-
   const handleGroupItemClick = (name, id) => {
     setGroupName(name);
     getGroupMembers(id).then(result => {
@@ -54,10 +45,12 @@ const GroupList = () => {
     <>
       <div className="groupListContainer">
         <div className="section">
-          <motion.div className="joinedGroupList" variants={groupList}>
-            {/* <div className="joinedGroupHeader">
-              <div className="joinedGroupHeader__text">내가 속한 팀</div>
-            </div> */}
+          <motion.div
+            className="joinedGroupList"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {joinedGroupData?.map(request => (
               <motion.div
                 className="joinedGroupItem"
@@ -68,7 +61,7 @@ const GroupList = () => {
                     request.group.id
                   );
                 }}
-                variants={groupItem}
+                variants={itemVariants}
               >
                 <div className="joinedGroupItem__image__box">
                   <img
@@ -84,7 +77,8 @@ const GroupList = () => {
                       {request.group.groupName}
                     </div>
                     <div className="joinedGroupItem__header__num">
-                      총 인원 : {request.group.numOfMember}
+                      {request.group.memberCount}/
+                      {request.group.memberSizeLimit}
                     </div>
                   </div>
                   <div className="joinedGroupItem__text">

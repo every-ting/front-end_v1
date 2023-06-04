@@ -14,19 +14,59 @@ import { basicApi } from '../../libs/config';
 //   }
 // };
 
-// export const postDoorController = async data => {
-//   try {
-//     const response = await basicApi.post(`${API.postDoorControl}`, data);
-//     console.log(data);
-//     if (response.status === 200) {
-//       return [false, response.data];
-//     } else {
-//       return [response.data.error, response.data.message];
-//     }
-//   } catch (e) {
-//     return [true, e.message];
-//   }
-// };
+export const postBlindRequests = async userId => {
+  try {
+    const response = await basicApi.post(`${API.postBlindRequests}/${userId}`);
+    if (response.status === 200) {
+      return [false, response.data];
+    } else {
+      return [response.data.error, response.data.message];
+    }
+  } catch (e) {
+    return [true, e.message];
+  }
+};
+
+export const deleteBlindRequests = async userId => {
+  try {
+    const response = await basicApi.delete(
+      `${API.deleteBlindRequests}/${userId}`
+    );
+    if (response.status === 200) {
+      return [false, response.data];
+    } else {
+      return [response.data.error, response.data.message];
+    }
+  } catch (e) {
+    return [true, e.message];
+  }
+};
+
+export const postBlindLikes = async userId => {
+  try {
+    const response = await basicApi.post(`${API.postBlindLikes}/${userId}`);
+    if (response.status === 200) {
+      return [false, response.data];
+    } else {
+      return [response.data.error, response.data.message];
+    }
+  } catch (e) {
+    return [true, e.message];
+  }
+};
+
+export const deleteBlindLikes = async userId => {
+  try {
+    const response = await basicApi.delete(`${API.deleteBlindLikes}/${userId}`);
+    if (response.status === 200) {
+      return [false, response.data];
+    } else {
+      return [response.data.error, response.data.message];
+    }
+  } catch (e) {
+    return [true, e.message];
+  }
+};
 
 export const getGroupsMy = async () => {
   console.log('asdf');

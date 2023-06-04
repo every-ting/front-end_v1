@@ -40,11 +40,20 @@ const AppHeader = ({ title }) => {
         <RiListSettingsLine />
       </Link> */}
             </div>
-            <div className="appHeaderMenuItem">
-              <Link to="/request">
-                <FiStar />
-              </Link>
-            </div>{' '}
+            {title === '소개팅' && (
+              <div className="appHeaderMenuItem">
+                <Link to="/blind/request">
+                  <FiStar />
+                </Link>
+              </div>
+            )}
+            {title === '과팅' && (
+              <div className="appHeaderMenuItem">
+                <Link to="/request">
+                  <FiStar />
+                </Link>
+              </div>
+            )}
             <div className="appHeaderMenuItem">
               <Link to="/alert">
                 <AiOutlineBell />

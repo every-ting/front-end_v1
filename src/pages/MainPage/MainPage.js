@@ -20,10 +20,10 @@ const MainPage = () => {
       </div>
       <div className="recommendSliderContaioner">
         <div className="recommendHeader">
-          <p className="recommendHeaderText">Recommendations</p>
-          <Link to="/recommendations" className="recommendHeaderLink">
+          <p className="recommendHeaderText">추천 목록</p>
+          {/* <Link to="/recommendations" className="recommendHeaderLink">
             More +
-          </Link>
+          </Link> */}
         </div>
         <div className="recomendSliderWrapper">
           <div className="recommendSliderItem">
@@ -59,10 +59,10 @@ const MainPage = () => {
       </div>
       <div className="recommendContainer">
         <div className="recommendHeader">
-          <p className="recommendHeaderText">Recommendations</p>
-          <Link to="/recommendations" className="recommendHeaderLink">
+          <p className="recommendHeaderText">추천</p>
+          {/* <Link to="/recommendations" className="recommendHeaderLink">
             More +
-          </Link>
+          </Link> */}
         </div>
         <div className="recommendWrapper">
           <div className="recommendItem">
