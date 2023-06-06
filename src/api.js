@@ -1,4 +1,7 @@
 const API = {
+  tingLogin: '/ting/logIn',
+  tingSignUp: '/ting/signUp',
+
   getGroups: '/groups',
   postGroups: '/groups',
   getGroupsMy: '/groups/my',
