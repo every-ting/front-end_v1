@@ -48,23 +48,23 @@ const RequestPage = ({
           {receivedBlindRequestsData?.map(request => (
             <motion.div
               className="reciveRequestItem"
-              key={request.blindDateResponse.id}
+              key={request.blindRequestResponse.id}
               variants={itemVariants}
             >
               <div className="reciveRequestItem__image">
-                <img src={request.blindDateResponse.idealPhoto} alt="user" />
+                <img src={request.blindRequestResponse.idealPhoto} alt="user" />
               </div>
               <div className="reciveRequestItem__text">
                 <div className="reciveRequestItem__name">
-                  {request.blindDateResponse.username}
+                  {request.blindRequestResponse.username}
                 </div>
-                {/* <div className="reciveRequestItem__age">{request.blindDateResponse.age}</div> */}
+                {/* <div className="reciveRequestItem__age">{request.blindRequestResponse.age}</div> */}
               </div>
               <div className="reciveRequestItem__button">
                 <button
                   className="acceptBtn"
                   onClick={() => {
-                    handleOnClickAcceptButton(request.blindDateResponse.id);
+                    handleOnClickAcceptButton(request.blindRequestResponse.id);
                   }}
                 >
                   수락
@@ -72,7 +72,7 @@ const RequestPage = ({
                 <button
                   className="denyBtn"
                   onClick={() => {
-                    handleOnClickRejectButton(request.blindDateResponse.id);
+                    handleOnClickRejectButton(request.blindRequestResponse.id);
                   }}
                 >
                   거절
@@ -94,17 +94,17 @@ const RequestPage = ({
           {sendBlindRequestsData.map(request => (
             <motion.div
               className="spendRequestItem"
-              key={request.blindDateResponse.id}
+              key={request.blindRequestResponse.id}
               variants={itemVariants}
             >
               <div className="spendRequestItem__image">
-                <img src={request.blindDateResponse.idealPhoto} alt="user" />
+                <img src={request.blindRequestResponse.idealPhoto} alt="user" />
               </div>
               <div className="spendRequestItem__text">
                 <div className="spendRequestItem__name">
-                  {request.blindDateResponse.username}
+                  {request.blindRequestResponse.username}
                 </div>
-                {/* <div className="spendRequestItem__age">{request.blindDateResponse.age}</div> */}
+                {/* <div className="spendRequestItem__age">{request.blindRequestResponse.age}</div> */}
               </div>
               <div className="spendRequestItem__button">
                 <button className="cancelBtn">취소</button>
