@@ -7,6 +7,18 @@
   .section {
     padding: 10px;
     .reciveRequestList {
+      .reciveRequestHeader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+        border-bottom: 1px solid #ddd;
+        .reciveRequestHeader__text {
+          font-size: 16px;
+          font-weight: 400;
+          color: #000;
+        }
+      }
       .reciveRequestItem {
         display: flex;
         align-items: center;
@@ -61,6 +73,18 @@
       }
     }
     .spendRequestList {
+      .spendRequestHeader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+        border-bottom: 1px solid #ddd !important;
+        .spendRequestHeader__text {
+          font-size: 16px;
+          font-weight: 400;
+          color: #000;
+        }
+      }
       .spendRequestItem {
         display: flex;
         align-items: center;

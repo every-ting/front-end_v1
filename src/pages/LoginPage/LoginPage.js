@@ -3,7 +3,7 @@ import './LoginPage.scss';
 // import './RequestPage.scss';
 
 const LoginPage = () => {
-  const Rest_api_key = '1078f762d7dafe6837257a42995f811c'; //REST API KEY
+  const Rest_api_key = '5aa83782d08252a734f65e2b72a6efbb'; //REST API KEY
   const redirect_uri = 'http://localhost:3000'; //Redirect URI
   // oauth 요청 URL
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${Rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`;

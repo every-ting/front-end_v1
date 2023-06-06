@@ -8,6 +8,8 @@ const GroupManagerLeaderModal = ({
   isGroupManagerModal,
   setIsGroupManagerModal,
   groupName,
+  setIsJoinRequest,
+  setIndex,
 }) => {
   const [leader, setLeader] = useState('');
   useEffect(() => {
@@ -18,6 +20,11 @@ const GroupManagerLeaderModal = ({
   useEffect(() => {
     console.log('asdfasdf', leader);
   }, [leader]);
+
+  const handleOnClickJoinRequest = () => {
+    setIsJoinRequest(true);
+    setIndex(-1);
+  };
   return (
     <>
       <div className="groupManagerModalContainer">
@@ -36,7 +43,12 @@ const GroupManagerLeaderModal = ({
             </div>
             <div className="groupManagerBodyItem__button__wrapper">
               <button className="groupManagerBodyItem__button">넘기기</button>
-              <button className="groupManagerBodyItem__button">
+              <button
+                className="groupManagerBodyItem__button"
+                onClick={() => {
+                  handleOnClickJoinRequest();
+                }}
+              >
                 팀원 신청 목록 확인
               </button>
             </div>

@@ -5,6 +5,10 @@ const API = {
   getGroupMembers: '/groups',
   getGroupMembersRequest: '/groups',
 
+  getOppositeGroups: '/groups',
+  getGroupLikes: '/groups',
+  getGroupReqs: '/groups',
+
   getBlindUsers: '/blind',
   getBlindRequests: '/blind/requests',
   getBlindLikes: '/blind/likes',

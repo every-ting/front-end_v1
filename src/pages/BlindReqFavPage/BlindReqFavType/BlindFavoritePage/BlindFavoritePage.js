@@ -55,7 +55,7 @@ const FavoritePage = ({ blindLikesData }) => {
             </motion.div>
           ))}
         </motion.div>
-        <div className="recommendHeader">
+        {/* <div className="recommendHeader">
           <div className="recommendHeader__text">추천 목록</div>
         </div>
         <div className="recommendList">
@@ -73,7 +73,7 @@ const FavoritePage = ({ blindLikesData }) => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

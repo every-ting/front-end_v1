@@ -85,3 +85,51 @@ export const getGroupMembersRequest = async groupId => {
     return [true, e.message];
   }
 };
+
+export const getOppositeGroups = async groupId => {
+  try {
+    const response = await basicApi.get(
+      `${API.getOppositeGroups}/${groupId}/opposite-gender-groups`
+    );
+    if (response.status === 200) {
+      return [false, response.data];
+    } else {
+      return [response.data.error, response.data.message];
+    }
+  } catch (e) {
+    return [true, e.message];
+  }
+};
+
+export const getGroupLikes = async groupId => {
+  try {
+    const response = await basicApi.get(
+      `${API.getGroupLikes}/${groupId}/likes`
+    );
+    if (response.status === 200) {
+      return [false, response.data];
+    } else {
+      return [response.data.error, response.data.message];
+    }
+  } catch (e) {
+    console.log(e);
+    return [true, e.message];
+  }
+};
+
+export const getGroupReqs = async groupId => {
+  try {
+    const response = await basicApi.get(
+      `${API.getGroupReqs}/${groupId}/dates/requests`
+    );
+    if (response.status === 200) {
+      return [false, response.data];
+    } else {
+      console.log(response);
+      return [response.data.error, response.data.message];
+    }
+  } catch (e) {
+    console.log(e);
+    return [true, e.message];
+  }
+};

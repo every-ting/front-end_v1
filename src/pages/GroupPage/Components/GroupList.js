@@ -3,36 +3,13 @@ import './GroupList.scss';
 import GroupManagerModal from './GroupManagerModal/GroupManagerModal';
 import { getGroupMembers } from '../GroupPageController';
 import { motion } from 'framer-motion';
+import { containerVariants, itemVariants } from '../../../constants/variants';
 
 const GroupList = ({ joinedGroupData }) => {
   const [isGroupManagerModal, setIsGroupManagerModal] = useState(0);
   const [groupName, setGroupName] = useState('');
   const [groupMembersData, setGroupMembersData] = useState();
 
-  const containerVariants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.2,
-        when: 'beforeChildren',
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-    },
-  };
   const handleGroupItemClick = (name, id) => {
     setGroupName(name);
     getGroupMembers(id).then(result => {
@@ -43,7 +20,7 @@ const GroupList = ({ joinedGroupData }) => {
   };
   return (
     <>
-      <div className="groupListContainer">
+      <div className="joinedGroupListContainer">
         <div className="section">
           <motion.div
             className="joinedGroupList"
@@ -70,7 +47,6 @@ const GroupList = ({ joinedGroupData }) => {
                     alt="user"
                   />
                 </div>
-
                 <div className="joinedGroupItem__text__wrapper">
                   <div className="joinedGroupItem__header">
                     <div className="joinedGroupItem__header__name">

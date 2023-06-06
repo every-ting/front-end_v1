@@ -5,19 +5,32 @@ import {
   containerVariants,
   itemVariants,
 } from '../../../../constants/variants';
+import {
+  putBlindRequestsReject,
+  putBlindRequestsAccept,
+} from '../../BlindReqFavPageController';
 
-const RequestPage = ({ receivedBlindRequestsData, sendBlindRequestsData }) => {
-  const receiveRequests = [
-    { id: 1, name: 'Hurin Seary', age: 24 },
-    { id: 2, name: 'John Doe', age: 32 },
-    { id: 3, name: 'Jane Smith', age: 27 },
-  ];
+const RequestPage = ({
+  receivedBlindRequestsData,
+  sendBlindRequestsData,
+  isModify,
+  setIsModify,
+}) => {
+  const handleOnClickAcceptButton = id => {
+    console.log(id);
+    putBlindRequestsAccept(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
 
-  const spendRequests = [
-    { id: 1, name: 'Hurin Seary', age: 24 },
-    { id: 2, name: 'John Doe', age: 32 },
-    { id: 3, name: 'Jane Smith', age: 27 },
-  ];
+  const handleOnClickRejectButton = id => {
+    console.log(id);
+    putBlindRequestsReject(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
 
   return (
     <div className="requestContainer">
@@ -48,8 +61,22 @@ const RequestPage = ({ receivedBlindRequestsData, sendBlindRequestsData }) => {
                 {/* <div className="reciveRequestItem__age">{request.blindDateResponse.age}</div> */}
               </div>
               <div className="reciveRequestItem__button">
-                <button className="acceptBtn">수락</button>
-                <button className="denyBtn">거절</button>
+                <button
+                  className="acceptBtn"
+                  onClick={() => {
+                    handleOnClickAcceptButton(request.blindDateResponse.id);
+                  }}
+                >
+                  수락
+                </button>
+                <button
+                  className="denyBtn"
+                  onClick={() => {
+                    handleOnClickRejectButton(request.blindDateResponse.id);
+                  }}
+                >
+                  거절
+                </button>
               </div>
             </motion.div>
           ))}
@@ -61,7 +88,7 @@ const RequestPage = ({ receivedBlindRequestsData, sendBlindRequestsData }) => {
           initial="hidden"
           animate="visible"
         >
-          <div classname="spendRequestHeader">
+          <div className="spendRequestHeader">
             <div className="spendRequestHeader__text">보낸 요청</div>
           </div>
           {sendBlindRequestsData.map(request => (
