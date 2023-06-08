@@ -8,11 +8,12 @@ const MainPage = () => {
   const navigate = useNavigate();
   console.log(code);
 
-  useEffect(() => {
-    if (localStorage.getItem('is_new_user') === 'true') {
-      navigate('/login');
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!sessionStorage.getItem('token')) {
+  //     navigate('/login');
+  //   }
+  // }, []);
+
   return (
     <motion.div
       className="mainContainer"

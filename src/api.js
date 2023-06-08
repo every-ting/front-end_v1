@@ -15,6 +15,7 @@ const API = {
   getBlindUsers: '/blind',
   getBlindRequests: '/blind/requests',
   getBlindLikes: '/blind/likes',
+
   postBlindRequests: '/blind/request',
   deleteBlindRequests: '/blind/request',
 

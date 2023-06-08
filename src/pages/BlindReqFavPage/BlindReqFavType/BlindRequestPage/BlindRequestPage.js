@@ -8,12 +8,12 @@ import {
 import {
   putBlindRequestsReject,
   putBlindRequestsAccept,
+  deleteBlindRequests,
 } from '../../BlindReqFavPageController';
 
 const RequestPage = ({
   receivedBlindRequestsData,
   sendBlindRequestsData,
-  isModify,
   setIsModify,
 }) => {
   const handleOnClickAcceptButton = id => {
@@ -27,6 +27,14 @@ const RequestPage = ({
   const handleOnClickRejectButton = id => {
     console.log(id);
     putBlindRequestsReject(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
+
+  const handleOnClickDeleteRequestButton = id => {
+    console.log(id);
+    deleteBlindRequests(id).then(result => {
       console.log(result);
       setIsModify(true);
     });
@@ -106,7 +114,14 @@ const RequestPage = ({
                 </div>
                 {/* <div className="spendRequestItem__age">{request.blindRequestResponse.age}</div> */}
               </div>
-              <div className="spendRequestItem__button">
+              <div
+                className="spendRequestItem__button"
+                onClick={() => {
+                  handleOnClickDeleteRequestButton(
+                    request.blindRequestResponse.userId
+                  );
+                }}
+              >
                 <button className="cancelBtn">취소</button>
               </div>
             </motion.div>

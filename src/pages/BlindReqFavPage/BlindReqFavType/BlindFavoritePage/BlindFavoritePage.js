@@ -1,23 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './BlindFavoritePage.scss';
 import { motion } from 'framer-motion';
 import {
   containerVariants,
   itemVariants,
 } from '../../../../constants/variants';
+import { deleteBlindLikes } from '../../BlindReqFavPageController';
 
-const FavoritePage = ({ blindLikesData }) => {
-  const Favorites = [
-    { id: 1, name: 'Hurin Seary', age: 24 },
-    { id: 2, name: 'John Doe', age: 32 },
-    { id: 3, name: 'Jane Smith', age: 27 },
-  ];
+const FavoritePage = ({ blindLikesData, setIsModify }) => {
+  const handleOnClickDeleteFavoriteButton = id => {
+    console.log(id);
+    deleteBlindLikes(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
 
-  const Recomends = [
-    { id: 1, name: 'Hurin Seary', age: 24 },
-    { id: 2, name: 'John Doe', age: 32 },
-    { id: 3, name: 'Jane Smith', age: 27 },
-  ];
   return (
     <div className="favoriteContainer">
       <div className="section">
@@ -49,7 +47,14 @@ const FavoritePage = ({ blindLikesData }) => {
                 </div>
                 <div className="favoriteItem__age">{favorite.age}</div>
               </div>
-              <div className="favoriteItem__button">
+              <div
+                className="favoriteItem__button"
+                onClick={() => {
+                  handleOnClickDeleteFavoriteButton(
+                    favorite.blindDateResponse.id
+                  );
+                }}
+              >
                 <button className="denyBtn">취소</button>
               </div>
             </motion.div>
