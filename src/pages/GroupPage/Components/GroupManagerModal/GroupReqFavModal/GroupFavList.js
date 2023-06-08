@@ -1,29 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import './GroupFavList.scss';
 // import { getBlindUsers } from '../GroupFavLikePageController';
-import { getGroupLikes } from '../../../GroupPageController';
 import { AiOutlineStar } from 'react-icons/ai';
+import { motion } from 'framer-motion';
+import {
+  itemVariants,
+  containerVariants,
+} from '../../../../../constants/variants';
 
-const GroupFavList = ({ isGroupManagerModal }) => {
-  const [groupFavLikesData, setGroupFavLikesData] = useState();
-
-  useEffect(() => {
-    getGroupLikes(isGroupManagerModal).then(result => {
-      console.log('상대팀', result);
-      setGroupFavLikesData(result[1].data);
-    });
-  }, []);
-
+const GroupFavList = ({ isGroupManagerModal, groupFavLikesData }) => {
   return (
     <>
       <div className="groupFavLikeListContainer">
         <div className="section">
-          <div className="groupFavLikeList">
+          <motion.div
+            className="groupFavLikeList"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {/* <div className="groupFavLikeHeader">
               <div className="groupFavLikeHeader__text">내가 속한 팀</div>
             </div> */}
             {groupFavLikesData?.content?.map(data => (
-              <div className="groupFavLikeItem" key={data?.id}>
+              <motion.div
+                className="groupFavLikeItem"
+                key={data?.id}
+                variants={itemVariants}
+              >
                 <div className="groupFavLikeItem__image__box">
                   <img
                     className="groupFavLikeItem__image"
@@ -81,9 +85,9 @@ const GroupFavList = ({ isGroupManagerModal }) => {
                     요청
                   </button>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </>

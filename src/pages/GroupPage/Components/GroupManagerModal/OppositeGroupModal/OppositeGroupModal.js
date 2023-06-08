@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './OppositeGroupModal.scss';
 import AppHeader from '../../../../../components/appHeader/AppHeader';
 import { motion } from 'framer-motion';
 import OppositeGroupList from './OppositeGroupList';
 import ModalBackButton from '../../../../../components/backButton/modalBackButton/ModalBackButton';
+import { getOppositeGroups } from '../../../GroupPageController';
+
 const OppositeGroupModal = ({
   setIsGroupManagerModal,
   isGroupManagerModal,
 }) => {
+  const [oppositeGroupsData, setOppositeGroupsData] = useState();
+
+  useEffect(() => {
+    getOppositeGroups(isGroupManagerModal).then(result => {
+      console.log('상대팀', result);
+      setOppositeGroupsData(result[1].data);
+    });
+  }, []);
+
   return (
     <motion.div className="requestJoinGroupContainer">
       <div className="groupManagerHeader">
@@ -19,7 +30,10 @@ const OppositeGroupModal = ({
       <div className="requestJoinGroupContent">
         <div className="requestJoinGroupContent__body">
           {/* <div className="requestJoinGroupContent__body__title">내가 속한 팀</div> */}
-          <OppositeGroupList isGroupManagerModal={isGroupManagerModal} />
+          <OppositeGroupList
+            isGroupManagerModal={isGroupManagerModal}
+            oppositeGroupsData={oppositeGroupsData}
+          />
         </div>
       </div>
     </motion.div>

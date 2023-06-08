@@ -1,29 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import './OppositeGroupList.scss';
 // import { getBlindUsers } from '../OppositeGroupPageController';
-import { getOppositeGroups } from '../../../GroupPageController';
 import { AiOutlineStar } from 'react-icons/ai';
+import { motion } from 'framer-motion';
+import {
+  containerVariants,
+  itemVariants,
+} from '../../../../../constants/variants';
 
-const OppositeGroupList = ({ isGroupManagerModal }) => {
-  const [oppositeGroupsData, setOppositeGroupsData] = useState();
-
-  useEffect(() => {
-    getOppositeGroups(isGroupManagerModal).then(result => {
-      console.log('상대팀', result);
-      setOppositeGroupsData(result[1].data);
-    });
-  }, []);
-
+const OppositeGroupList = ({ isGroupManagerModal, oppositeGroupsData }) => {
   return (
     <>
       <div className="oppositeGroupListContainer">
         <div className="section">
-          <div className="oppositeGroupList">
+          <motion.div
+            className="oppositeGroupList"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {/* <div className="oppositeGroupHeader">
               <div className="oppositeGroupHeader__text">내가 속한 팀</div>
             </div> */}
             {oppositeGroupsData?.content?.map(data => (
-              <div className="oppositeGroupItem" key={data?.id}>
+              <motion.div
+                className="oppositeGroupItem"
+                key={data?.id}
+                variants={itemVariants}
+              >
                 <div className="oppositeGroupItem__image__box">
                   <img
                     className="oppositeGroupItem__image"
@@ -81,9 +85,9 @@ const OppositeGroupList = ({ isGroupManagerModal }) => {
                     요청
                   </button>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </>

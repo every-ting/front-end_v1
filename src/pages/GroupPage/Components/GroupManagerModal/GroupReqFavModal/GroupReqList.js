@@ -1,29 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import './GroupReqList.scss';
 // import { getBlindUsers } from '../GroupReqPageController';
-import { getGroupReqs } from '../../../GroupPageController';
 import { AiOutlineStar } from 'react-icons/ai';
+import { motion } from 'framer-motion';
+import {
+  itemVariants,
+  containerVariants,
+} from '../../../../../constants/variants';
 
-const GroupReqList = ({ isGroupManagerModal }) => {
-  const [groupReqsData, setGroupReqsData] = useState();
-
-  useEffect(() => {
-    getGroupReqs(isGroupManagerModal).then(result => {
-      console.log('상대팀', result);
-      setGroupReqsData(result[1].data);
-    });
-  }, []);
-
+const GroupReqList = ({ isGroupManagerModal, groupReqsData }) => {
   return (
     <>
       <div className="groupReqListContainer">
         <div className="section">
-          <div className="groupReqList">
+          <motion.div
+            className="groupReqList"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {/* <div className="groupReqHeader">
               <div className="groupReqHeader__text">내가 속한 팀</div>
             </div> */}
             {groupReqsData?.content?.map(data => (
-              <div className="groupReqItem" key={data?.id}>
+              <motion.div
+                className="groupReqItem"
+                key={data?.id}
+                variants={itemVariants}
+              >
                 <div className="groupReqItem__image__box">
                   <img
                     className="groupReqItem__image"
@@ -79,9 +83,9 @@ const GroupReqList = ({ isGroupManagerModal }) => {
                   </button>
                   <button className="groupReqItem__button__text">요청</button>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </>

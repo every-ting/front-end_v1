@@ -6,10 +6,15 @@ import GroupReqList from './GroupReqList';
 import GroupFavList from './GroupFavList';
 import { MdOutlineArrowBackIosNew } from 'react-icons/md';
 import ReqFavSectionToggle from '../../ReqFavSectionToggle/ReqFavSectionToggle';
+import { getGroupLikes, getGroupReqs } from '../../../GroupPageController';
 
 const GroupReqFavModal = ({ setIsGroupManagerModal, isGroupManagerModal }) => {
   const [section, setSection] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
+  const [groupReqsData, setGroupReqsData] = useState();
+  const [groupFavLikesData, setGroupFavLikesData] = useState();
+  const [renderData, setRenderData] = useState(false);
+  const [isModify, setIsModify] = useState(false);
 
   useEffect(() => {
     if (activeIndex === 0) {
@@ -18,6 +23,24 @@ const GroupReqFavModal = ({ setIsGroupManagerModal, isGroupManagerModal }) => {
       setSection('favorite');
     }
   }, [activeIndex]);
+
+  useEffect(() => {
+    getGroupReqs(isGroupManagerModal).then(result => {
+      console.log('상대팀', result);
+      setGroupReqsData(result[1].data);
+      setRenderData(true);
+      setIsModify(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    getGroupLikes(isGroupManagerModal).then(result => {
+      console.log('상대팀', result);
+      setGroupFavLikesData(result[1].data);
+      setRenderData(true);
+      setIsModify(false);
+    });
+  }, []);
 
   return (
     <motion.div className="groupReqFavContainer">
@@ -41,10 +64,16 @@ const GroupReqFavModal = ({ setIsGroupManagerModal, isGroupManagerModal }) => {
       <div>
         <div className="groupReqFavGroupContent__body">
           {/* <div className="requestJoinGroupContent__body__title">내가 속한 팀</div> */}
-          {section === 'request' ? (
-            <GroupReqList isGroupManagerModal={isGroupManagerModal} />
+          {section === 'request' && renderData ? (
+            <GroupReqList
+              isGroupManagerModal={isGroupManagerModal}
+              groupReqsData={groupReqsData}
+            />
           ) : (
-            <GroupFavList isGroupManagerModal={isGroupManagerModal} />
+            <GroupFavList
+              isGroupManagerModal={isGroupManagerModal}
+              groupFavLikesData={groupFavLikesData}
+            />
           )}
         </div>
       </div>

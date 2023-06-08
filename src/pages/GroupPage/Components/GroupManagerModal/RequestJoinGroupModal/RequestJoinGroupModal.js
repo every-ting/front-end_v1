@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './RequestJoinGroupModal.scss';
-import AppHeader from '../../../../../components/appHeader/AppHeader';
 import { motion } from 'framer-motion';
 import RequestJoinGroupList from './RequestJoinGroupList';
 import ModalBackButton from '../../../../../components/backButton/modalBackButton/ModalBackButton';
+import { getGroupMembersRequest } from '../../../GroupPageController';
+
 const AcceptMemberModal = ({
   setIsGroupManagerModal,
   isGroupManagerModal,
   setIsJoinRequest,
   setIndex,
 }) => {
+  const [usersData, setUsersData] = useState();
+  const [renderData, setRenderData] = useState(false);
+
+  useEffect(() => {
+    getGroupMembersRequest(isGroupManagerModal).then(result => {
+      setUsersData(result[1].data);
+      setRenderData(true);
+    });
+  }, []);
+
   return (
     <motion.div className="requestJoinGroupContainer">
       <div className="groupManagerHeader">
@@ -23,7 +34,12 @@ const AcceptMemberModal = ({
       <div className="requestJoinGroupContent">
         <div className="requestJoinGroupContent__body">
           {/* <div className="requestJoinGroupContent__body__title">내가 속한 팀</div> */}
-          <RequestJoinGroupList isGroupManagerModal={isGroupManagerModal} />
+          {renderData && (
+            <RequestJoinGroupList
+              isGroupManagerModal={isGroupManagerModal}
+              usersData={usersData}
+            />
+          )}
         </div>
       </div>
     </motion.div>

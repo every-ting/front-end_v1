@@ -1,28 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './RequestJoinGroupList.scss';
-// import { getBlindUsers } from '../RequestJoinGroupPageController';
-import { getGroupMembersRequest } from '../../../GroupPageController';
 import { AiOutlineStar } from 'react-icons/ai';
+import { motion } from 'framer-motion';
+import {
+  containerVariants,
+  itemVariants,
+} from '../../../../../constants/variants';
 
-const RequestJoinGroupList = ({ isGroupManagerModal }) => {
-  const [usersData, setUsersData] = useState();
-
-  useEffect(() => {
-    getGroupMembersRequest(isGroupManagerModal).then(result => {
-      setUsersData(result[1].data);
-    });
-  }, []);
-
+const RequestJoinGroupList = ({ isGroupManagerModal, usersData }) => {
   return (
     <>
       <div className="requestJoinGroupListContainer">
         <div className="section">
-          <div className="requestJoinGroupList">
+          <motion.div
+            className="requestJoinGroupList"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {/* <div className="requestJoinGroupHeader">
               <div className="requestJoinGroupHeader__text">내가 속한 팀</div>
             </div> */}
             {usersData?.map(request => (
-              <div className="requestJoinGroupItem" key={request.id}>
+              <motion.div
+                className="requestJoinGroupItem"
+                key={request.id}
+                variants={itemVariants}
+              >
                 <div className="requestJoinGroupItem__image__box">
                   <img
                     className="requestJoinGroupItem__image"
@@ -65,9 +69,9 @@ const RequestJoinGroupList = ({ isGroupManagerModal }) => {
                     요청
                   </button>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </>
