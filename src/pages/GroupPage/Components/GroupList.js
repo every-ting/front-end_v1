@@ -8,10 +8,12 @@ import { containerVariants, itemVariants } from '../../../constants/variants';
 const GroupList = ({ joinedGroupData }) => {
   const [isGroupManagerModal, setIsGroupManagerModal] = useState(0);
   const [groupName, setGroupName] = useState('');
+  const [groupId, setGroupId] = useState();
   const [groupMembersData, setGroupMembersData] = useState();
 
   const handleGroupItemClick = (name, id) => {
     setGroupName(name);
+    setGroupId(id);
     getGroupMembers(id).then(result => {
       setGroupMembersData(result[1].data);
       console.log(result[1].data);
@@ -83,6 +85,7 @@ const GroupList = ({ joinedGroupData }) => {
           isGroupManagerModal={isGroupManagerModal}
           setIsGroupManagerModal={setIsGroupManagerModal}
           groupName={groupName}
+          groupId={groupId}
         />
       )}
     </>

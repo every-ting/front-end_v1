@@ -1,33 +1,62 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import './GroupManagerLeaderModal.scss';
 import ModalBackButton from '../../../../../components/backButton/modalBackButton/ModalBackButton';
+import { putGroupNewLeader } from '../../../GroupPageController';
+import CommonModal from '../../../../../components/modal/commonModal/CommonModal';
 
 const GroupManagerLeaderModal = ({
   groupMembersData,
   isGroupManagerModal,
   setIsGroupManagerModal,
   groupName,
+  groupId,
   setIsJoinRequest,
   setIndex,
 }) => {
   const [leader, setLeader] = useState('');
+  const [selectedMemberId, setSelectedMemberId] = useState(
+    groupMembersData[0].member.id
+  );
+  const [selectedMemberName, setSelectedMemberName] = useState(
+    groupMembersData[0].member.username
+  );
+  const [isModal, setIsModal] = useState(false);
+  const [isAcceptModal, setIsAcceptModal] = useState(false);
+
   useEffect(() => {
     console.log('groupMembersData', groupMembersData);
     setLeader(groupMembersData.filter(item => item.role === 'LEADER'));
   }, []);
 
-  useEffect(() => {
-    console.log('asdfasdf', leader);
-  }, [leader]);
-
   const handleOnClickJoinRequest = () => {
     setIsJoinRequest(true);
     setIndex(-1);
   };
+
+  const handleOnClickNewLeader = () => {
+    setIsModal(true);
+  };
+
+  useEffect(() => {
+    if (isAcceptModal === true) {
+      putGroupNewLeader(groupId, selectedMemberId).then(res => {
+        console.log('res', res);
+        setIsModal(false);
+        setIsAcceptModal(false);
+      });
+    }
+  }, [isAcceptModal]);
+
   return (
     <>
       <div className="groupManagerModalContainer">
+        {isModal && (
+          <CommonModal
+            children={`${selectedMemberName}님에게 팀장을 넘기시겠습니까?`}
+            setIsModal={setIsModal}
+            setIsAcceptModal={setIsAcceptModal}
+          />
+        )}
         <div className="groupManagerHeader">
           <ModalBackButton
             header={groupName}
@@ -42,7 +71,6 @@ const GroupManagerLeaderModal = ({
               </p>
             </div>
             <div className="groupManagerBodyItem__button__wrapper">
-              <button className="groupManagerBodyItem__button">넘기기</button>
               <button
                 className="groupManagerBodyItem__button"
                 onClick={() => {
@@ -61,17 +89,35 @@ const GroupManagerLeaderModal = ({
               {groupMembersData?.map(member => (
                 <div
                   className="groupManagerBodyItem__member__image__box"
-                  key={member.id}
+                  key={member.member.id}
+                  onClick={() => {
+                    setSelectedMemberId(member.member.id);
+                    setSelectedMemberName(member.member.username);
+                  }}
+                  style={{
+                    border:
+                      selectedMemberId === member.member.id
+                        ? '2px solid #FFD262'
+                        : 'none',
+                  }}
                 >
                   <img
                     className="groupManagerBodyItem__member__image"
-                    src="assets/images/user.png"
+                    src={member.member.idealPhoto}
                     alt="user"
                   />
                 </div>
               ))}
             </div>
             <div className="groupManagerBodyItem__button__wrapper">
+              <button
+                className="groupManagerBodyItem__button"
+                onClick={() => {
+                  handleOnClickNewLeader();
+                }}
+              >
+                팀장 넘기기
+              </button>
               <button className="groupManagerBodyItem__button">초대하기</button>
             </div>
           </div>

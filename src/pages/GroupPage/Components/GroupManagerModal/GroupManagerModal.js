@@ -11,6 +11,7 @@ const GroupManagerModal = ({
   isGroupManagerModal,
   setIsGroupManagerModal,
   groupName,
+  groupId,
 }) => {
   const [index, setIndex] = useState(0);
   const [isJoinRequest, setIsJoinRequest] = useState(false);
@@ -33,6 +34,7 @@ const GroupManagerModal = ({
           groupName={groupName}
           setIsJoinRequest={setIsJoinRequest}
           setIndex={setIndex}
+          groupId={groupId}
         />
       )}
       {index === 1 && (

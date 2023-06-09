@@ -1,13 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './BlindFavoritePage.scss';
 import { motion } from 'framer-motion';
 import {
   containerVariants,
   itemVariants,
 } from '../../../../constants/variants';
-import { deleteBlindLikes } from '../../BlindReqFavPageController';
+import {
+  deleteBlindLikes,
+  postBlindRequests,
+  deleteBlindRequests,
+} from '../../BlindReqFavPageController';
+import { AiFillStar } from 'react-icons/ai';
+import ErrorModal from '../../../../components/modal/errorModal/ErrorModal';
 
 const FavoritePage = ({ blindLikesData, setIsModify }) => {
+  const [isErrorModal, setIsErrorModal] = useState();
   const handleOnClickDeleteFavoriteButton = id => {
     console.log(id);
     deleteBlindLikes(id).then(result => {
@@ -16,8 +23,31 @@ const FavoritePage = ({ blindLikesData, setIsModify }) => {
     });
   };
 
+  const handleOnClickRequestButton = id => {
+    console.log(id);
+    postBlindRequests(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+      if (result[1].result.message.includes('The maximum number')) {
+        setIsErrorModal('요청은 최대 5명까지 가능합니다.');
+        setTimeout(() => {
+          setIsErrorModal();
+        }, 2000);
+      }
+    });
+  };
+
+  const handleOnClickRequestCancleButton = id => {
+    console.log(id);
+    deleteBlindRequests(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
+
   return (
     <div className="favoriteContainer">
+      {isErrorModal && <ErrorModal errorModalMessage={isErrorModal} />}
       <div className="section">
         <div className="favoriteHeader">
           <div className="favoriteHeader__text">찜 목록</div>
@@ -45,17 +75,43 @@ const FavoritePage = ({ blindLikesData, setIsModify }) => {
                 <div className="favoriteItem__name">
                   {favorite.blindDateResponse.username}
                 </div>
-                <div className="favoriteItem__age">{favorite.age}</div>
+                <div className="favoriteItem__age">
+                  {favorite.blindDateResponse.age}
+                </div>
               </div>
-              <div
-                className="favoriteItem__button"
-                onClick={() => {
-                  handleOnClickDeleteFavoriteButton(
-                    favorite.blindDateResponse.id
-                  );
-                }}
-              >
-                <button className="denyBtn">취소</button>
+              <div className="blindDateItem__button__wrapper">
+                <button
+                  className="blindDateItem__button__fav"
+                  onClick={() => {
+                    handleOnClickDeleteFavoriteButton(
+                      favorite.blindDateResponse.id
+                    );
+                  }}
+                >
+                  <AiFillStar />
+                </button>
+                {favorite.requestStatus === 'EMPTY' ? (
+                  <button
+                    className="blindDateItem__button__text"
+                    onClick={() => {
+                      handleOnClickRequestButton(favorite.blindDateResponse.id);
+                    }}
+                  >
+                    요청
+                  </button>
+                ) : (
+                  <button
+                    className="blindDateItem__button__text"
+                    onClick={() => {
+                      handleOnClickRequestCancleButton(
+                        favorite.blindDateResponse.id
+                      );
+                    }}
+                    style={{ backgroundColor: '#FF0000' }}
+                  >
+                    취소
+                  </button>
+                )}
               </div>
             </motion.div>
           ))}

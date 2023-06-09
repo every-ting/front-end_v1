@@ -19,6 +19,7 @@ import GroupQrPage from './pages/GroupQrPage/GroupQrPage';
 import BlindReqFavPage from './pages/BlindReqFavPage/BlindReqFavPage';
 import MyPage from './pages/SettingPage/MyPage/MyPage';
 import MobileOnlyPage from './pages/MobileOnlyPage/MobileOnlyPage';
+import GroupReqFavPage from './pages/GroupReqFavPage/GroupReqFavPage';
 
 const RoutesPath = () => {
   const location = useLocation();
@@ -133,6 +134,7 @@ const RoutesPath = () => {
         <Route path="/blindDate" element={<BlindDatePage />} />
         <Route path="/blind/request" element={<BlindReqFavPage />} />
         <Route path="/group" element={<GroupPage />} />
+        <Route path="/group/request" element={<GroupReqFavPage />} />
         <Route path="/joinGroup" element={<JoinGroupPage />} />
         <Route path="/createGroup" element={<CreateGroupPage />} />
         <Route path="/groupQR" element={<GroupQrPage />} />

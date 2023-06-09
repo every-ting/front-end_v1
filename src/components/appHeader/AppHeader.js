@@ -49,7 +49,7 @@ const AppHeader = ({ title }) => {
             )}
             {title === '과팅' && (
               <div className="appHeaderMenuItem">
-                <Link to="/request">
+                <Link to="/group/request">
                   <FiStar />
                 </Link>
               </div>
