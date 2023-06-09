@@ -1,0 +1,86 @@
+@import '../../../styles/variables.scss';
+
+.commonModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.commonModalContainer {
+  width: 70vw;
+  height: 30vh;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.commonModalHeader {
+  width: 100%;
+  height: 10vh;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.commonModalHeaderTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.commonModalBody {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.commonModalBodyContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.commonModalBodyBtnWrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.commonModalBodyBtn {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  margin-right: 10px;
+}
+.commonModalBodyBtn.accept {
+  background-color: $point-color-3;
+}
+.commonModalBodyBtn.cancle {
+  background-color: $point-color-2;
+}
+.commonModalBodyBtn.accept:active {
+  background-color: $point-color-1;
+}
