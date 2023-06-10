@@ -15,7 +15,7 @@ const CreateGroupPage = () => {
     const data = {
       groupName: groupName,
       gender: 'MEN', // 유저의 성별이 입력됨
-      memberSizeLimit: groupNumOfMember,
+      memberSizeLimit: parseInt(groupNumOfMember),
       school: groupSchool,
       memo: groupMemo,
     };
@@ -32,7 +32,7 @@ const CreateGroupPage = () => {
   };
 
   const groupNumOfMemberHandler = e => {
-    setGroupNumOfMember(parseInt(e.target.value));
+    setGroupNumOfMember(e.target.value);
   };
 
   const groupMemoHandler = e => {
