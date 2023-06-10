@@ -5,8 +5,12 @@ const API = {
   getGroups: '/groups',
   postGroups: '/groups',
   getGroupsMy: '/groups/my',
+  getGroupsDetail: '/groups',
   getGroupMembers: '/groups',
   getGroupMembersRequest: '/groups',
+
+  getGroupsRequest: '/groups/requests',
+  getGroupsLikes: '/groups/likes',
 
   getOppositeGroups: '/groups',
   getGroupLikes: '/groups',
@@ -23,9 +27,8 @@ const API = {
   deleteJoinRequestsGroup: '/groups/requests',
   postJoinLikesGroup: '/groups/likes',
   deleteJoinLikesGroup: '/groups/likes',
-
-  postAcceptJoinRequestsGroup: '/groups/requests/',
-  postRejectJoinRequestsGroup: '/groups/requests/',
+  postAcceptJoinRequestsGroup: '/groups/members/requests/',
+  deleteRejectJoinRequestsGroup: '/groups/members/requests/',
 
   getBlindUsers: '/blind',
   getBlindRequests: '/blind/requests',

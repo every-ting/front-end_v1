@@ -7,10 +7,10 @@ import {
 } from '../../../../constants/variants';
 import { deleteBlindLikes } from '../../GroupReqFavPageController';
 
-const GroupFavoritePage = ({ blindLikesData, setIsModify }) => {
-  const handleOnClickDeleteFavoriteButton = id => {
-    console.log(id);
-    deleteBlindLikes(id).then(result => {
+const GroupFavoritePage = ({ groupLikesData, setIsModify }) => {
+  console.log(groupLikesData);
+  const handleOnClickDeleteFavoriteButton = () => {
+    deleteBlindLikes().then(result => {
       console.log(result);
       setIsModify(true);
     });
@@ -29,30 +29,43 @@ const GroupFavoritePage = ({ blindLikesData, setIsModify }) => {
           initial="hidden"
           animate="visible"
         >
-          {blindLikesData.map(favorite => (
+          {groupLikesData.content.map(favorite => (
             <motion.div
               className="favoriteItem"
-              key={favorite.id}
+              key={favorite.group.id}
               variants={itemVariants}
             >
-              <div className="favoriteItem__image">
-                <img
-                  src={favorite.blindDateResponse.idealPhoto}
-                  alt="user_img"
-                />
-              </div>
-              <div className="favoriteItem__text">
-                <div className="favoriteItem__name">
-                  {favorite.blindDateResponse.username}
+              <div className="spendFavoriteItem__text">
+                <div className="spendFavoriteItem__text__wrapper">
+                  <div className="spendFavoriteItem__header">
+                    <div className="spendFavoriteItem__header__name">
+                      {favorite.group.groupName}
+                    </div>
+                    <div className="spendFavoriteItem__header__num">
+                      {favorite.group.memberCount}/
+                      {favorite.group.memberSizeLimit}
+                    </div>
+                  </div>
+                  <div className="spendFavoriteItem__text">
+                    <div className="spendFavoriteItem__label">
+                      <p className="spendFavoriteItem__label__text">
+                        {favorite.group.gender}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="spendFavoriteItem__text">
+                    <div className="spendFavoriteItem__label">
+                      <p className="spendFavoriteItem__label__text">
+                        {favorite.group.school}{' '}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="favoriteItem__age">{favorite.age}</div>
               </div>
               <div
                 className="favoriteItem__button"
                 onClick={() => {
-                  handleOnClickDeleteFavoriteButton(
-                    favorite.blindDateResponse.id
-                  );
+                  handleOnClickDeleteFavoriteButton();
                 }}
               >
                 <button className="denyBtn">취소</button>

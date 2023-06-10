@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import GroupManagerLeaderModal from './GroupManagerLeaderModal/GroupManagerLeaderModal';
 import GroupManagerNav from './GroupManagerNav/GroupManagerNav';
 import RequestJoinGroupModal from './RequestJoinGroupModal/RequestJoinGroupModal';
 import GroupChatModal from './GroupChatModal/GroupChatModal';
 import OppositeGroupModal from './OppositeGroupModal/OppositeGroupModal';
 import GroupReqFavModal from './GroupReqFavModal/GroupReqFavModal';
+import { getGroupMembers, getGroupsDetail } from '../../GroupPageController';
 
 const GroupManagerModal = ({
   groupMembersData,
@@ -12,9 +13,24 @@ const GroupManagerModal = ({
   setIsGroupManagerModal,
   groupName,
   groupId,
+  groupDetailData,
+  isModify,
+  setIsModify,
+  setGroupMembersData,
+  setGroupDetailData,
 }) => {
   const [index, setIndex] = useState(0);
   const [isJoinRequest, setIsJoinRequest] = useState(false);
+
+  useEffect(() => {
+    getGroupMembers(groupId).then(result => {
+      setGroupMembersData(result[1].data);
+    });
+    getGroupsDetail(groupId).then(result => {
+      setGroupDetailData(result[1].data);
+    });
+    setIsModify(false);
+  }, [isModify]);
 
   return (
     <div>
@@ -24,6 +40,8 @@ const GroupManagerModal = ({
           setIsGroupManagerModal={setIsGroupManagerModal}
           setIndex={setIndex}
           setIsJoinRequest={setIsJoinRequest}
+          isModify={isModify}
+          setIsModify={setIsModify}
         />
       )}
       {index === 0 && (
@@ -35,6 +53,9 @@ const GroupManagerModal = ({
           setIsJoinRequest={setIsJoinRequest}
           setIndex={setIndex}
           groupId={groupId}
+          groupDetailData={groupDetailData}
+          isModify={isModify}
+          setIsModify={setIsModify}
         />
       )}
       {index === 1 && (

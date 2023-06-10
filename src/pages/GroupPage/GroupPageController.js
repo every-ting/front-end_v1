@@ -148,3 +148,55 @@ export const putGroupNewLeader = async (groupId, userId) => {
     return [true, e.message];
   }
 };
+
+export const getGroupsDetail = async groupId => {
+  try {
+    const response = await basicApi.get(`${API.getGroupsDetail}/${groupId}`);
+    if (response.status === 200) {
+      return [false, response.data];
+    } else {
+      return [response.data.error, response.data.message];
+    }
+  } catch (e) {
+    return [true, e.message];
+  }
+};
+
+//postAcceptJoinRequestsGroup: '/groups/members/requests/',
+/// deleteRejectJoinRequestsGroup:
+
+export const postAcceptJoinRequestsGroup = async groupMemberRequestId => {
+  try {
+    const response = await basicApi.post(
+      `${API.postAcceptJoinRequestsGroup}${groupMemberRequestId}`
+    );
+    console.log('response', response);
+    if (response.status === 200) {
+      return [false, response.data];
+    } else {
+      console.log('response', response);
+      return [response.data.error, response.data.message];
+    }
+  } catch (e) {
+    console.log('e', e);
+    return [true, e.message];
+  }
+};
+
+export const deleteRejectJoinRequestsGroup = async groupMemberRequestId => {
+  try {
+    const response = await basicApi.delete(
+      `${API.deleteRejectJoinRequestsGroup}${groupMemberRequestId}`
+    );
+    console.log('response', response);
+    if (response.status === 200) {
+      return [false, response.data];
+    } else {
+      console.log('response', response);
+      return [response.data.error, response.data.message];
+    }
+  } catch (e) {
+    console.log('e', e);
+    return [true, e.message];
+  }
+};

@@ -126,6 +126,8 @@
   }
 }
 
+
+
 .groupReqItem__button__wrapper {
   width: 20vw;
   height: 30vw;
@@ -133,9 +135,9 @@
   justify-content:space-between;
   align-items: center;
   flex-direction: column;
-  padding: 5vw 0;
+  padding-bottom: 5vw;
 }
-.groupReqItem__button__fav {
+.groupReqItem__button__req {
   border: none;
   background-color: transparent;
 }

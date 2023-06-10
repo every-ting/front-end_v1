@@ -7,7 +7,32 @@ import {
   itemVariants,
 } from '../../../../../constants/variants';
 
-const RequestJoinGroupList = ({ isGroupManagerModal, usersData }) => {
+import {
+  postAcceptJoinRequestsGroup,
+  deleteRejectJoinRequestsGroup,
+} from '../../../GroupPageController';
+
+const RequestJoinGroupList = ({
+  isGroupManagerModal,
+  usersData,
+  setIsModify,
+}) => {
+  const handleOnClickAcceptButton = id => {
+    console.log(id);
+    postAcceptJoinRequestsGroup(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
+
+  const handleOnClickRejectButton = id => {
+    console.log(id);
+    deleteRejectJoinRequestsGroup(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
+
   return (
     <>
       <div className="requestJoinGroupListContainer">
@@ -65,9 +90,24 @@ const RequestJoinGroupList = ({ isGroupManagerModal, usersData }) => {
                   <button className="requestJoinGroupItem__button__fav">
                     <AiOutlineStar />
                   </button>
-                  <button className="requestJoinGroupItem__button__text">
-                    요청
-                  </button>
+                  <div className="requestJoinGroupItem__button">
+                    <button
+                      className="acceptBtn"
+                      onClick={() => {
+                        handleOnClickAcceptButton(request.id);
+                      }}
+                    >
+                      수락
+                    </button>
+                    <button
+                      className="denyBtn"
+                      onClick={() => {
+                        handleOnClickRejectButton(request.id);
+                      }}
+                    >
+                      거절
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             ))}

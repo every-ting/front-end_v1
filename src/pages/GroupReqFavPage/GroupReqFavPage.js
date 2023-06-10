@@ -5,30 +5,32 @@ import GroupRequestPage from './GroupReqFavType/GroupRequestPage/GroupRequestPag
 import GroupFavoritePage from './GroupReqFavType/GroupFavoritePage/GroupFavoritePage';
 import { MdOutlineArrowBackIosNew } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import { getBlindRequests, getBlindLikes } from './GroupReqFavPageController';
+import {
+  getBlindRequests,
+  getGroupsLikes,
+  getGroupsRequest,
+} from './GroupReqFavPageController';
 
 const GroupReqFavPage = () => {
   const [section, setSection] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const navigate = useNavigate();
-  const [receivedBlindRequestsData, setReceivedBlindRequestsData] = useState(
-    []
-  );
-  const [sendBlindRequestsData, setSendBlindRequestsData] = useState([]);
-  const [blindLikesData, setBlindLikesData] = useState([]);
+
+  const [sendGroupsRequestsData, setSendGroupsRequestsData] = useState([]);
+  const [groupLikesData, setGroupLikesData] = useState([]);
   const [renderBlindRequestPage, setRenderBlindRequestPage] = useState(false);
   const [renderBlindFavoritePage, setRenderBlindFavoritePage] = useState(false);
   const [isModify, setIsModify] = useState(false);
 
   useEffect(() => {
-    getBlindRequests().then(result => {
-      setReceivedBlindRequestsData(result[1].data.receivedBlindRequests);
-      setSendBlindRequestsData(result[1].data.sendBlindRequests);
+    getGroupsRequest().then(result => {
+      setSendGroupsRequestsData(result[1].data.content);
+      console.log(result[1].data.content);
       setRenderBlindRequestPage(true);
       setIsModify(false);
     });
-    getBlindLikes().then(result => {
-      setBlindLikesData(result[1].data);
+    getGroupsLikes().then(result => {
+      setGroupLikesData(result[1].data);
       setRenderBlindFavoritePage(true);
     });
   }, [isModify]);
@@ -61,14 +63,13 @@ const GroupReqFavPage = () => {
       <div className="reqFavBody">
         {section === 'request' && renderBlindRequestPage && (
           <GroupRequestPage
-            receivedBlindRequestsData={receivedBlindRequestsData}
-            sendBlindRequestsData={sendBlindRequestsData}
+            sendGroupsRequestsData={sendGroupsRequestsData}
             setIsModify={setIsModify}
           />
         )}
         {section === 'favorite' && renderBlindFavoritePage && (
           <GroupFavoritePage
-            blindLikesData={blindLikesData}
+            groupLikesData={groupLikesData}
             setIsModify={setIsModify}
           />
         )}

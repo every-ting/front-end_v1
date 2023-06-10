@@ -11,11 +11,7 @@ import {
   deleteBlindRequests,
 } from '../../GroupReqFavPageController';
 
-const GroupRequestPage = ({
-  receivedBlindRequestsData,
-  sendBlindRequestsData,
-  setIsModify,
-}) => {
+const GroupRequestPage = ({ sendGroupsRequestsData, setIsModify }) => {
   const handleOnClickAcceptButton = id => {
     console.log(id);
     putBlindRequestsAccept(id).then(result => {
@@ -43,7 +39,7 @@ const GroupRequestPage = ({
   return (
     <div className="requestContainer">
       <div className="section">
-        <motion.div
+        {/* <motion.div
           className="reciveRequestList"
           transition={{ duration: 0.5 }}
           variants={containerVariants}
@@ -66,7 +62,6 @@ const GroupRequestPage = ({
                 <div className="reciveRequestItem__name">
                   {request.blindRequestResponse.username}
                 </div>
-                {/* <div className="reciveRequestItem__age">{request.blindRequestResponse.age}</div> */}
               </div>
               <div className="reciveRequestItem__button">
                 <button
@@ -88,7 +83,7 @@ const GroupRequestPage = ({
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </motion.div> */}
         <motion.div
           className="spendRequestList"
           transition={{ duration: 0.5 }}
@@ -99,27 +94,44 @@ const GroupRequestPage = ({
           <div className="spendRequestHeader">
             <div className="spendRequestHeader__text">보낸 요청</div>
           </div>
-          {sendBlindRequestsData.map(request => (
+          {sendGroupsRequestsData.map(request => (
             <motion.div
               className="spendRequestItem"
-              key={request.blindRequestResponse.id}
+              key={request.id}
               variants={itemVariants}
             >
-              <div className="spendRequestItem__image">
-                <img src={request.blindRequestResponse.idealPhoto} alt="user" />
-              </div>
               <div className="spendRequestItem__text">
-                <div className="spendRequestItem__name">
-                  {request.blindRequestResponse.username}
+                <div className="spendRequest__text__wrapper">
+                  <div className="spendRequest__header">
+                    <div className="spendRequest__header__name">
+                      {request.group.groupName}
+                    </div>
+                    <div className="spendRequest__header__num">
+                      {request.group.memberCount}/
+                      {request.group.memberSizeLimit}
+                    </div>
+                  </div>
+                  <div className="spendRequest__text">
+                    <div className="spendRequest__label">
+                      <p className="spendRequest__label__text">
+                        {request.group.gender}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="spendRequest__text">
+                    <div className="spendRequest__label">
+                      <p className="spendRequest__label__text">
+                        {request.group.school}{' '}
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 {/* <div className="spendRequestItem__age">{request.blindRequestResponse.age}</div> */}
               </div>
               <div
                 className="spendRequestItem__button"
                 onClick={() => {
-                  handleOnClickDeleteRequestButton(
-                    request.blindRequestResponse.userId
-                  );
+                  handleOnClickDeleteRequestButton(request.group.id);
                 }}
               >
                 <button className="cancelBtn">취소</button>

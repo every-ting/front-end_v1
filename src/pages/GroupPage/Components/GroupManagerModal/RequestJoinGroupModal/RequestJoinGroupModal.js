@@ -10,6 +10,8 @@ const AcceptMemberModal = ({
   isGroupManagerModal,
   setIsJoinRequest,
   setIndex,
+  isModify,
+  setIsModify,
 }) => {
   const [usersData, setUsersData] = useState();
   const [renderData, setRenderData] = useState(false);
@@ -19,7 +21,7 @@ const AcceptMemberModal = ({
       setUsersData(result[1].data);
       setRenderData(true);
     });
-  }, []);
+  }, [isModify]);
 
   return (
     <motion.div className="requestJoinGroupContainer">
@@ -38,6 +40,7 @@ const AcceptMemberModal = ({
             <RequestJoinGroupList
               isGroupManagerModal={isGroupManagerModal}
               usersData={usersData}
+              setIsModify={setIsModify}
             />
           )}
         </div>

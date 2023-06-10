@@ -97,3 +97,29 @@ export const getGroupJoinReqs = async groupId => {
     return [true, e.message];
   }
 };
+
+export const getGroupsRequest = async () => {
+  try {
+    const response = await basicApi.get(`${API.getGroupsRequest}`);
+    if (response.status === 200) {
+      return [false, response.data];
+    } else {
+      return [true, response.data.message];
+    }
+  } catch (e) {
+    return [true, e.message];
+  }
+};
+
+export const getGroupsLikes = async () => {
+  try {
+    const response = await basicApi.get(`${API.getGroupsLikes}`);
+    if (response.status === 200) {
+      return [false, response.data];
+    } else {
+      return [true, response.data.message];
+    }
+  } catch (e) {
+    return [true, e.message];
+  }
+};

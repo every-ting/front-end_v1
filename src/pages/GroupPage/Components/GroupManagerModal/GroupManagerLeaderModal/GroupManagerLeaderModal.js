@@ -12,6 +12,9 @@ const GroupManagerLeaderModal = ({
   groupId,
   setIsJoinRequest,
   setIndex,
+  groupDetailData,
+  isModify,
+  setIsModify,
 }) => {
   const [leader, setLeader] = useState('');
   const [selectedMemberId, setSelectedMemberId] = useState(
@@ -43,6 +46,7 @@ const GroupManagerLeaderModal = ({
         console.log('res', res);
         setIsModal(false);
         setIsAcceptModal(false);
+        setIsModify(true);
       });
     }
   }, [isAcceptModal]);
@@ -126,11 +130,7 @@ const GroupManagerLeaderModal = ({
               <p>팀 소개</p>
             </div>
             <div className="groupManagerBodyItem__text">
-              <p>
-                오아이스도 목숨이 인류의 봄바람을 끓는 살 곳으로 지혜는 것이다.
-                그림자는 맺어, 충분히 내는 우리의 용기가 인생을 발휘하기 피가
-                것이다.
-              </p>
+              <p>{groupDetailData?.memo}</p>
             </div>
             <div className="groupManagerBodyItem__button__wrapper">
               <button className="groupManagerBodyItem__button">수정하기</button>

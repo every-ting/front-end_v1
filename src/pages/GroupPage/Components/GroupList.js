@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './GroupList.scss';
 import GroupManagerModal from './GroupManagerModal/GroupManagerModal';
-import { getGroupMembers } from '../GroupPageController';
+import { getGroupMembers, getGroupsDetail } from '../GroupPageController';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../../../constants/variants';
 
@@ -10,16 +10,21 @@ const GroupList = ({ joinedGroupData }) => {
   const [groupName, setGroupName] = useState('');
   const [groupId, setGroupId] = useState();
   const [groupMembersData, setGroupMembersData] = useState();
+  const [groupDetailData, setGroupDetailData] = useState();
+  const [isModify, setIsModify] = useState(false);
 
   const handleGroupItemClick = (name, id) => {
     setGroupName(name);
     setGroupId(id);
     getGroupMembers(id).then(result => {
       setGroupMembersData(result[1].data);
-      console.log(result[1].data);
       setIsGroupManagerModal(id);
     });
+    getGroupsDetail(id).then(result => {
+      setGroupDetailData(result[1].data);
+    });
   };
+
   return (
     <>
       <div className="joinedGroupListContainer">
@@ -86,6 +91,11 @@ const GroupList = ({ joinedGroupData }) => {
           setIsGroupManagerModal={setIsGroupManagerModal}
           groupName={groupName}
           groupId={groupId}
+          groupDetailData={groupDetailData}
+          isModify={isModify}
+          setIsModify={setIsModify}
+          setGroupMembersData={setGroupMembersData}
+          setGroupDetailData={setGroupDetailData}
         />
       )}
     </>
