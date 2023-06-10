@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './UserInfoPage.scss';
 import { tingSignUp } from '../LoginPage/LoginPageController';
 import { useNavigate } from 'react-router-dom';
@@ -37,6 +37,11 @@ const UserInfoPage = ({ socialEmail }) => {
       }, 800);
     });
   };
+  useEffect(() => {
+    if (localStorage.getItem('key')) {
+      navigate('/');
+    }
+  }, []);
 
   return (
     <div className="userInfoContainer">
