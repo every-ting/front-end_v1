@@ -39,6 +39,7 @@ const UserInfoPage = ({ socialEmail }) => {
   };
   useEffect(() => {
     if (localStorage.getItem('key')) {
+      window.location.reload();
       navigate('/');
     }
   }, []);
