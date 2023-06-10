@@ -9,9 +9,11 @@ const MainPage = () => {
   console.log(code);
 
   useEffect(() => {
-    if (!localStorage.getItem('key')) {
-      navigate('/login');
-    }
+    setTimeout(() => {
+      if (!localStorage.getItem('key')) {
+        navigate('/login');
+      }
+    }, 800);
   }, []);
 
   return (

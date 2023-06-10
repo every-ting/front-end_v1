@@ -25,14 +25,16 @@ const LoginPage = () => {
       tingLogin(code).then(result => {
         console.log(result);
         console.log(result[1]?.data?.registered);
-        if (result[1]?.data?.registered === false) {
-          sessionStorage.setItem('socialEmail', result[1]?.data.socialEmail);
-          navigate('/userInfo');
-        } else {
-          localStorage.setItem('key', result[1]?.data.token);
-          navigate('/');
-          window.location.reload();
-        }
+        setTimeout(() => {
+          if (result[1]?.data?.registered === false) {
+            sessionStorage.setItem('socialEmail', result[1]?.data.socialEmail);
+            navigate('/userInfo');
+          } else {
+            localStorage.setItem('key', result[1]?.data.token);
+            navigate('/');
+            window.location.reload();
+          }
+        }, 800);
       });
     }
   }, []);
