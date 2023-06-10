@@ -122,7 +122,7 @@ const GroupManagerLeaderModal = ({
               >
                 팀장 넘기기
               </button>
-              <button className="groupManagerBodyItem__button">초대하기</button>
+              {/* <button className="groupManagerBodyItem__button">초대하기</button> */}
             </div>
           </div>
           <div className="groupManagerBodyItem">

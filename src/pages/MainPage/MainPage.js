@@ -8,11 +8,11 @@ const MainPage = () => {
   const navigate = useNavigate();
   console.log(code);
 
-  // useEffect(() => {
-  //   if (!sessionStorage.getItem('token')) {
-  //     navigate('/login');
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!localStorage.getItem('key')) {
+      navigate('/login');
+    }
+  }, []);
 
   return (
     <motion.div

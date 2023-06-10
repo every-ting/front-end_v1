@@ -29,7 +29,7 @@ const LoginPage = () => {
           sessionStorage.setItem('socialEmail', result[1]?.data.socialEmail);
           navigate('/userInfo');
         } else {
-          sessionStorage.setItem('token', result[1]?.data.token);
+          localStorage.setItem('key', result[1]?.data.token);
           navigate('/');
         }
       });
