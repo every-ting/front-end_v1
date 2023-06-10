@@ -32,7 +32,7 @@ const CreateGroupPage = () => {
   };
 
   const groupNumOfMemberHandler = e => {
-    setGroupNumOfMember(e.target.value);
+    setGroupNumOfMember(parseInt(e.target.value));
   };
 
   const groupMemoHandler = e => {
