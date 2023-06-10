@@ -26,6 +26,7 @@ const UserInfoPage = ({ socialEmail }) => {
     tingSignUp(data).then(res => {
       console.log(res);
       if (res.status === 200) {
+        localStorage.setItem('key', res[1]?.data.token);
         alert('회원가입이 완료되었습니다.');
         navigate('/');
       } else {
