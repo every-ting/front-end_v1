@@ -12,6 +12,7 @@ const MainPage = () => {
     if (!localStorage.getItem('key')) {
       navigate('/login');
     }
+    window.location.reload();
   }, []);
 
   return (
