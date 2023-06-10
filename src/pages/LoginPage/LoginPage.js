@@ -31,6 +31,7 @@ const LoginPage = () => {
         } else {
           localStorage.setItem('key', result[1]?.data.token);
           navigate('/');
+          window.location.reload();
         }
       });
     }

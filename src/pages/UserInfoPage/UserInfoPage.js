@@ -28,6 +28,7 @@ const UserInfoPage = ({ socialEmail }) => {
       if (res[1].result.message === 'success') {
         localStorage.setItem('key', res[1]?.data.token);
         alert('회원가입이 완료되었습니다.');
+        window.location.reload();
         navigate('/');
       } else {
         alert('회원가입에 실패하였습니다.');
