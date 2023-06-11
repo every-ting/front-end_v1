@@ -9,6 +9,9 @@ import { getOppositeGroups } from '../../../GroupPageController';
 const OppositeGroupModal = ({
   setIsGroupManagerModal,
   isGroupManagerModal,
+  groupId,
+  isModify,
+  setIsModify,
 }) => {
   const [oppositeGroupsData, setOppositeGroupsData] = useState();
 
@@ -17,7 +20,7 @@ const OppositeGroupModal = ({
       console.log('상대팀', result);
       setOppositeGroupsData(result[1].data);
     });
-  }, []);
+  }, [isModify]);
 
   return (
     <motion.div className="requestJoinGroupContainer">
@@ -33,6 +36,8 @@ const OppositeGroupModal = ({
           <OppositeGroupList
             isGroupManagerModal={isGroupManagerModal}
             oppositeGroupsData={oppositeGroupsData}
+            setIsModify={setIsModify}
+            groupId={groupId}
           />
         </div>
       </div>

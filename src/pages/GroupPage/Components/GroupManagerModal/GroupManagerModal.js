@@ -62,12 +62,16 @@ const GroupManagerModal = ({
         <OppositeGroupModal
           isGroupManagerModal={isGroupManagerModal}
           setIsGroupManagerModal={setIsGroupManagerModal}
+          groupId={groupId}
+          isModify={isModify}
+          setIsModify={setIsModify}
         />
       )}
       {index === 2 && (
         <GroupReqFavModal
           isGroupManagerModal={isGroupManagerModal}
           setIsGroupManagerModal={setIsGroupManagerModal}
+          groupId={groupId}
         />
       )}
       {index === 3 && (

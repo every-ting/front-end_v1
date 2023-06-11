@@ -7,8 +7,35 @@ import {
   containerVariants,
   itemVariants,
 } from '../../../../../constants/variants';
+import {
+  postGroupToGroupLikes,
+  deleteGroupToGroupLikes,
+} from '../../../GroupPageController';
 
-const OppositeGroupList = ({ isGroupManagerModal, oppositeGroupsData }) => {
+const OppositeGroupList = ({
+  isGroupManagerModal,
+  oppositeGroupsData,
+  setIsModify,
+  groupId,
+}) => {
+  const onClickFavoriteButton = toGroupId => {
+    postGroupToGroupLikes(groupId, toGroupId)
+      .then(res => {
+        setIsModify(true);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  const onDeleteFavoriteButton = toGroupId => {
+    deleteGroupToGroupLikes(groupId, toGroupId)
+      .then(res => {
+        setIsModify(true);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
   return (
     <>
       <div className="oppositeGroupListContainer">
@@ -31,7 +58,7 @@ const OppositeGroupList = ({ isGroupManagerModal, oppositeGroupsData }) => {
                 <div className="oppositeGroupItem__image__box">
                   <img
                     className="oppositeGroupItem__image"
-                    src="assets/images/user.png"
+                    src={data.group.idealPhoto}
                     alt="user"
                   />
                 </div>
@@ -41,49 +68,67 @@ const OppositeGroupList = ({ isGroupManagerModal, oppositeGroupsData }) => {
                     <div className="oppositeGroupItem__header__name">
                       {data.group.groupName}
                     </div>
-                    <div className="oppositeGroupItem__header__num">
-                      {data.group.memberCount}/{data.group.memberSizeLimit}
+                  </div>
+                  <div className="oppositeGroupItem__mid__box">
+                    <div className="oppositeGroupItem__text__box">
+                      <div className="oppositeGroupItem__text">
+                        <div className="oppositeGroupItem__label">
+                          <p className="oppositeGroupItem__label__text">
+                            {data?.group?.school}
+                          </p>{' '}
+                        </div>
+                        <div className="oppositeGroupItem__label">
+                          <p className="oppositeGroupItem__label__text">
+                            나이 : {data?.group?.averageAgeOfMembers}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="oppositeGroupItem__text">
+                        <div className="oppositeGroupItem__label">
+                          <p className="oppositeGroupItem__label__text">
+                            {data?.group?.majorsOfMembers[0]}{' '}
+                          </p>
+                        </div>
+                        <div className="oppositeGroupItem__label">
+                          <p className="oppositeGroupItem__label__text">
+                            {data?.group?.majorsOfMembers[1]}{' '}
+                          </p>
+                        </div>
+                        <div className="oppositeGroupItem__label">
+                          <p className="oppositeGroupItem__label__text">
+                            {data?.group?.majorsOfMembers[2]}{' '}
+                          </p>
+                        </div>
+                      </div>
+                    </div>{' '}
+                    <div className="oppositeGroupItem__button__wrapper">
+                      {data?.likeStatus === 'LIKED' ? (
+                        <button
+                          className="oppositeGroupItem__button__text"
+                          onClick={() => {
+                            onDeleteFavoriteButton(data?.group?.id);
+                          }}
+                        >
+                          찜 취소
+                        </button>
+                      ) : (
+                        <button
+                          className="oppositeGroupItem__button__text"
+                          onClick={() => {
+                            onClickFavoriteButton(data?.group?.id);
+                          }}
+                        >
+                          찜하기
+                        </button>
+                      )}
                     </div>
                   </div>
 
-                  <div className="oppositeGroupItem__text">
-                    <div className="oppositeGroupItem__label">
-                      <p className="oppositeGroupItem__label__text">
-                        {data?.group?.averageAgeOfMembers}
-                      </p>
-                    </div>
-                    <div className="oppositeGroupItem__label">
-                      <p className="oppositeGroupItem__label__text">
-                        {data?.group?.majorsOfMembers[0]}{' '}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="oppositeGroupItem__text">
-                    <div className="oppositeGroupItem__label">
-                      <p className="oppositeGroupItem__label__text">
-                        {data?.group?.majorsOfMembers[1]}{' '}
-                      </p>
-                    </div>
-                    <div className="oppositeGroupItem__label">
-                      <p className="oppositeGroupItem__label__text">
-                        {data?.group?.majorsOfMembers[2]}{' '}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="oppositeGroupItem__major">
+                  {/* <div className="oppositeGroupItem__major">
                     <p className="oppositeGroupItem__major__text">
                       {data?.group?.school}
                     </p>
-                  </div>
-                </div>
-                <div className="oppositeGroupItem__button__wrapper">
-                  <button className="oppositeGroupItem__button__fav">
-                    <AiOutlineStar />
-                  </button>
-                  <button className="oppositeGroupItem__button__text">
-                    요청
-                  </button>
+                  </div> */}
                 </div>
               </motion.div>
             ))}

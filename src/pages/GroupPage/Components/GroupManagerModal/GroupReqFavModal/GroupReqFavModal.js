@@ -8,7 +8,11 @@ import { MdOutlineArrowBackIosNew } from 'react-icons/md';
 import ReqFavSectionToggle from '../../ReqFavSectionToggle/ReqFavSectionToggle';
 import { getGroupLikes, getGroupReqs } from '../../../GroupPageController';
 
-const GroupReqFavModal = ({ setIsGroupManagerModal, isGroupManagerModal }) => {
+const GroupReqFavModal = ({
+  setIsGroupManagerModal,
+  isGroupManagerModal,
+  groupId,
+}) => {
   const [section, setSection] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const [groupReqsData, setGroupReqsData] = useState();
@@ -18,9 +22,9 @@ const GroupReqFavModal = ({ setIsGroupManagerModal, isGroupManagerModal }) => {
 
   useEffect(() => {
     if (activeIndex === 0) {
-      setSection('request');
-    } else {
       setSection('favorite');
+    } else {
+      setSection('request');
     }
   }, [activeIndex]);
 
@@ -31,7 +35,7 @@ const GroupReqFavModal = ({ setIsGroupManagerModal, isGroupManagerModal }) => {
       setRenderData(true);
       setIsModify(false);
     });
-  }, []);
+  }, [isModify]);
 
   useEffect(() => {
     getGroupLikes(isGroupManagerModal).then(result => {
@@ -40,7 +44,7 @@ const GroupReqFavModal = ({ setIsGroupManagerModal, isGroupManagerModal }) => {
       setRenderData(true);
       setIsModify(false);
     });
-  }, []);
+  }, [isModify]);
 
   return (
     <motion.div className="groupReqFavContainer">
@@ -55,7 +59,7 @@ const GroupReqFavModal = ({ setIsGroupManagerModal, isGroupManagerModal }) => {
         </div>
 
         <ReqFavSectionToggle
-          title="reqFav"
+          title="favReq"
           setSection={setSection}
           activeIndex={activeIndex}
           setActiveIndex={setActiveIndex}
@@ -68,11 +72,15 @@ const GroupReqFavModal = ({ setIsGroupManagerModal, isGroupManagerModal }) => {
             <GroupReqList
               isGroupManagerModal={isGroupManagerModal}
               groupReqsData={groupReqsData}
+              groupId={groupId}
+              setIsModify={setIsModify}
             />
           ) : (
             <GroupFavList
               isGroupManagerModal={isGroupManagerModal}
               groupFavLikesData={groupFavLikesData}
+              groupId={groupId}
+              setIsModify={setIsModify}
             />
           )}
         </div>

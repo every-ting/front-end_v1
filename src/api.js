@@ -18,10 +18,13 @@ const API = {
   getGroupJoinReqs: '/groups',
 
   putGroupNewLeader: '/groups',
-  postGroupLikes: '/groups',
-  deleteGroupLikes: '/groups',
-  postGroupLeaderReqs: '/groups',
-  deleteGroupLeaderReqs: '/groups',
+  postGroupToGroupLikes: '/groups',
+  deleteGroupToGroupLikes: '/groups',
+  postGroupToGroupReqs: '/groups',
+  deleteGroupToGroupReqs: '/groups',
+
+  postGroupLeaderReqsAccept: '/groups',
+  deleteGroupLeaderReqReject: '/groups',
 
   postJoinRequestsGroup: '/groups/requests',
   deleteJoinRequestsGroup: '/groups/requests',

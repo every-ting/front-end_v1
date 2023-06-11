@@ -1,14 +1,61 @@
 import React, { useEffect, useState } from 'react';
 import './GroupReqList.scss';
-// import { getBlindUsers } from '../GroupReqPageController';
-import { AiOutlineStar } from 'react-icons/ai';
+import { HiStar, HiOutlineStar } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 import {
   itemVariants,
   containerVariants,
 } from '../../../../../constants/variants';
+import {
+  postGroupLeaderReqsAccept,
+  deleteGroupLeaderReqReject,
+} from '../../../GroupPageController';
 
-const GroupReqList = ({ isGroupManagerModal, groupReqsData }) => {
+const GroupReqList = ({
+  isGroupManagerModal,
+  groupReqsData,
+  setIsModify,
+  groupId,
+}) => {
+  const outLineStarCount = count => {
+    let array = [];
+    for (let i = 0; i < count; i++) {
+      array.push(<HiOutlineStar />);
+    }
+    return array;
+  };
+
+  const solidStarCount = count => {
+    let array = [];
+    for (let i = 0; i < count; i++) {
+      array.push(<HiStar />);
+    }
+    return array;
+  };
+
+  const onClickAcceptReq = groupDateRequestId => {
+    console.log('groupDateRequestId', groupDateRequestId);
+    postGroupLeaderReqsAccept(groupDateRequestId)
+      .then(res => {
+        setIsModify(true);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  const onClickRejectReq = groupDateRequestId => {
+    console.log('groupDateRequestId', groupDateRequestId);
+
+    deleteGroupLeaderReqReject(groupDateRequestId)
+      .then(res => {
+        setIsModify(true);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <div className="groupReqListContainer">
@@ -28,60 +75,83 @@ const GroupReqList = ({ isGroupManagerModal, groupReqsData }) => {
                 key={data?.id}
                 variants={itemVariants}
               >
-                <div className="groupReqItem__image__box">
+                <div className="groupFavLikeItem__image__box">
                   <img
-                    className="groupReqItem__image"
-                    src="assets/images/user.png"
+                    className="groupFavLikeItem__image"
+                    src={data.group.idealPhoto}
                     alt="user"
                   />
                 </div>
 
-                <div className="groupReqItem__text__wrapper">
-                  <div className="groupReqItem__header">
-                    <div className="groupReqItem__header__name">
+                <div className="groupFavLikeItem__text__wrapper">
+                  <div className="groupFavLikeItem__header">
+                    <div className="groupFavLikeItem__header__name">
                       {data.group.groupName}
                     </div>
-                    <div className="groupReqItem__header__num">
-                      {data.group.memberCount}/{data.group.memberSizeLimit}
+                    <div className="groupFavLikeItem__header__star">
+                      {solidStarCount(data.likeCount)}
+                      {outLineStarCount(
+                        data.group.memberSizeLimit - data.likeCount
+                      )}
+                    </div>
+                  </div>
+                  <div className="groupFavLikeItem__mid__box">
+                    <div className="groupFavLikeItem__text__box">
+                      <div className="groupFavLikeItem__text">
+                        <div className="groupFavLikeItem__label">
+                          <p className="groupFavLikeItem__label__text">
+                            {data?.group?.school}
+                          </p>{' '}
+                        </div>
+                        <div className="groupFavLikeItem__label">
+                          <p className="groupFavLikeItem__label__text">
+                            나이 : {data?.group?.averageAgeOfMembers}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="groupFavLikeItem__text">
+                        <div className="groupFavLikeItem__label">
+                          <p className="groupFavLikeItem__label__text">
+                            {data?.group?.majorsOfMembers[0]}{' '}
+                          </p>
+                        </div>
+                        <div className="groupFavLikeItem__label">
+                          <p className="groupFavLikeItem__label__text">
+                            {data?.group?.majorsOfMembers[1]}{' '}
+                          </p>
+                        </div>
+                        <div className="groupFavLikeItem__label">
+                          <p className="groupFavLikeItem__label__text">
+                            {data?.group?.majorsOfMembers[2]}{' '}
+                          </p>
+                        </div>
+                      </div>
+                    </div>{' '}
+                    <div className="groupFavLikeItem__button__wrapper">
+                      <button
+                        className="groupFavLikeItem__button__fav"
+                        onClick={() => {
+                          onClickAcceptReq(data?.groupDateRequestId);
+                        }}
+                      >
+                        수락
+                      </button>
+                      <button
+                        className="groupFavLikeItem__button__text"
+                        onClick={() => {
+                          onClickRejectReq(data?.groupDateRequestId);
+                        }}
+                      >
+                        거절
+                      </button>
                     </div>
                   </div>
 
-                  <div className="groupReqItem__text">
-                    <div className="groupReqItem__label">
-                      <p className="groupReqItem__label__text">
-                        {data?.group?.averageAgeOfMembers}
-                      </p>
-                    </div>
-                    <div className="groupReqItem__label">
-                      <p className="groupReqItem__label__text">
-                        {data?.group?.majorsOfMembers[0]}{' '}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="groupReqItem__text">
-                    <div className="groupReqItem__label">
-                      <p className="groupReqItem__label__text">
-                        {data?.group?.majorsOfMembers[1]}{' '}
-                      </p>
-                    </div>
-                    <div className="groupReqItem__label">
-                      <p className="groupReqItem__label__text">
-                        {data?.group?.majorsOfMembers[2]}{' '}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="groupReqItem__major">
-                    <p className="groupReqItem__major__text">
+                  {/* <div className="groupFavLikeItem__major">
+                    <p className="groupFavLikeItem__major__text">
                       {data?.group?.school}
                     </p>
-                  </div>
-                </div>
-                <div className="groupReqItem__button__wrapper">
-                  <button className="groupReqItem__button__req">
-                    <AiOutlineStar />
-                  </button>
-                  <button className="groupReqItem__button__text">요청</button>
+                  </div> */}
                 </div>
               </motion.div>
             ))}

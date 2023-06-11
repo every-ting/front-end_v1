@@ -19,7 +19,15 @@ const ReqFavSectionToggle = ({
           }`}
           onClick={() => handleToggleClick(0)}
         >
-          <span>{title === 'groupDating' ? '과팅' : '요청'}</span>
+          <span>
+            {title === 'groupDating'
+              ? '과팅'
+              : title === 'reqFav'
+              ? '요청'
+              : title === 'favReq'
+              ? '찜'
+              : null}
+          </span>
         </div>
         <div
           className={`reqFavSectionToggleItem ${
@@ -27,7 +35,15 @@ const ReqFavSectionToggle = ({
           }`}
           onClick={() => handleToggleClick(1)}
         >
-          <span>{title === 'groupDating' ? '소개팅' : '찜'}</span>
+          <span>
+            {title === 'groupDating'
+              ? '소개팅'
+              : title === 'reqFav'
+              ? '찜'
+              : title === 'favReq'
+              ? '받은 요청'
+              : null}
+          </span>
         </div>
       </div>
     </div>
