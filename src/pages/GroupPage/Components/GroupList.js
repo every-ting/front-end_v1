@@ -50,7 +50,7 @@ const GroupList = ({ joinedGroupData }) => {
                 <div className="joinedGroupItem__image__box">
                   <img
                     className="joinedGroupItem__image"
-                    src="assets/images/user.png"
+                    src={request.group.idealPhoto}
                     alt="user"
                   />
                 </div>
@@ -64,13 +64,13 @@ const GroupList = ({ joinedGroupData }) => {
                       {request.group.memberSizeLimit}
                     </div>
                   </div>
-                  <div className="joinedGroupItem__text">
+                  {/* <div className="joinedGroupItem__text">
                     <div className="joinedGroupItem__label">
                       <p className="joinedGroupItem__label__text">
                         {request.group.gender}
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="joinedGroupItem__text">
                     <div className="joinedGroupItem__label">
                       <p className="joinedGroupItem__label__text">
