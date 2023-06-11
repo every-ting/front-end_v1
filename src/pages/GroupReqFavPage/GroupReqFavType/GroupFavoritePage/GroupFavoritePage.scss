@@ -29,8 +29,8 @@
           border: none;
         }
         .favoriteItem__image {
-          width: 100px;
-          height: 100px;
+          width: 30vw;
+          height: 30vw;
           border-radius: 8%;
           overflow: hidden;
           img {
@@ -40,7 +40,7 @@
           }
         }
         .spendFavoriteItem__text {
-          width: 60vw;
+          width: 45vw;
           margin-left: 10px;
           .spendFavoriteItem__text__wrapper {
             width: 100%;

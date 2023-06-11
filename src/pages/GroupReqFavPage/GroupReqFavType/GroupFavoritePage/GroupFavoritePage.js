@@ -5,12 +5,48 @@ import {
   containerVariants,
   itemVariants,
 } from '../../../../constants/variants';
-import { deleteBlindLikes } from '../../GroupReqFavPageController';
+import {
+  postJoinRequestsGroup,
+  deleteJoinRequestsGroup,
+  postJoinLikesGroup,
+  deleteJoinLikesGroup,
+} from '../../GroupReqFavPageController';
+import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 
 const GroupFavoritePage = ({ groupLikesData, setIsModify }) => {
-  console.log(groupLikesData);
-  const handleOnClickDeleteFavoriteButton = () => {
-    deleteBlindLikes().then(result => {
+  const handleOnClickRequestButton = id => {
+    console.log(id);
+    postJoinRequestsGroup(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+      // if (result[1].result.message.includes('The maximum number')) {
+      //   // setIsErrorModal('요청은 최대 5명까지 가능합니다.');
+      //   // setTimeout(() => {
+      //   //   setIsErrorModal();
+      //   // }, 2000);
+      // }
+    });
+  };
+
+  const handleOnClickRequestCancleButton = id => {
+    console.log(id);
+    deleteJoinRequestsGroup(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
+
+  const handleOnClickFavoriteButton = id => {
+    console.log(id);
+    postJoinLikesGroup(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
+
+  const handleOnClickFavoriteCancleButton = id => {
+    console.log(id);
+    deleteJoinLikesGroup(id).then(result => {
       console.log(result);
       setIsModify(true);
     });
@@ -35,40 +71,70 @@ const GroupFavoritePage = ({ groupLikesData, setIsModify }) => {
               key={favorite.group.id}
               variants={itemVariants}
             >
-              <div className="spendFavoriteItem__text">
-                <div className="spendFavoriteItem__text__wrapper">
-                  <div className="spendFavoriteItem__header">
-                    <div className="spendFavoriteItem__header__name">
-                      {favorite.group.groupName}
-                    </div>
-                    <div className="spendFavoriteItem__header__num">
-                      {favorite.group.memberCount}/
-                      {favorite.group.memberSizeLimit}
-                    </div>
+              <div className="groupItem__image__box">
+                <img
+                  className="groupItem__image"
+                  src={favorite.group.idealPhoto}
+                  alt="user"
+                />
+              </div>
+              <div className="groupItem__text__wrapper">
+                <div className="groupItem__header">
+                  <div className="groupItem__header__name">
+                    {favorite.group.groupName}
                   </div>
-                  <div className="spendFavoriteItem__text">
-                    <div className="spendFavoriteItem__label">
-                      <p className="spendFavoriteItem__label__text">
-                        {favorite.group.gender}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="spendFavoriteItem__text">
-                    <div className="spendFavoriteItem__label">
-                      <p className="spendFavoriteItem__label__text">
-                        {favorite.group.school}{' '}
-                      </p>
-                    </div>
+                  <div className="groupItem__header__num">
+                    {favorite.group.memberCount}/
+                    {favorite.group.memberSizeLimit}
                   </div>
                 </div>
+
+                <div className="groupItem__major">
+                  <p className="groupItem__major__text">
+                    {favorite.group.school}
+                  </p>
+                </div>
               </div>
-              <div
-                className="favoriteItem__button"
-                onClick={() => {
-                  handleOnClickDeleteFavoriteButton();
-                }}
-              >
-                <button className="denyBtn">취소</button>
+              <div className="groupItem__button__wrapper">
+                {favorite.likeStatus === 'NOT_LIKED' ? (
+                  <button
+                    className="groupItem__button__fav"
+                    onClick={() => {
+                      handleOnClickFavoriteButton(favorite.group.id);
+                    }}
+                  >
+                    <AiOutlineStar />
+                  </button>
+                ) : (
+                  <button
+                    className="groupItem__button__fav"
+                    onClick={() => {
+                      handleOnClickFavoriteCancleButton(favorite.group.id);
+                    }}
+                  >
+                    <AiFillStar />
+                  </button>
+                )}
+                {favorite.requestStatus === 'EMPTY' ? (
+                  <button
+                    className="groupItem__button__text"
+                    onClick={() => {
+                      handleOnClickRequestButton(favorite.group.id);
+                    }}
+                  >
+                    요청
+                  </button>
+                ) : (
+                  <button
+                    className="groupItem__button__text"
+                    onClick={() => {
+                      handleOnClickRequestCancleButton(favorite.group.id);
+                    }}
+                    style={{ backgroundColor: '#FF0000' }}
+                  >
+                    취소
+                  </button>
+                )}
               </div>
             </motion.div>
           ))}

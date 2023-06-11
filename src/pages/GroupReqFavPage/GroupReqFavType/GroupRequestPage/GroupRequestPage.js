@@ -6,31 +6,47 @@ import {
   itemVariants,
 } from '../../../../constants/variants';
 import {
-  putBlindRequestsReject,
-  putBlindRequestsAccept,
-  deleteBlindRequests,
+  postJoinRequestsGroup,
+  deleteJoinRequestsGroup,
+  postJoinLikesGroup,
+  deleteJoinLikesGroup,
 } from '../../GroupReqFavPageController';
+import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 
 const GroupRequestPage = ({ sendGroupsRequestsData, setIsModify }) => {
-  const handleOnClickAcceptButton = id => {
+  const handleOnClickRequestButton = id => {
     console.log(id);
-    putBlindRequestsAccept(id).then(result => {
+    postJoinRequestsGroup(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+      // if (result[1].result.message.includes('The maximum number')) {
+      //   // setIsErrorModal('요청은 최대 5명까지 가능합니다.');
+      //   // setTimeout(() => {
+      //   //   setIsErrorModal();
+      //   // }, 2000);
+      // }
+    });
+  };
+
+  const handleOnClickRequestCancleButton = id => {
+    console.log(id);
+    deleteJoinRequestsGroup(id).then(result => {
       console.log(result);
       setIsModify(true);
     });
   };
 
-  const handleOnClickRejectButton = id => {
+  const handleOnClickFavoriteButton = id => {
     console.log(id);
-    putBlindRequestsReject(id).then(result => {
+    postJoinLikesGroup(id).then(result => {
       console.log(result);
       setIsModify(true);
     });
   };
 
-  const handleOnClickDeleteRequestButton = id => {
+  const handleOnClickFavoriteCancleButton = id => {
     console.log(id);
-    deleteBlindRequests(id).then(result => {
+    deleteJoinLikesGroup(id).then(result => {
       console.log(result);
       setIsModify(true);
     });
@@ -100,41 +116,69 @@ const GroupRequestPage = ({ sendGroupsRequestsData, setIsModify }) => {
               key={request.id}
               variants={itemVariants}
             >
-              <div className="spendRequestItem__text">
-                <div className="spendRequest__text__wrapper">
-                  <div className="spendRequest__header">
-                    <div className="spendRequest__header__name">
-                      {request.group.groupName}
-                    </div>
-                    <div className="spendRequest__header__num">
-                      {request.group.memberCount}/
-                      {request.group.memberSizeLimit}
-                    </div>
+              <div className="groupItem__image__box">
+                <img
+                  className="groupItem__image"
+                  src={request.group.idealPhoto}
+                  alt="user"
+                />
+              </div>
+              <div className="groupItem__text__wrapper">
+                <div className="groupItem__header">
+                  <div className="groupItem__header__name">
+                    {request.group.groupName}
                   </div>
-                  <div className="spendRequest__text">
-                    <div className="spendRequest__label">
-                      <p className="spendRequest__label__text">
-                        {request.group.gender}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="spendRequest__text">
-                    <div className="spendRequest__label">
-                      <p className="spendRequest__label__text">
-                        {request.group.school}{' '}
-                      </p>
-                    </div>
+                  <div className="groupItem__header__num">
+                    {request.group.memberCount}/{request.group.memberSizeLimit}
                   </div>
                 </div>
-                {/* <div className="spendRequestItem__age">{request.blindRequestResponse.age}</div> */}
+
+                <div className="groupItem__major">
+                  <p className="groupItem__major__text">
+                    {request.group.school}
+                  </p>
+                </div>
               </div>
-              <div
-                className="spendRequestItem__button"
-                onClick={() => {
-                  handleOnClickDeleteRequestButton(request.group.id);
-                }}
-              >
-                <button className="cancelBtn">취소</button>
+              <div className="groupItem__button__wrapper">
+                {request.likeStatus === 'NOT_LIKED' ? (
+                  <button
+                    className="groupItem__button__fav"
+                    onClick={() => {
+                      handleOnClickFavoriteButton(request.group.id);
+                    }}
+                  >
+                    <AiOutlineStar />
+                  </button>
+                ) : (
+                  <button
+                    className="groupItem__button__fav"
+                    onClick={() => {
+                      handleOnClickFavoriteCancleButton(request.group.id);
+                    }}
+                  >
+                    <AiFillStar />
+                  </button>
+                )}
+                {request.requestStatus === 'EMPTY' ? (
+                  <button
+                    className="groupItem__button__text"
+                    onClick={() => {
+                      handleOnClickRequestButton(request.group.id);
+                    }}
+                  >
+                    요청
+                  </button>
+                ) : (
+                  <button
+                    className="groupItem__button__text"
+                    onClick={() => {
+                      handleOnClickRequestCancleButton(request.group.id);
+                    }}
+                    style={{ backgroundColor: '#FF0000' }}
+                  >
+                    취소
+                  </button>
+                )}
               </div>
             </motion.div>
           ))}

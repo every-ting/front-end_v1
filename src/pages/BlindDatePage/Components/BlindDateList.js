@@ -88,11 +88,14 @@ const BlindDateList = () => {
                   <div className="blindDateItem__image__box">
                     <img
                       className="blindDateItem__image"
-                      src="assets/images/user.png"
+                      src={request.blindDateResponse.idealPhoto}
                       alt="user"
                     />
                   </div>
                   <div className="blindDateItem__text__wrapper">
+                    <div className="blindDateItem__text__header">
+                      {request.blindDateResponse.username}
+                    </div>
                     <div className="blindDateItem__text">
                       <div className="blindDateItem__label">
                         <p className="blindDateItem__label__text">
