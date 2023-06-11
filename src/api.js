@@ -27,6 +27,7 @@ const API = {
   deleteJoinRequestsGroup: '/groups/requests',
   postJoinLikesGroup: '/groups/likes',
   deleteJoinLikesGroup: '/groups/likes',
+
   postAcceptJoinRequestsGroup: '/groups/members/requests/',
   deleteRejectJoinRequestsGroup: '/groups/members/requests/',
 
