@@ -10,6 +10,7 @@ import {
 import {
   deleteGroupToGroupLikes,
   deleteGroupToGroupReqs,
+  postGroupToGroupReqs,
 } from '../../../GroupPageController';
 
 const GroupFavList = ({
@@ -36,6 +37,16 @@ const GroupFavList = ({
 
   const onClickDeleteLikes = toGroupId => {
     deleteGroupToGroupLikes(groupId, toGroupId)
+      .then(res => {
+        setIsModify(true);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  const onCLickPostReq = toGroupId => {
+    postGroupToGroupReqs(groupId, toGroupId)
       .then(res => {
         setIsModify(true);
       })
@@ -134,14 +145,34 @@ const GroupFavList = ({
                       >
                         찜 취소
                       </button>
-                      <button
-                        className="groupFavLikeItem__button__text"
-                        onClick={() => {
-                          onClickDeleteReq(data?.group?.id);
-                        }}
-                      >
-                        요청 취소
-                      </button>
+                      {data?.requestStatus === 'DISABLED' ? (
+                        <button
+                          className="groupFavLikeItem__button__text"
+                          style={{
+                            backgroundColor: '#e9ecef',
+                          }}
+                        >
+                          요청 하기
+                        </button>
+                      ) : data?.requestStatus === 'EMPTY' ? (
+                        <button
+                          className="groupFavLikeItem__button__text"
+                          onClick={() => {
+                            onCLickPostReq(data?.group?.id);
+                          }}
+                        >
+                          요청 하기
+                        </button>
+                      ) : (
+                        <button
+                          className="groupFavLikeItem__button__text"
+                          onClick={() => {
+                            onClickDeleteReq(data?.group?.id);
+                          }}
+                        >
+                          요청 취소
+                        </button>
+                      )}
                     </div>
                   </div>
 

@@ -78,7 +78,13 @@ const GroupManagerModal = ({
         <GroupChatModal setIsGroupManagerModal={setIsGroupManagerModal} />
       )}
 
-      <GroupManagerNav index={index} setIndex={setIndex} />
+      {!isJoinRequest && (
+        <GroupManagerNav
+          index={index}
+          setIndex={setIndex}
+          groupDetailData={groupDetailData}
+        />
+      )}
     </div>
   );
 };

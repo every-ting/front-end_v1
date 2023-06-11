@@ -74,16 +74,18 @@ const GroupManagerLeaderModal = ({
                 팀장 <span>{leader[0]?.member?.username}</span>
               </p>
             </div>
-            <div className="groupManagerBodyItem__button__wrapper">
-              <button
-                className="groupManagerBodyItem__button"
-                onClick={() => {
-                  handleOnClickJoinRequest();
-                }}
-              >
-                팀원 신청 목록 확인
-              </button>
-            </div>
+            {groupDetailData?.myRole === 'LEADER' && (
+              <div className="groupManagerBodyItem__button__wrapper">
+                <button
+                  className="groupManagerBodyItem__button"
+                  onClick={() => {
+                    handleOnClickJoinRequest();
+                  }}
+                >
+                  팀원 신청 목록 확인
+                </button>
+              </div>
+            )}
           </div>
           <div className="groupManagerBodyItem">
             <div className="groupManagerBodyItem__title">
@@ -113,17 +115,19 @@ const GroupManagerLeaderModal = ({
                 </div>
               ))}
             </div>
-            <div className="groupManagerBodyItem__button__wrapper">
-              <button
-                className="groupManagerBodyItem__button"
-                onClick={() => {
-                  handleOnClickNewLeader();
-                }}
-              >
-                팀장 넘기기
-              </button>
-              {/* <button className="groupManagerBodyItem__button">초대하기</button> */}
-            </div>
+            {groupDetailData?.myRole === 'LEADER' && (
+              <div className="groupManagerBodyItem__button__wrapper">
+                <button
+                  className="groupManagerBodyItem__button"
+                  onClick={() => {
+                    handleOnClickNewLeader();
+                  }}
+                >
+                  팀장 넘기기
+                </button>
+                {/* <button className="groupManagerBodyItem__button">초대하기</button> */}
+              </div>
+            )}
           </div>
           <div className="groupManagerBodyItem">
             <div className="groupManagerBodyItem__title">

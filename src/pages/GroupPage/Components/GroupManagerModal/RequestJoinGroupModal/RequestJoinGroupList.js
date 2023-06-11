@@ -55,7 +55,7 @@ const RequestJoinGroupList = ({
                 <div className="requestJoinGroupItem__image__box">
                   <img
                     className="requestJoinGroupItem__image"
-                    src="assets/images/user.png"
+                    src={request.user.idealPhoto}
                     alt="user"
                   />
                 </div>
