@@ -100,3 +100,15 @@ export const deleteBlindLikes = async userId => {
     return [true, e.message];
   }
 };
+export const postBlindLikes = async userId => {
+  try {
+    const response = await basicApi.post(`${API.postBlindLikes}/${userId}`);
+    if (response.status === 200) {
+      return [false, response.data];
+    } else {
+      return [response.data.error, response.data.message];
+    }
+  } catch (e) {
+    return [true, e.message];
+  }
+};

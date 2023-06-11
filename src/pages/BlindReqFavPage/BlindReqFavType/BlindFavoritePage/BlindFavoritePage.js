@@ -15,13 +15,6 @@ import ErrorModal from '../../../../components/modal/errorModal/ErrorModal';
 
 const FavoritePage = ({ blindLikesData, setIsModify }) => {
   const [isErrorModal, setIsErrorModal] = useState();
-  const handleOnClickDeleteFavoriteButton = id => {
-    console.log(id);
-    deleteBlindLikes(id).then(result => {
-      console.log(result);
-      setIsModify(true);
-    });
-  };
 
   const handleOnClickRequestButton = id => {
     console.log(id);
@@ -40,6 +33,13 @@ const FavoritePage = ({ blindLikesData, setIsModify }) => {
   const handleOnClickRequestCancleButton = id => {
     console.log(id);
     deleteBlindRequests(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
+  const handleOnClickDeleteFavoriteButton = id => {
+    console.log(id);
+    deleteBlindLikes(id).then(result => {
       console.log(result);
       setIsModify(true);
     });
@@ -71,12 +71,35 @@ const FavoritePage = ({ blindLikesData, setIsModify }) => {
                   alt="user_img"
                 />
               </div>
-              <div className="favoriteItem__text">
-                <div className="favoriteItem__name">
+
+              <div className="blindDateItem__text__wrapper">
+                <div className="blindDateItem__text__header">
                   {favorite.blindDateResponse.username}
                 </div>
-                <div className="favoriteItem__age">
-                  {favorite.blindDateResponse.age}
+                <div className="blindDateItem__text">
+                  <div className="blindDateItem__label">
+                    <p className="blindDateItem__label__text">
+                      {favorite.blindDateResponse.mbti}
+                    </p>
+                  </div>
+                  <div className="blindDateItem__label">
+                    <p className="blindDateItem__label__text">
+                      {favorite.blindDateResponse.weight}{' '}
+                    </p>
+                  </div>
+                </div>
+                <div className="blindDateItem__text">
+                  <div className="blindDateItem__label">
+                    <p className="blindDateItem__label__text">
+                      {favorite.blindDateResponse.height}{' '}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="blindDateItem__major">
+                  <p className="blindDateItem__major__text">
+                    {favorite.blindDateResponse.major}
+                  </p>
                 </div>
               </div>
               <div className="blindDateItem__button__wrapper">

@@ -9,7 +9,10 @@ import {
   putBlindRequestsReject,
   putBlindRequestsAccept,
   deleteBlindRequests,
+  deleteBlindLikes,
+  postBlindLikes,
 } from '../../BlindReqFavPageController';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 const RequestPage = ({
   receivedBlindRequestsData,
@@ -40,6 +43,22 @@ const RequestPage = ({
     });
   };
 
+  const handleOnClickDeleteFavoriteButton = id => {
+    console.log(id);
+    deleteBlindLikes(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
+
+  const handleOnClickFavoriteButton = id => {
+    console.log(id);
+    postBlindLikes(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
+
   return (
     <div className="requestContainer">
       <div className="section">
@@ -62,9 +81,35 @@ const RequestPage = ({
               <div className="reciveRequestItem__image">
                 <img src={request.blindRequestResponse.idealPhoto} alt="user" />
               </div>
-              <div className="reciveRequestItem__text">
-                <div className="reciveRequestItem__name">
+
+              <div className="blindDateItem__text__wrapper">
+                <div className="blindDateItem__text__header">
                   {request.blindRequestResponse.username}
+                </div>
+                <div className="blindDateItem__text">
+                  <div className="blindDateItem__label">
+                    <p className="blindDateItem__label__text">
+                      {request.blindRequestResponse.mbti}
+                    </p>
+                  </div>
+                  <div className="blindDateItem__label">
+                    <p className="blindDateItem__label__text">
+                      {request.blindRequestResponse.weight}{' '}
+                    </p>
+                  </div>
+                </div>
+                <div className="blindDateItem__text">
+                  <div className="blindDateItem__label">
+                    <p className="blindDateItem__label__text">
+                      {request.blindRequestResponse.height}{' '}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="blindDateItem__major">
+                  <p className="blindDateItem__major__text">
+                    {request.blindRequestResponse.major}
+                  </p>
                 </div>
                 {/* <div className="reciveRequestItem__age">{request.blindRequestResponse.age}</div> */}
               </div>
@@ -90,39 +135,90 @@ const RequestPage = ({
           ))}
         </motion.div>
         <motion.div
-          className="spendRequestList"
+          className="spendBlindRequestList"
           transition={{ duration: 0.5 }}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <div className="spendRequestHeader">
-            <div className="spendRequestHeader__text">보낸 요청</div>
+          <div className="spendBlindRequestHeader">
+            <div className="spendBlindRequestHeader__text">보낸 요청</div>
           </div>
           {sendBlindRequestsData.map(request => (
             <motion.div
-              className="spendRequestItem"
+              className="spendBlindRequestItem"
               key={request.blindRequestResponse.id}
               variants={itemVariants}
             >
-              <div className="spendRequestItem__image">
+              <div className="spendBlindRequestItem__image">
                 <img src={request.blindRequestResponse.idealPhoto} alt="user" />
               </div>
-              <div className="spendRequestItem__text">
-                <div className="spendRequestItem__name">
+
+              <div className="blindDateItem__text__wrapper">
+                <div className="blindDateItem__text__header">
                   {request.blindRequestResponse.username}
                 </div>
-                {/* <div className="spendRequestItem__age">{request.blindRequestResponse.age}</div> */}
+                <div className="blindDateItem__text">
+                  <div className="blindDateItem__label">
+                    <p className="blindDateItem__label__text">
+                      {request.blindRequestResponse.mbti}
+                    </p>
+                  </div>
+                  <div className="blindDateItem__label">
+                    <p className="blindDateItem__label__text">
+                      {request.blindRequestResponse.weight}{' '}
+                    </p>
+                  </div>
+                </div>
+                <div className="blindDateItem__text">
+                  <div className="blindDateItem__label">
+                    <p className="blindDateItem__label__text">
+                      {request.blindRequestResponse.height}{' '}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="blindDateItem__major">
+                  <p className="blindDateItem__major__text">
+                    {request.blindRequestResponse.major}
+                  </p>
+                </div>
               </div>
-              <div
-                className="spendRequestItem__button"
-                onClick={() => {
-                  handleOnClickDeleteRequestButton(
-                    request.blindRequestResponse.userId
-                  );
-                }}
-              >
-                <button className="cancelBtn">취소</button>
+              <div className="blindDateItem__button__wrapper">
+                {request.likeStatus === 'LIKED' ? (
+                  <button
+                    className="blindDateItem__button__fav"
+                    onClick={() => {
+                      handleOnClickDeleteFavoriteButton(
+                        request.blindRequestResponse.id
+                      );
+                    }}
+                  >
+                    <AiFillStar />
+                  </button>
+                ) : (
+                  <button
+                    className="blindDateItem__button__fav"
+                    onClick={() => {
+                      handleOnClickFavoriteButton(
+                        request.blindRequestResponse.id
+                      );
+                    }}
+                  >
+                    <AiOutlineStar />
+                  </button>
+                )}
+
+                <div
+                  className="spendBlindRequestItem__button"
+                  onClick={() => {
+                    handleOnClickDeleteRequestButton(
+                      request.blindRequestResponse.userId
+                    );
+                  }}
+                >
+                  <button className="cancelBtn">취소</button>
+                </div>
               </div>
             </motion.div>
           ))}
