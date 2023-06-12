@@ -27,10 +27,11 @@ const LoginPage = () => {
         console.log(result[1]?.data?.registered);
         setTimeout(() => {
           if (result[1]?.data?.registered === false) {
-            sessionStorage.setItem('socialEmail', result[1]?.data?.socialEmail);
+            // sessionStorage.setItem('socialEmail', result[1]?.data?.socialEmail);
             navigate('/userInfo');
           } else {
             localStorage.setItem('key', result[1]?.data?.token);
+            localStorage.setItem('isLogedIn', true);
             navigate('/');
             window.location.reload();
           }

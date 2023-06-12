@@ -11,7 +11,7 @@ const MainPage = () => {
   useEffect(() => {
     console.log(!localStorage.getItem('key'));
     setTimeout(() => {
-      if (!localStorage.getItem('key') === true) {
+      if (localStorage.getItem('isLogedIn') !== true) {
         navigate('/login');
       }
     }, 900);
