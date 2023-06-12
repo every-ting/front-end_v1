@@ -29,7 +29,7 @@ const LoginPage = () => {
             navigate('/userInfo');
           } else {
             localStorage.setItem('key', result[1]?.data?.token);
-            localStorage.setItem('isLogedIn', true);
+            localStorage.setItem('isLogedIn', 'true');
             navigate('/');
             window.location.reload();
           }

@@ -30,7 +30,7 @@ const UserInfoPage = ({ socialEmail }) => {
         setTimeout(() => {
           if (res[1].result.message === 'success') {
             localStorage.setItem('key', res[1]?.data.token);
-            localStorage.setItem('isLogedIn', true);
+            localStorage.setItem('isLogedIn', 'true');
             alert('회원가입이 완료되었습니다.');
             window.location.reload();
             navigate('/');
@@ -42,7 +42,7 @@ const UserInfoPage = ({ socialEmail }) => {
     }
   };
   useEffect(() => {
-    if (localStorage.getItem('isLogedIn') === true) {
+    if (localStorage.getItem('isLogedIn') === 'true') {
       window.location.reload();
       navigate('/');
     }
