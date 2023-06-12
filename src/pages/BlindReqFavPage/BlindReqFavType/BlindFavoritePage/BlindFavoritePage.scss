@@ -6,12 +6,11 @@
   background-color: #fff;
   .section {
     padding: 10px;
-
     .favoriteHeader {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px;
+      padding: 20px 0;
       border-bottom: 1px solid #ddd;
       .favoriteHeader__text {
         font-size: 16px;

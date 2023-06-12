@@ -8,21 +8,21 @@ const CreateGroupPage = () => {
   const [groupName, setGroupName] = useState('');
   const [groupNumOfMember, setGroupNumOfMember] = useState();
   const [groupMemo, setGroupMemo] = useState('');
-  const [groupSchool, setGroupSchool] = useState('');
+  // const [groupSchool, setGroupSchool] = useState('');
   const navigate = useNavigate();
 
   const postGroup = () => {
     const data = {
       groupName: groupName,
       gender: 'MEN', // 유저의 성별이 입력됨
-      memberSizeLimit: groupNumOfMember,
-      school: groupSchool,
+      memberSizeLimit: parseInt(groupNumOfMember),
+      // school: groupSchool,
       memo: groupMemo,
     };
     postGroups(data).then(result => {
       console.log('result', result);
       if (result[0] === false) {
-        navigate('/groupQR');
+        navigate('/group');
       }
     });
   };
@@ -39,9 +39,9 @@ const CreateGroupPage = () => {
     setGroupMemo(e.target.value);
   };
 
-  const groupSchoolHandler = e => {
-    setGroupSchool(e.target.value);
-  };
+  // const groupSchoolHandler = e => {
+  //   setGroupSchool(e.target.value);
+  // };
 
   return (
     <>
@@ -74,7 +74,7 @@ const CreateGroupPage = () => {
               onChange={groupNumOfMemberHandler}
             />
           </div>
-          <div className="createGroupBodyItem">
+          {/* <div className="createGroupBodyItem">
             <p className="createGroupBodyItemTitle">학교 이름</p>
             <input
               className="createGroupBodyItemInput"
@@ -83,7 +83,7 @@ const CreateGroupPage = () => {
               value={groupSchool}
               onChange={groupSchoolHandler}
             />
-          </div>
+          </div> */}
           <div className="createGroupBodyItem">
             <p className="createGroupBodyItemTitle">팀 소개</p>
             <input

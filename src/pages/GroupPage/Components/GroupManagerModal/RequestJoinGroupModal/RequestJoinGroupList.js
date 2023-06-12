@@ -1,32 +1,61 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './RequestJoinGroupList.scss';
-// import { getBlindUsers } from '../RequestJoinGroupPageController';
-import { getGroupMembersRequest } from '../../../GroupPageController';
 import { AiOutlineStar } from 'react-icons/ai';
+import { motion } from 'framer-motion';
+import {
+  containerVariants,
+  itemVariants,
+} from '../../../../../constants/variants';
 
-const RequestJoinGroupList = ({ isGroupManagerModal }) => {
-  const [usersData, setUsersData] = useState();
+import {
+  postAcceptJoinRequestsGroup,
+  deleteRejectJoinRequestsGroup,
+} from '../../../GroupPageController';
 
-  useEffect(() => {
-    getGroupMembersRequest(isGroupManagerModal).then(result => {
-      setUsersData(result[1].data);
+const RequestJoinGroupList = ({
+  isGroupManagerModal,
+  usersData,
+  setIsModify,
+}) => {
+  const handleOnClickAcceptButton = id => {
+    console.log(id);
+    postAcceptJoinRequestsGroup(id).then(result => {
+      console.log(result);
+      setIsModify(true);
     });
-  }, []);
+  };
+
+  const handleOnClickRejectButton = id => {
+    console.log(id);
+    deleteRejectJoinRequestsGroup(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
 
   return (
     <>
       <div className="requestJoinGroupListContainer">
         <div className="section">
-          <div className="requestJoinGroupList">
+          <motion.div
+            className="requestJoinGroupList"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {/* <div className="requestJoinGroupHeader">
               <div className="requestJoinGroupHeader__text">내가 속한 팀</div>
             </div> */}
             {usersData?.map(request => (
-              <div className="requestJoinGroupItem" key={request.id}>
+              <motion.div
+                className="requestJoinGroupItem"
+                key={request.id}
+                variants={itemVariants}
+              >
                 <div className="requestJoinGroupItem__image__box">
                   <img
                     className="requestJoinGroupItem__image"
-                    src="assets/images/user.png"
+                    src={request.user.idealPhoto}
                     alt="user"
                   />
                 </div>
@@ -58,16 +87,29 @@ const RequestJoinGroupList = ({ isGroupManagerModal }) => {
                   </div>
                 </div>
                 <div className="requestJoinGroupItem__button__wrapper">
-                  <button className="requestJoinGroupItem__button__fav">
-                    <AiOutlineStar />
-                  </button>
-                  <button className="requestJoinGroupItem__button__text">
-                    요청
-                  </button>
+                  <button className="requestJoinGroupItem__button__fav" />
+                  <div className="requestJoinGroupItem__button">
+                    <button
+                      className="acceptBtn"
+                      onClick={() => {
+                        handleOnClickAcceptButton(request.id);
+                      }}
+                    >
+                      수락
+                    </button>
+                    <button
+                      className="denyBtn"
+                      onClick={() => {
+                        handleOnClickRejectButton(request.id);
+                      }}
+                    >
+                      거절
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </>

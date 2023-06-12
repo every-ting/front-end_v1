@@ -18,6 +18,8 @@ import JoinGroupPage from './pages/JoinGroupPage/JoinGroupPage';
 import GroupQrPage from './pages/GroupQrPage/GroupQrPage';
 import BlindReqFavPage from './pages/BlindReqFavPage/BlindReqFavPage';
 import MyPage from './pages/SettingPage/MyPage/MyPage';
+import MobileOnlyPage from './pages/MobileOnlyPage/MobileOnlyPage';
+import GroupReqFavPage from './pages/GroupReqFavPage/GroupReqFavPage';
 
 const RoutesPath = () => {
   const location = useLocation();
@@ -31,96 +33,9 @@ const RoutesPath = () => {
   return (
     <>
       {!isMobile && (
-        <div
-          style={{
-            position: 'fixed',
-            top: '0',
-            left: '0',
-            width: '100%',
-            height: '100%',
-            zIndex: '9999',
-            backgroundColor: 'white',
-            borderInline: '30vw solid #ebebeb',
-          }}
-        >
-          <p
-            style={{
-              position: 'absolute',
-              top: '30%',
-              left: '50%',
-              transform: 'translate(-50%,-50%)',
-              fontSize: '20px',
-            }}
-          >
-            TING 은 모바일 환경만 지원합니다.
-          </p>
-          <p
-            style={{
-              position: 'absolute',
-              top: '35%',
-              left: '50%',
-              transform: 'translate(-50%,-50%)',
-              fontSize: '18px',
-            }}
-          >
-            모바일에서 접속 해주세요{' '}
-          </p>
-          <p
-            style={{
-              position: 'absolute',
-              top: '45%',
-              left: '50%',
-              transform: 'translate(-50%,-50%)',
-              fontSize: '18px',
-            }}
-          >
-            앱 다운로드
-          </p>
-          <p
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%,-50%)',
-              fontSize: '16px',
-            }}
-          >
-            안드로이드
-          </p>
-          <img
-            src="assets/images/QR/QR.png "
-            alt="android"
-            style={{
-              position: 'absolute',
-              top: '55%',
-              left: '50%',
-              transform: 'translate(-50%,-50%)',
-              width: '11%',
-            }}
-          />
-          <p
-            style={{
-              position: 'absolute',
-              top: '60%',
-              left: '50%',
-              transform: 'translate(-50%,-50%)',
-              fontSize: '16px',
-            }}
-          >
-            IOS
-          </p>
-          <img
-            src="assets/images/QR/QR.png "
-            alt="ios"
-            style={{
-              position: 'absolute',
-              top: '65%',
-              left: '50%',
-              transform: 'translate(-50%,-50%)',
-              width: '11%',
-            }}
-          />
-        </div>
+        <>
+          <MobileOnlyPage />
+        </>
       )}
       <Routes>
         <Route path="/" element={<MainPage />} />
@@ -128,6 +43,7 @@ const RoutesPath = () => {
         <Route path="/blindDate" element={<BlindDatePage />} />
         <Route path="/blind/request" element={<BlindReqFavPage />} />
         <Route path="/group" element={<GroupPage />} />
+        <Route path="/group/request" element={<GroupReqFavPage />} />
         <Route path="/joinGroup" element={<JoinGroupPage />} />
         <Route path="/createGroup" element={<CreateGroupPage />} />
         <Route path="/groupQR" element={<GroupQrPage />} />

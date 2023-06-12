@@ -18,21 +18,20 @@ const ReqFavPage = () => {
   const [blindLikesData, setBlindLikesData] = useState([]);
   const [renderBlindRequestPage, setRenderBlindRequestPage] = useState(false);
   const [renderBlindFavoritePage, setRenderBlindFavoritePage] = useState(false);
+  const [isModify, setIsModify] = useState(false);
 
   useEffect(() => {
     getBlindRequests().then(result => {
       setReceivedBlindRequestsData(result[1].data.receivedBlindRequests);
       setSendBlindRequestsData(result[1].data.sendBlindRequests);
       setRenderBlindRequestPage(true);
+      setIsModify(false);
     });
-  }, []);
-
-  useEffect(() => {
     getBlindLikes().then(result => {
       setBlindLikesData(result[1].data);
       setRenderBlindFavoritePage(true);
     });
-  }, []);
+  }, [isModify]);
 
   useEffect(() => {
     if (activeIndex === 0) {
@@ -64,10 +63,14 @@ const ReqFavPage = () => {
           <BlindRequestPage
             receivedBlindRequestsData={receivedBlindRequestsData}
             sendBlindRequestsData={sendBlindRequestsData}
+            setIsModify={setIsModify}
           />
         )}
         {section === 'favorite' && renderBlindFavoritePage && (
-          <BlindFavoritePage blindLikesData={blindLikesData} />
+          <BlindFavoritePage
+            blindLikesData={blindLikesData}
+            setIsModify={setIsModify}
+          />
         )}
       </div>
     </div>

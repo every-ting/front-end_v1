@@ -2,9 +2,15 @@ import React from 'react';
 import './SettingPage.scss';
 import BackButton from '../../components/backButton/commonBackButton/BackButton';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SettingPage = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem('key');
+    localStorage.removeItem('isLogedIn');
+    navigate('/');
+  };
   return (
     <motion.div
       className="settingContainer"
@@ -28,7 +34,12 @@ const SettingPage = () => {
           <p className="settingBodyItemTitle">알림</p>
           <p className="settingBodyItemContent"> &gt; </p>
         </div>
-        <div className="settingBodyItem">
+        <div
+          className="settingBodyItem"
+          onClick={() => {
+            handleLogout();
+          }}
+        >
           <p className="settingBodyItemTitle">로그아웃</p>
           <p className="settingBodyItemContent"> &gt; </p>
         </div>

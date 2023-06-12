@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './BlindDateList.scss';
 import { getBlindUsers } from '../BlindDatePageController';
-import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
+import { HiOutlineStar, HiStar } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../../../constants/variants';
 import {
@@ -10,11 +10,13 @@ import {
   postBlindLikes,
   deleteBlindLikes,
 } from '../BlindDatePageController';
+import ErrorModal from '../../../components/modal/errorModal/ErrorModal';
 
 const BlindDateList = () => {
   const [blindUsersData, setBlindUsersData] = useState();
   const [renderBlindList, setRenderBlindList] = useState(false);
   const [isModify, setIsModify] = useState(false);
+  const [isErrorModal, setIsErrorModal] = useState(false);
 
   useEffect(() => {
     getBlindUsers().then(result => {
@@ -29,6 +31,12 @@ const BlindDateList = () => {
     postBlindRequests(id).then(result => {
       console.log(result);
       setIsModify(true);
+      if (result[1].result.message.includes('The maximum number')) {
+        setIsErrorModal('요청은 최대 5명까지 가능합니다.');
+        setTimeout(() => {
+          setIsErrorModal();
+        }, 2000);
+      }
     });
   };
 
@@ -60,6 +68,7 @@ const BlindDateList = () => {
     <>
       {renderBlindList && (
         <div className="blindDateListContainer">
+          {isErrorModal && <ErrorModal errorModalMessage={isErrorModal} />}
           <div className="section">
             <motion.div
               className="blindDateList"
@@ -79,11 +88,14 @@ const BlindDateList = () => {
                   <div className="blindDateItem__image__box">
                     <img
                       className="blindDateItem__image"
-                      src="assets/images/user.png"
+                      src={request.blindDateResponse.idealPhoto}
                       alt="user"
                     />
                   </div>
                   <div className="blindDateItem__text__wrapper">
+                    <div className="blindDateItem__text__header">
+                      {request.blindDateResponse.username}
+                    </div>
                     <div className="blindDateItem__text">
                       <div className="blindDateItem__label">
                         <p className="blindDateItem__label__text">
@@ -120,7 +132,7 @@ const BlindDateList = () => {
                           );
                         }}
                       >
-                        <AiOutlineStar />
+                        <HiOutlineStar />
                       </button>
                     ) : (
                       <button
@@ -131,7 +143,7 @@ const BlindDateList = () => {
                           );
                         }}
                       >
-                        <AiFillStar />
+                        <HiStar />
                       </button>
                     )}
                     {request.requestStatus === 'EMPTY' ? (

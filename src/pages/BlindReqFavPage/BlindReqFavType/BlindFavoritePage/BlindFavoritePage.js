@@ -1,25 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './BlindFavoritePage.scss';
 import { motion } from 'framer-motion';
 import {
   containerVariants,
   itemVariants,
 } from '../../../../constants/variants';
+import {
+  deleteBlindLikes,
+  postBlindRequests,
+  deleteBlindRequests,
+} from '../../BlindReqFavPageController';
+import { AiFillStar } from 'react-icons/ai';
+import ErrorModal from '../../../../components/modal/errorModal/ErrorModal';
 
-const FavoritePage = ({ blindLikesData }) => {
-  const Favorites = [
-    { id: 1, name: 'Hurin Seary', age: 24 },
-    { id: 2, name: 'John Doe', age: 32 },
-    { id: 3, name: 'Jane Smith', age: 27 },
-  ];
+const FavoritePage = ({ blindLikesData, setIsModify }) => {
+  const [isErrorModal, setIsErrorModal] = useState();
 
-  const Recomends = [
-    { id: 1, name: 'Hurin Seary', age: 24 },
-    { id: 2, name: 'John Doe', age: 32 },
-    { id: 3, name: 'Jane Smith', age: 27 },
-  ];
+  const handleOnClickRequestButton = id => {
+    console.log(id);
+    postBlindRequests(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+      if (result[1].result.message.includes('The maximum number')) {
+        setIsErrorModal('요청은 최대 5명까지 가능합니다.');
+        setTimeout(() => {
+          setIsErrorModal();
+        }, 2000);
+      }
+    });
+  };
+
+  const handleOnClickRequestCancleButton = id => {
+    console.log(id);
+    deleteBlindRequests(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
+  const handleOnClickDeleteFavoriteButton = id => {
+    console.log(id);
+    deleteBlindLikes(id).then(result => {
+      console.log(result);
+      setIsModify(true);
+    });
+  };
+
   return (
     <div className="favoriteContainer">
+      {isErrorModal && <ErrorModal errorModalMessage={isErrorModal} />}
       <div className="section">
         <div className="favoriteHeader">
           <div className="favoriteHeader__text">찜 목록</div>
@@ -43,19 +71,75 @@ const FavoritePage = ({ blindLikesData }) => {
                   alt="user_img"
                 />
               </div>
-              <div className="favoriteItem__text">
-                <div className="favoriteItem__name">
+
+              <div className="blindDateItem__text__wrapper">
+                <div className="blindDateItem__text__header">
                   {favorite.blindDateResponse.username}
                 </div>
-                <div className="favoriteItem__age">{favorite.age}</div>
+                <div className="blindDateItem__text">
+                  <div className="blindDateItem__label">
+                    <p className="blindDateItem__label__text">
+                      {favorite.blindDateResponse.mbti}
+                    </p>
+                  </div>
+                  <div className="blindDateItem__label">
+                    <p className="blindDateItem__label__text">
+                      {favorite.blindDateResponse.weight}{' '}
+                    </p>
+                  </div>
+                </div>
+                <div className="blindDateItem__text">
+                  <div className="blindDateItem__label">
+                    <p className="blindDateItem__label__text">
+                      {favorite.blindDateResponse.height}{' '}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="blindDateItem__major">
+                  <p className="blindDateItem__major__text">
+                    {favorite.blindDateResponse.major}
+                  </p>
+                </div>
               </div>
-              <div className="favoriteItem__button">
-                <button className="denyBtn">취소</button>
+              <div className="blindDateItem__button__wrapper">
+                <button
+                  className="blindDateItem__button__fav"
+                  onClick={() => {
+                    handleOnClickDeleteFavoriteButton(
+                      favorite.blindDateResponse.id
+                    );
+                  }}
+                >
+                  <AiFillStar />
+                </button>
+                {favorite.requestStatus === 'EMPTY' ? (
+                  <button
+                    className="blindDateItem__button__text"
+                    onClick={() => {
+                      handleOnClickRequestButton(favorite.blindDateResponse.id);
+                    }}
+                  >
+                    요청
+                  </button>
+                ) : (
+                  <button
+                    className="blindDateItem__button__text"
+                    onClick={() => {
+                      handleOnClickRequestCancleButton(
+                        favorite.blindDateResponse.id
+                      );
+                    }}
+                    style={{ backgroundColor: '#FF0000' }}
+                  >
+                    취소
+                  </button>
+                )}
               </div>
             </motion.div>
           ))}
         </motion.div>
-        <div className="recommendHeader">
+        {/* <div className="recommendHeader">
           <div className="recommendHeader__text">추천 목록</div>
         </div>
         <div className="recommendList">
@@ -73,7 +157,7 @@ const FavoritePage = ({ blindLikesData }) => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

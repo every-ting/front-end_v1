@@ -1,12 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './MainPage.scss';
 import { motion } from 'framer-motion';
 
 const MainPage = () => {
   const code = new URL(window.location.href).searchParams.get('code');
-
+  const navigate = useNavigate();
   console.log(code);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (localStorage.getItem('isLogedIn') === 'true') {
+        console.log('로그인 되어있음');
+      } else {
+        navigate('/login');
+      }
+    }, 900);
+    if (sessionStorage.getItem('tokenRefresh') === 'true') {
+      sessionStorage.setItem('tokenRefresh', 'false');
+      window.location.reload();
+    }
+  }, []);
+
   return (
     <motion.div
       className="mainContainer"

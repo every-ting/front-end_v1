@@ -1,0 +1,110 @@
+@import '../../../../styles/variables.scss';
+
+.favoriteContainer {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  .section {
+    padding: 10px;
+    .favoriteHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid #ddd;
+      .favoriteHeader__text {
+        font-size: 16px;
+        font-weight: 400;
+        color: #000;
+      }
+    }
+    .favoriteList {
+      .favoriteItem {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 3vh 0;
+        border-bottom: 1px solid #ddd;
+        &:last-child {
+          border: none;
+        }
+        .favoriteItem__image {
+          width: 30vw;
+          height: 30vw;
+          border-radius: 8%;
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .spendFavoriteItem__text {
+          width: 45vw;
+          margin-left: 10px;
+          .spendFavoriteItem__text__wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            margin-right: 5vw;
+          }
+
+          .spendFavoriteItem__header {
+            width: 100%;
+            height: 50%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .spendFavoriteItem__name {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+          }
+
+          .spendFavoriteItem__label {
+            width: fit-content;
+            block-size: fit-content;
+            padding: 4px;
+            background-color: #5F6D7E;
+            border-radius: 4px;
+            margin: 2px;
+          }
+
+          .spendFavoriteItem__label__text {
+            font-size: 13px;
+            color: #fff;
+          }
+
+          .spendFavoriteItem__name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #000;
+          }
+          .spendFavoriteItem__age {
+            font-size: 14px;
+            font-weight: 400;
+            color: #000;
+          }
+        }
+        .spendFavoriteItem__button {
+          button {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 700;
+            border: none;
+            &.cancelBtn {
+              background-color: $point-color-4;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
