@@ -68,8 +68,7 @@ const UserInfoPage = ({ socialEmail }) => {
               className="userInfoInputBox"
               id="name"
               type="text"
-              placeholder="이름을 입력하세요"
-              maxLength={10}
+              placeholder="닉네임을 입력하세요(최소 4글자 이상)"
               minLength={4}
             />
           </div>
