@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import './LoginPage.scss';
 import { tingLogin } from './LoginPageController';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 // import './RequestPage.scss';
+import { basicApi } from '../../libs/config';
+import { SiKakaotalk } from 'react-icons/si';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -39,6 +42,25 @@ const LoginPage = () => {
     }
   }, []);
 
+  const handleDemoLogin = async () => {
+    try {
+      const response = await basicApi.get(`/ting/1`);
+      console.log(response);
+      alert('로그인 되었습니다.');
+      if (response.status === 200) {
+        localStorage.setItem('key', response?.data?.data?.token);
+        localStorage.setItem('isLogedIn', 'true');
+        sessionStorage.setItem('tokenRefresh', 'true');
+        navigate('/');
+        return [false, response.data];
+      } else {
+        return [response.data.error, response.data.message];
+      }
+    } catch (e) {
+      return [true, e.message];
+    }
+  };
+
   return (
     <div className="loginContainer">
       <div className="LogoImageWrapper">
@@ -48,14 +70,14 @@ const LoginPage = () => {
       <div className="socailLoginWrapper">
         <div className="socailLoginBtnWrapper">
           <button className="socailLoginBtn" onClick={handleLogin}>
-            <img src="assets/images/user.png" alt="kakao" />
+            <SiKakaotalk />
             <p>카카오로 로그인 하기</p>
           </button>
-          {/* <button className="socailLoginBtn">
+          <button className="socailLoginBtn" onClick={handleDemoLogin}>
             <img src="assets/images/user.png" alt="naver" />
-            <p>네이버로 로그인 하기</p>
+            <p>TEST USER ID 1 로 로그인 하기</p>
           </button>
-          <button className="socailLoginBtn">
+          {/* <button className="socailLoginBtn">
             <img src="assets/images/user.png" alt="google" />
             <p>구글로 로그인 하기</p>
           </button> */}
