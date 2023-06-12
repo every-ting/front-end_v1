@@ -26,14 +26,21 @@ const UserInfoPage = ({ socialEmail }) => {
     tingSignUp(data).then(res => {
       console.log(res);
       setTimeout(() => {
-        if (res[1].result.message === 'success') {
-          localStorage.setItem('key', res[1]?.data.token);
-          localStorage.setItem('isLogedIn', true);
-          alert('회원가입이 완료되었습니다.');
-          window.location.reload();
-          navigate('/');
+        if (name.length < 4 || name.length > 10) {
+          alert('이름은 4글자 이상 입력해주세요.');
+          return;
         } else {
-          alert('회원가입에 실패하였습니다.');
+          if (res[1].result.message === 'success') {
+            localStorage.setItem('key', res[1]?.data.token);
+            localStorage.setItem('isLogedIn', true);
+            alert('회원가입이 완료되었습니다.');
+            setTimeout(() => {
+              window.location.reload();
+              navigate('/');
+            }, 800);
+          } else {
+            alert('회원가입에 실패하였습니다.');
+          }
         }
       }, 800);
     });
@@ -54,67 +61,71 @@ const UserInfoPage = ({ socialEmail }) => {
         </p>
       </div>
       <div className="userInfoInputContainer">
-        <div className="userInfoInputItem">
-          <input
-            className="userInfoInputBox"
-            id="name"
-            type="text"
-            placeholder="이름을 입력하세요"
-          />
-        </div>
-        <div className="userInfoInputItem">
-          <input
-            className="userInfoInputBox"
-            id="gender"
-            type="text"
-            placeholder="성별을 입력하세요"
-          />
-        </div>
-        <div className="userInfoInputItem">
-          <input
-            className="userInfoInputBox"
-            id="school"
-            type="text"
-            placeholder="학교를 입력하세요"
-          />
-        </div>
+        <form className="userInfoInputForm">
+          <div className="userInfoInputItem">
+            <input
+              className="userInfoInputBox"
+              id="name"
+              type="text"
+              placeholder="이름을 입력하세요"
+              maxLength={10}
+              minLength={4}
+            />
+          </div>
+          <div className="userInfoInputItem">
+            <input
+              className="userInfoInputBox"
+              id="gender"
+              type="text"
+              placeholder="성별을 입력하세요"
+            />
+          </div>
+          <div className="userInfoInputItem">
+            <input
+              className="userInfoInputBox"
+              id="school"
+              type="text"
+              placeholder="학교를 입력하세요"
+            />
+          </div>
 
-        <div className="userInfoInputItem">
-          <input
-            className="userInfoInputBox"
-            id="schoolEmail"
-            type="text"
-            placeholder="학교 이메일을 입력하세요"
-          />
-        </div>
+          <div className="userInfoInputItem">
+            <input
+              className="userInfoInputBox"
+              id="schoolEmail"
+              type="text"
+              placeholder="학교 이메일을 입력하세요"
+            />
+          </div>
 
-        <div className="userInfoInputItem">
-          <input
-            className="userInfoInputBox"
-            id="major"
-            type="text"
-            placeholder="학과를 입력하세요"
-          />
-        </div>
-        <div className="userInfoInputItem">
-          <input
-            className="userInfoInputBox"
-            id="birth"
-            type="text"
-            placeholder="생년월일을 입력하세요"
-          />
-        </div>
+          <div className="userInfoInputItem">
+            <input
+              className="userInfoInputBox"
+              id="major"
+              type="text"
+              placeholder="학과를 입력하세요"
+            />
+          </div>
+          <div className="userInfoInputItem">
+            <input
+              className="userInfoInputBox"
+              id="birth"
+              type="text"
+              placeholder="생년월일을 입력하세요"
+            />
+          </div>
 
-        <div className="userInfoSubmitBtnWrapper">
-          <button
-            className="userInfoSubmitBtn"
-            onClick={() => {
-              handleSignUp();
-            }}
-          >
-            가입하기
-          </button>
-        </div>
+          <div className="userInfoSubmitBtnWrapper">
+            <button
+              className="userInfoSubmitBtn"
+              onClick={() => {
+                handleSignUp();
+              }}
+            >
+              가입하기
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

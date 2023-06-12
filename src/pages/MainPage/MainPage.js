@@ -9,9 +9,10 @@ const MainPage = () => {
   console.log(code);
 
   useEffect(() => {
-    console.log(!localStorage.getItem('key'));
     setTimeout(() => {
-      if (localStorage.getItem('isLogedIn') !== true) {
+      if (localStorage.getItem('isLogedIn') === true) {
+        console.log('로그인 되어있음');
+      } else {
         navigate('/login');
       }
     }, 900);
