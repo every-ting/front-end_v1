@@ -30,6 +30,7 @@ const LoginPage = () => {
           } else {
             localStorage.setItem('key', result[1]?.data?.token);
             localStorage.setItem('isLogedIn', 'true');
+            sessionStorage.setItem('tokenRefresh', 'true');
             navigate('/');
             window.location.reload();
           }

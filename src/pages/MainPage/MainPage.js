@@ -16,6 +16,10 @@ const MainPage = () => {
         navigate('/login');
       }
     }, 900);
+    if (sessionStorage.getItem('tokenRefresh') === 'true') {
+      sessionStorage.setItem('tokenRefresh', 'false');
+      window.location.reload();
+    }
   }, []);
 
   return (
