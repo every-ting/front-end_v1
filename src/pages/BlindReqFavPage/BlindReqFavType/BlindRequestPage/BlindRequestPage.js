@@ -190,7 +190,7 @@ const RequestPage = ({
                     className="blindDateItem__button__fav"
                     onClick={() => {
                       handleOnClickDeleteFavoriteButton(
-                        request.blindRequestResponse.id
+                        request.blindRequestResponse.userId
                       );
                     }}
                   >
@@ -201,7 +201,7 @@ const RequestPage = ({
                     className="blindDateItem__button__fav"
                     onClick={() => {
                       handleOnClickFavoriteButton(
-                        request.blindRequestResponse.id
+                        request.blindRequestResponse.userId
                       );
                     }}
                   >

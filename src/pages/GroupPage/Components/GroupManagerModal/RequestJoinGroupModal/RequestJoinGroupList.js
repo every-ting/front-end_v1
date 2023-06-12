@@ -87,9 +87,7 @@ const RequestJoinGroupList = ({
                   </div>
                 </div>
                 <div className="requestJoinGroupItem__button__wrapper">
-                  <button className="requestJoinGroupItem__button__fav">
-                    <AiOutlineStar />
-                  </button>
+                  <button className="requestJoinGroupItem__button__fav" />
                   <div className="requestJoinGroupItem__button">
                     <button
                       className="acceptBtn"

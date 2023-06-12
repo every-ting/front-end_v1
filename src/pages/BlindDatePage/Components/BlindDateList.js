@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './BlindDateList.scss';
 import { getBlindUsers } from '../BlindDatePageController';
-import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
+import { HiOutlineStar, HiStar } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../../../constants/variants';
 import {
@@ -132,7 +132,7 @@ const BlindDateList = () => {
                           );
                         }}
                       >
-                        <AiOutlineStar />
+                        <HiOutlineStar />
                       </button>
                     ) : (
                       <button
@@ -143,7 +143,7 @@ const BlindDateList = () => {
                           );
                         }}
                       >
-                        <AiFillStar />
+                        <HiStar />
                       </button>
                     )}
                     {request.requestStatus === 'EMPTY' ? (

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './JoinGroupList.scss';
 import { motion } from 'framer-motion';
 import { containerVariants, itemVariants } from '../../../constants/variants';
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { HiStar, HiOutlineStar } from 'react-icons/hi';
 // postJoinRequestsGroup: '/groups/requests',
 // deleteJoinRequestsGroup: '/groups/requests',
 // postJoinLikesGroup: '/groups/likes',
@@ -102,7 +102,7 @@ const JoinGroupList = ({ groupData, setIsModify }) => {
                         handleOnClickFavoriteButton(request.group.id);
                       }}
                     >
-                      <AiOutlineStar />
+                      <HiOutlineStar />
                     </button>
                   ) : (
                     <button
@@ -111,7 +111,7 @@ const JoinGroupList = ({ groupData, setIsModify }) => {
                         handleOnClickFavoriteCancleButton(request.group.id);
                       }}
                     >
-                      <AiFillStar />
+                      <HiStar />
                     </button>
                   )}
                   {request.requestStatus === 'EMPTY' ? (

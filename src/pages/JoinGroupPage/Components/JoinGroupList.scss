@@ -157,11 +157,12 @@
   justify-content:space-between;
   align-items: center;
   flex-direction: column;
-  padding: 5vw 0;
+  padding: 4vw 0;
 }
 .groupItem__button__fav {
   border: none;
   background-color: transparent;
+  font-size: 1.15rem;
 }
 .groupItem__button__text {
   font-family: 'Noto Sans KR', sans-serif;
