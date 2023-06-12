@@ -24,21 +24,26 @@ const UserInfoPage = ({ socialEmail }) => {
     };
 
     if (name.length < 4 || name.length > 10) {
-      alert('이름은 4글자 이상 입력해주세요.');
+      // alert('이름은 4글자 이상 입력해주세요.');
     } else {
-      tingSignUp(data).then(res => {
-        console.log(res);
-        setTimeout(() => {
-          if (res[1].result.message === 'success') {
-            localStorage.setItem('key', res[1]?.data.token);
-            localStorage.setItem('isLogedIn', 'true');
-            // alert('회원가입이 완료되었습니다.');
-            // navigate('/');
-          } else {
-            alert('회원가입에 실패하였습니다.');
-          }
-        }, 800);
-      });
+      tingSignUp(data)
+        .then(res => {
+          console.log('asdfasdfasdfasddfasdf');
+          console.log(res);
+          setTimeout(() => {
+            if (res[1].result.message === 'success') {
+              localStorage.setItem('key', res[1]?.data.token);
+              localStorage.setItem('isLogedIn', 'true');
+              // alert('회원가입이 완료되었습니다.');
+              // navigate('/');
+            } else {
+              alert('회원가입에 실패하였습니다.');
+            }
+          }, 800);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   };
   useEffect(() => {
