@@ -8,6 +8,7 @@ const SettingPage = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem('key');
+    localStorage.removeItem('isLogedIn');
     navigate('/');
   };
   return (

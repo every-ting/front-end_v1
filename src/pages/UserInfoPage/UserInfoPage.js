@@ -23,27 +23,23 @@ const UserInfoPage = ({ socialEmail }) => {
       birth: birth,
     };
 
-    tingSignUp(data).then(res => {
-      console.log(res);
-      setTimeout(() => {
-        if (name.length < 4 || name.length > 10) {
-          alert('이름은 4글자 이상 입력해주세요.');
-          return;
-        } else {
+    if (name.length < 4 || name.length > 10) {
+      alert('이름은 4글자 이상 입력해주세요.');
+    } else {
+      tingSignUp(data).then(res => {
+        setTimeout(() => {
           if (res[1].result.message === 'success') {
             localStorage.setItem('key', res[1]?.data.token);
             localStorage.setItem('isLogedIn', true);
             alert('회원가입이 완료되었습니다.');
-            setTimeout(() => {
-              window.location.reload();
-              navigate('/');
-            }, 800);
+            window.location.reload();
+            navigate('/');
           } else {
             alert('회원가입에 실패하였습니다.');
           }
-        }
-      }, 800);
-    });
+        }, 800);
+      });
+    }
   };
   useEffect(() => {
     if (localStorage.getItem('isLogedIn') === true) {
