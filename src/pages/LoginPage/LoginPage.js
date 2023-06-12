@@ -8,7 +8,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const Rest_api_key = '5aa83782d08252a734f65e2b72a6efbb'; //REST API KEY
   const redirect_uri =
-    'https://web-front-end-ting-dev-1t0824l6nsoimz.gksl1.cloudtype.app/login'; //Redirect URI
+    '  https://web-front-end-ting-dev-1t0824l6nsoimz.gksl1.cloudtype.app/login'; //Redirect URI
   // oauth 요청 URL
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${Rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`;
   const handleLogin = () => {
@@ -27,10 +27,10 @@ const LoginPage = () => {
         console.log(result[1]?.data?.registered);
         setTimeout(() => {
           if (result[1]?.data?.registered === false) {
-            sessionStorage.setItem('socialEmail', result[1]?.data.socialEmail);
+            sessionStorage.setItem('socialEmail', result[1]?.data?.socialEmail);
             navigate('/userInfo');
           } else {
-            localStorage.setItem('key', result[1]?.data.token);
+            localStorage.setItem('key', result[1]?.data?.token);
             navigate('/');
             window.location.reload();
           }
