@@ -25,7 +25,7 @@ const LoginPage = () => {
       tingLogin(code).then(result => {
         setTimeout(() => {
           if (result[1]?.data?.registered === false) {
-            // sessionStorage.setItem('socialEmail', result[1]?.data?.socialEmail);
+            sessionStorage.setItem('socialEmail', result[1]?.data?.socialEmail);
             navigate('/userInfo');
           } else {
             localStorage.setItem('key', result[1]?.data?.token);
