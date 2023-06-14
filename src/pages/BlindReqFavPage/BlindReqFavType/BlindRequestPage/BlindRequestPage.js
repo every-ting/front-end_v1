@@ -72,6 +72,14 @@ const RequestPage = ({
           <div className="reciveRequestHeader">
             <div className="reciveRequestHeader__text">받은 요청</div>
           </div>
+          {receivedBlindRequestsData.length === 0 ? (
+            <div className="reciveRequestItem__empty">
+              <div className="reciveRequestItem__empty__text">
+                아직 받은 요청이 없어요
+              </div>
+            </div>
+          ) : null}
+
           {receivedBlindRequestsData?.map(request => (
             <motion.div
               className="reciveRequestItem"
@@ -151,7 +159,7 @@ const RequestPage = ({
               </div>
               <div className="reciveRequestItem__button">
                 <button
-                  className="acceptBtn"
+                  className="reciveRequestItem__button__text accept"
                   onClick={() => {
                     handleOnClickAcceptButton(request.blindRequestResponse.id);
                   }}
@@ -159,7 +167,7 @@ const RequestPage = ({
                   수락
                 </button>
                 <button
-                  className="denyBtn"
+                  className="reciveRequestItem__button__text reject"
                   onClick={() => {
                     handleOnClickRejectButton(request.blindRequestResponse.id);
                   }}

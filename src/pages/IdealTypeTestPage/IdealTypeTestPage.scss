@@ -1,0 +1,53 @@
+@import '../../styles/variables.scss';
+
+.idealTypeTestPageContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .idealTypeTestPageContent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .idealTypeTestPageHeader {
+      width: 100%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      border-bottom: 1px solid #d2d2d2;
+      .idealTypeTestPageHeader__text {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+      }
+    }
+    .idealTypeTestPageBody {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      .idealTypeTestPageBody__text {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        margin: 20px;
+      }
+      .idealTypeTestPageBody__button {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        .idealTypeTestPageBody__button__text {
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: 20px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}

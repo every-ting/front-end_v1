@@ -20,6 +20,7 @@ import BlindReqFavPage from './pages/BlindReqFavPage/BlindReqFavPage';
 import MyPage from './pages/SettingPage/MyPage/MyPage';
 import MobileOnlyPage from './pages/MobileOnlyPage/MobileOnlyPage';
 import GroupReqFavPage from './pages/GroupReqFavPage/GroupReqFavPage';
+import IdealTypeTestPage from './pages/IdealTypeTestPage/IdealTypeTestPage';
 
 const RoutesPath = () => {
   const location = useLocation();
@@ -54,6 +55,7 @@ const RoutesPath = () => {
         <Route path="/alert" element={<AlertPage />} />
         <Route path="/setting" element={<SettingPage />} />
         <Route path="myPage" element={<MyPage />} />
+        <Route path="/idealTypeTest" element={<IdealTypeTestPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {visibleNav && <Nav />}

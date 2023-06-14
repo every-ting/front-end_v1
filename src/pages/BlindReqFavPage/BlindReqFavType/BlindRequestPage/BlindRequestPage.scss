@@ -19,6 +19,17 @@
           color: #000;
         }
       }
+      .reciveRequestItem__empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3vh;
+        .reciveRequestItem__empty__text {
+          font-size: 1.3rem;
+          font-weight: 400;
+          color: #717171;
+        }
+      }
       .reciveRequestItem {
         display: flex;
         align-items: center;
@@ -99,10 +110,14 @@
           flex-direction: column;
           padding: 5vw 0;
         }
-        .reciveRequestItem__button__fav {
-          border: none;
-          background-color: transparent;
-          font-size: 1.15rem;
+        .reciveRequestItem__button {
+          width: 20vw;
+          height: 30vw;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: column;
+          padding: 2vh 0;
         }
         .reciveRequestItem__button__text {
           font-family: 'Noto Sans KR', sans-serif;
@@ -114,7 +129,12 @@
           padding: 1vw 2vw;
           border-radius: 5px;
         }
-        
+        .accept {
+          background-color: $point-color-3;
+        }
+        .reject {
+          background-color: $point-color-2;
+        }
       }
     }
     .spendBlindRequestList {

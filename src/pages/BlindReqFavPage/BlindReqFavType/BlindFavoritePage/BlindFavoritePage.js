@@ -150,7 +150,14 @@ const FavoritePage = ({ blindLikesData, setIsModify }) => {
                 >
                   <AiFillStar />
                 </button>
-                {favorite.requestStatus === 'EMPTY' ? (
+                {favorite.requestStatus === 'DISABLED' ? (
+                  <button
+                    className="favoriteItem__button__text"
+                    style={{ backgroundColor: '#ebebeb' }}
+                  >
+                    매칭됨
+                  </button>
+                ) : favorite.requestStatus === 'EMPTY' ? (
                   <button
                     className="favoriteItem__button__text"
                     onClick={() => {
