@@ -53,13 +53,13 @@ const GroupFavoritePage = ({ groupLikesData, setIsModify }) => {
   };
 
   return (
-    <div className="favoriteContainer">
+    <div className="groupFavoriteContainer">
       <div className="section">
-        <div className="favoriteHeader">
-          <div className="favoriteHeader__text">찜 목록</div>
+        <div className="groupFavoriteHeader">
+          <div className="groupFavoriteHeader__text">찜 목록</div>
         </div>
         <motion.div
-          className="favoriteList"
+          className="groupFavoriteList"
           transition={{ duration: 0.5 }}
           variants={containerVariants}
           initial="hidden"
@@ -67,7 +67,7 @@ const GroupFavoritePage = ({ groupLikesData, setIsModify }) => {
         >
           {groupLikesData.content.map(favorite => (
             <motion.div
-              className="favoriteItem"
+              className="groupFavoriteItem"
               key={favorite.group.id}
               variants={itemVariants}
             >

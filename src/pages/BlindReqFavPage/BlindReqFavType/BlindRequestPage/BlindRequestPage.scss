@@ -28,48 +28,93 @@
         &:last-child {
           border: none;
         }
+        
         .reciveRequestItem__image {
-          width: 100px;
-          height: 100px;
-          border-radius: 8%;
+          width: 30vw;
+          height: 30vw;
+          border-radius: 20%;
           overflow: hidden;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
+          margin-right: 20px;
+          padding: 10px;
+        }
+
+
+        .reciveRequestItem__text__wrapper {
+          width: 50vw;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: column;
+        }
+
+        .reciveRequestItem__text__header {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
         .reciveRequestItem__text {
-          margin-left: 10px;
-          .reciveRequestItem__name {
-            font-size: 16px;
-            font-weight: 700;
-            color: #000;
-          }
-          .reciveRequestItem__age {
-            font-size: 14px;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: row;
+        }
+
+
+        .reciveRequestItem__label {
+          width: fit-content;
+          block-size: fit-content;
+          padding: 4px;
+          background-color: #5F6D7E;
+          border-radius: 4px;
+          margin: 1vw 1vw 1vw 0;
+        }
+        .reciveRequestItem__label__text {
+          font-size: 13px;
+          color: #fff;
+        }
+        .reciveRequestItem__major {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          
+          .reciveRequestItem__major__text {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 15px;
             font-weight: 400;
-            color: #000;
+            color: #a2a2a2;
           }
         }
-        .reciveRequestItem__button {
-          button {
-            padding: 1vw 2vw;
-            border-radius: 4px;
-            font-size: 14px;
-            font-weight: 700;
-            border: none;
-            &.acceptBtn {
-              background-color: $point-color-3;
-              color: #fff;
-            }
-            &.denyBtn {
-              margin-left: 1vw;
-              background-color: $point-color-2;
-              color: #fff;
-            }
-          }
+
+        .reciveRequestItem__button__wrapper {
+          width: 20vw;
+          height: 30vw;
+          display: flex;
+          justify-content:space-between;
+          align-items: center;
+          flex-direction: column;
+          padding: 5vw 0;
         }
+        .reciveRequestItem__button__fav {
+          border: none;
+          background-color: transparent;
+          font-size: 1.15rem;
+        }
+        .reciveRequestItem__button__text {
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: 15px;
+          font-weight: bold;
+          color: #ffffff;
+          background-color: $point-color-3;
+          border: none;
+          padding: 1vw 2vw;
+          border-radius: 5px;
+        }
+        
       }
     }
     .spendBlindRequestList {
@@ -94,44 +139,100 @@
         &:last-child {
           border: none;
         }
-        .spendBlindRequestItem__image {
-          width: 100px;
-          height: 100px;
-          border-radius: 8%;
+        .spendRequestItem__image {
+          width: 30vw;
+          height: 30vw;
+          border-radius: 20%;
           overflow: hidden;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
+          margin-right: 20px;
+          padding: 10px;
         }
-        .spendBlindRequestItem__text {
-          margin-left: 10px;
-          .spendBlindRequestItem__name {
-            font-size: 16px;
-            font-weight: 700;
-            color: #000;
-          }
-          .spendBlindRequestItem__age {
-            font-size: 14px;
-            font-weight: 400;
-            color: #000;
-          }
-        }
-        .spendBlindRequestItem__button {
-          width: 12vw;
-          button {
 
-            padding: 1vh 2vw;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            border: none;
-            &.cancelBtn {
-              background-color: $point-color-4;
-              color: #ffffff;
-            }
+
+        .spendRequestItem__text__wrapper {
+          width: 50vw;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-direction: column;
+        }
+
+        .spendRequestItem__text__header {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .spendRequestItem__text {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: row;
+        }
+
+
+        .spendRequestItem__label {
+          width: fit-content;
+          block-size: fit-content;
+          padding: 4px;
+          background-color: #5F6D7E;
+          border-radius: 4px;
+          margin: 1vw 1vw 1vw 0;
+        }
+        .spendRequestItem__label__text {
+          font-size: 13px;
+          color: #fff;
+        }
+        .spendRequestItem__major {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          
+          .spendRequestItem__major__text {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            color: #a2a2a2;
           }
+        }
+
+        .spendRequestItem__button__wrapper {
+          width: 20vw;
+          height: 30vw;
+          display: flex;
+          justify-content:space-between;
+          align-items: center;
+          flex-direction: column;
+          padding: 5vw 0;
+        }
+        .spendRequestItem__button__fav {
+          border: none;
+          background-color: transparent;
+          font-size: 1.15rem;
+        }
+        .spendRequestItem__button__text {
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: 15px;
+          font-weight: bold;
+          color: #ffffff;
+          background-color: $point-color-3;
+          border: none;
+          padding: 1vw 2vw;
+          border-radius: 5px;
+        }
+        .spendRequestItem__button__cancle {
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: 15px;
+          font-weight: bold;
+          color: #ffffff;
+          background-color: $point-color-2;
+          border: none;
+          padding: 1vw 2vw;
+          border-radius: 5px;
         }
       }
     }

@@ -78,40 +78,76 @@ const RequestPage = ({
               key={request.blindRequestResponse.id}
               variants={itemVariants}
             >
-              <div className="reciveRequestItem__image">
+              {/* <div className="reciveRequestItem__image">
                 <img src={request.blindRequestResponse.idealPhoto} alt="user" />
               </div>
 
-              <div className="blindDateItem__text__wrapper">
-                <div className="blindDateItem__text__header">
+              <div className="reciveRequestItem__text__wrapper">
+                <div className="reciveRequestItem__text__header">
                   {request.blindRequestResponse.username}
                 </div>
-                <div className="blindDateItem__text">
-                  <div className="blindDateItem__label">
-                    <p className="blindDateItem__label__text">
+                <div className="reciveRequestItem__text">
+                  <div className="reciveRequestItem__label">
+                    <p className="reciveRequestItem__label__text">
                       {request.blindRequestResponse.mbti}
                     </p>
                   </div>
-                  <div className="blindDateItem__label">
-                    <p className="blindDateItem__label__text">
+                  <div className="reciveRequestItem__label">
+                    <p className="reciveRequestItem__label__text">
                       {request.blindRequestResponse.weight}{' '}
                     </p>
                   </div>
                 </div>
-                <div className="blindDateItem__text">
-                  <div className="blindDateItem__label">
-                    <p className="blindDateItem__label__text">
+                <div className="reciveRequestItem__text">
+                  <div className="reciveRequestItem__label">
+                    <p className="reciveRequestItem__label__text">
                       {request.blindRequestResponse.height}{' '}
                     </p>
                   </div>
                 </div>
 
-                <div className="blindDateItem__major">
-                  <p className="blindDateItem__major__text">
+                <div className="reciveRequestItem__major">
+                  <p className="reciveRequestItem__major__text">
                     {request.blindRequestResponse.major}
                   </p>
                 </div>
-                {/* <div className="reciveRequestItem__age">{request.blindRequestResponse.age}</div> */}
+              </div> */}
+              <div className="reciveRequestItem__image__box">
+                <img
+                  className="reciveRequestItem__image"
+                  src={request.blindRequestResponse.idealPhoto}
+                  alt="user"
+                />
+              </div>
+              <div className="reciveRequestItem__text__wrapper">
+                <div className="reciveRequestItem__text__header">
+                  {request.blindRequestResponse.username}
+                </div>
+                <div className="reciveRequestItem__text">
+                  <div className="reciveRequestItem__label">
+                    <p className="reciveRequestItem__label__text">
+                      {request.blindRequestResponse.mbti}
+                    </p>
+                  </div>
+                  <div className="reciveRequestItem__label">
+                    <p className="reciveRequestItem__label__text">
+                      {request.blindRequestResponse.weight}{' '}
+                    </p>
+                  </div>
+                </div>
+                <div className="reciveRequestItem__text">
+                  <div className="reciveRequestItem__label">
+                    <p className="reciveRequestItem__label__text">
+                      {request.blindRequestResponse.height}{' '}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="reciveRequestItem__major">
+                  <p className="reciveRequestItem__major__text">
+                    {request.blindRequestResponse.major}
+                  </p>
+                </div>
               </div>
               <div className="reciveRequestItem__button">
                 <button
@@ -150,44 +186,47 @@ const RequestPage = ({
               key={request.blindRequestResponse.id}
               variants={itemVariants}
             >
-              <div className="spendBlindRequestItem__image">
-                <img src={request.blindRequestResponse.idealPhoto} alt="user" />
+              <div className="spendRequestItem__image__box">
+                <img
+                  className="spendRequestItem__image"
+                  src={request.blindRequestResponse.idealPhoto}
+                  alt="user"
+                />
               </div>
-
-              <div className="blindDateItem__text__wrapper">
-                <div className="blindDateItem__text__header">
+              <div className="spendRequestItem__text__wrapper">
+                <div className="spendRequestItem__text__header">
                   {request.blindRequestResponse.username}
                 </div>
-                <div className="blindDateItem__text">
-                  <div className="blindDateItem__label">
-                    <p className="blindDateItem__label__text">
+                <div className="spendRequestItem__text">
+                  <div className="spendRequestItem__label">
+                    <p className="spendRequestItem__label__text">
                       {request.blindRequestResponse.mbti}
                     </p>
                   </div>
-                  <div className="blindDateItem__label">
-                    <p className="blindDateItem__label__text">
+                  <div className="spendRequestItem__label">
+                    <p className="spendRequestItem__label__text">
                       {request.blindRequestResponse.weight}{' '}
                     </p>
                   </div>
                 </div>
-                <div className="blindDateItem__text">
-                  <div className="blindDateItem__label">
-                    <p className="blindDateItem__label__text">
+                <div className="spendRequestItem__text">
+                  <div className="spendRequestItem__label">
+                    <p className="spendRequestItem__label__text">
                       {request.blindRequestResponse.height}{' '}
                     </p>
                   </div>
                 </div>
 
-                <div className="blindDateItem__major">
-                  <p className="blindDateItem__major__text">
+                <div className="spendRequestItem__major">
+                  <p className="spendRequestItem__major__text">
                     {request.blindRequestResponse.major}
                   </p>
                 </div>
               </div>
-              <div className="blindDateItem__button__wrapper">
+              <div className="spendRequestItem__button__wrapper">
                 {request.likeStatus === 'LIKED' ? (
                   <button
-                    className="blindDateItem__button__fav"
+                    className="spendRequestItem__button__fav"
                     onClick={() => {
                       handleOnClickDeleteFavoriteButton(
                         request.blindRequestResponse.userId
@@ -198,7 +237,7 @@ const RequestPage = ({
                   </button>
                 ) : (
                   <button
-                    className="blindDateItem__button__fav"
+                    className="spendRequestItem__button__fav"
                     onClick={() => {
                       handleOnClickFavoriteButton(
                         request.blindRequestResponse.userId
@@ -217,7 +256,9 @@ const RequestPage = ({
                     );
                   }}
                 >
-                  <button className="cancelBtn">취소</button>
+                  <button className="spendRequestItem__button__cancle">
+                    취소
+                  </button>
                 </div>
               </div>
             </motion.div>
