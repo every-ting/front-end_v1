@@ -3,6 +3,7 @@ import './MixedPhotoModal.scss';
 import { AiOutlineClose } from 'react-icons/ai';
 import { putUserIdealPhoto } from '../../IdealTypeTestController';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const MixedPhotoModal = ({ isModal, setIsModal, photoURL, photoID }) => {
   const navigate = useNavigate();
@@ -18,7 +19,13 @@ const MixedPhotoModal = ({ isModal, setIsModal, photoURL, photoID }) => {
   return (
     <>
       {isModal && (
-        <div className="mixedPhotoModalContainer">
+        <motion.div
+          className="mixedPhotoModalContainer"
+          initial={{ opacity: 0, bottom: '-45.3077vh' }}
+          animate={{ opacity: 1, bottom: 0 }}
+          transition={{ ease: 'easeInOut', duration: 0.4 }}
+          exit={{ opacity: 0, bottom: '-45.3077vh' }}
+        >
           <div className="mixedPhotoModal">
             <div className="mixedPhotoModal__header">
               <div className="mixedPhotoModal__header__text">
@@ -49,7 +56,7 @@ const MixedPhotoModal = ({ isModal, setIsModal, photoURL, photoID }) => {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
     </>
   );

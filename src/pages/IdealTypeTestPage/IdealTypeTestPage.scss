@@ -39,8 +39,8 @@
 .idealTypeTestPageBody {
   display: flex;
   flex-wrap: wrap;
-  height: 75vh;
-  margin-bottom: 25vh;
+  height: 73vh;
+  margin-bottom: 27vh;
   overflow-y: scroll;
 }
 
@@ -54,7 +54,7 @@
   width: 100%;
   height: auto;
   border-radius: 1rem;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
 }
 
@@ -86,4 +86,68 @@
   text-align: center;
   background-color: transparent;
   border: none;
+}
+
+
+
+.idealTypeTestPageBody__loading {
+  position: absolute;
+  top: 77vh;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Adjust the height as needed */
+}
+
+.idealTypeTestPageBody__loading__circle {
+  width: 20px; /* Adjust the size of the circle */
+  height: 20px; /* Adjust the size of the circle */
+  background-color: #f6c358; /* Adjust the color of the circle */
+  border-radius: 50%;
+  margin: 0 5px; /* Adjust the spacing between circles */
+  animation: loadingAnimation 1s ease-in-out infinite;
+  -webkit-animation: loadingAnimation 1s ease-in-out infinite; /* Webkit prefix */
+}
+
+.idealTypeTestPageBody__loading__circle:nth-child(2) {
+  animation-delay: 0.2s; /* Adjust the delay for the second circle */
+  -webkit-animation-delay: 0.2s; /* Webkit prefix */
+}
+
+.idealTypeTestPageBody__loading__circle:nth-child(3) {
+  animation-delay: 0.4s; /* Adjust the delay for the third circle */
+  -webkit-animation-delay: 0.4s; /* Webkit prefix */
+}
+
+@keyframes loadingAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes loadingAnimation {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+  }
 }
