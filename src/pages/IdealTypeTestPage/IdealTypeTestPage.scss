@@ -1,53 +1,89 @@
 @import '../../styles/variables.scss';
 
 .idealTypeTestPageContainer {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  .idealTypeTestPageContent {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    .idealTypeTestPageHeader {
-      width: 100%;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      padding-left: 20px;
-      border-bottom: 1px solid #d2d2d2;
-      .idealTypeTestPageHeader__text {
-        font-family: 'Noto Sans KR', sans-serif;
-        font-size: 20px;
-        font-weight: 400;
-      }
-    }
-    .idealTypeTestPageBody {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      .idealTypeTestPageBody__text {
-        font-family: 'Noto Sans KR', sans-serif;
-        font-size: 20px;
-        font-weight: 400;
-        margin: 20px;
-      }
-      .idealTypeTestPageBody__button {
-        width: 100%;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-        .idealTypeTestPageBody__button__text {
-          font-family: 'Noto Sans KR', sans-serif;
-          font-size: 20px;
-          font-weight: 400;
-        }
-      }
-    }
+}
+
+.idealTypeTestPageContent {
+  max-width: 80rem;
+  width: 100%;
+  height: 80vh;
+  padding: 1rem;
+  background-color: #fff;
+  margin-top: 5vh;
+}
+
+.idealTypeTestPageHeader {
+  display: flex;
+  width: 80vw;
+  height: 10vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 2vh;
+  right: 0;
+
+  .idealTypeTestPageHeader__text {
+    font-size: 1.67rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
   }
+}
+
+.idealTypeTestPageBody {
+  display: flex;
+  flex-wrap: wrap;
+  height: 75vh;
+  margin-bottom: 25vh;
+  overflow-y: scroll;
+}
+
+.idealTypeTestPageBody__img {
+  width: 50%;
+  padding: 1.5vw;
+  transition: transform 0.3s ease-in-out;
+}
+
+.idealTypeTestPageBody__img__image {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  transition: transform 0.3s ease-in-out;
+
+}
+
+
+.idealTypeTestPageFooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+}
+
+.idealTypeTestPageFooter__button {
+  @include flex(center,center);
+  padding: 1rem 2rem;
+  width: 100%;
+  background-color: #fff;
+  border: none;
+}
+
+
+.idealTypeTestPageFooter__button__text {
+  color: #4b4949;
+  font-weight: bold;
+  font-size: 1.6rem;
+  cursor: pointer;
+  text-align: center;
+  background-color: transparent;
+  border: none;
 }

@@ -1,0 +1,85 @@
+@import '../../../../styles/variables.scss';
+
+.mixedPhotoModalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.mixedPhotoModal {
+  width: 90vw;
+  height: 59.5vh;
+  background-color: #ffffff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.mixedPhotoModal__header {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $point-color-3;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.mixedPhotoModal__header__text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.mixedPhotoModal__content {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mixedPhotoModal__content__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.mixedPhotoModal__button__wrapper {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mixedPhotoModal__button {
+  width: 30vw;
+  height: 50%;
+  background-color: #c4c4c4;
+  border-radius: 20px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.complete {
+  background-color: $point-color-3;
+}

@@ -46,5 +46,6 @@ const API = {
 
   putBlindRequestsReject: '/blind/request/reject',
   putBlindRequestsAccept: '/blind/request/accept',
+  putUserIdealPhoto: '/user/idealPhoto',
 };
 export default API;
