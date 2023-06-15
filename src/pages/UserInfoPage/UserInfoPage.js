@@ -31,8 +31,9 @@ const UserInfoPage = ({ socialEmail }) => {
         .then(res => {
           setTimeout(() => {
             if (res[1].result.message === 'success') {
-              localStorage.setItem('key', res[1]?.data.token);
+              localStorage.setItem('key', res[1]?.data?.token);
               localStorage.setItem('isLogedIn', 'true');
+              localStorage.setItem('gender', res[1]?.data?.gender);
               sessionStorage.setItem('tokenRefresh', 'true');
               alert('회원가입이 완료되었습니다.');
               navigate('/');

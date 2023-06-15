@@ -1,0 +1,153 @@
+@import '../../styles/variables.scss';
+
+.idealTypeTestPageContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.idealTypeTestPageContent {
+  max-width: 80rem;
+  width: 100%;
+  height: 80vh;
+  padding: 1rem;
+  background-color: #fff;
+  margin-top: 5vh;
+}
+
+.idealTypeTestPageHeader {
+  display: flex;
+  width: 80vw;
+  height: 10vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 2vh;
+  right: 0;
+
+  .idealTypeTestPageHeader__text {
+    font-size: 1.67rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+  }
+}
+
+.idealTypeTestPageBody {
+  display: flex;
+  flex-wrap: wrap;
+  height: 73vh;
+  margin-bottom: 27vh;
+  overflow-y: scroll;
+}
+
+.idealTypeTestPageBody__img {
+  width: 50%;
+  padding: 1.5vw;
+  transition: transform 0.3s ease-in-out;
+}
+
+.idealTypeTestPageBody__img__image {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  transition: all 0.3s ease-in-out;
+
+}
+
+
+.idealTypeTestPageFooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+}
+
+.idealTypeTestPageFooter__button {
+  @include flex(center,center);
+  padding: 1rem 2rem;
+  width: 100%;
+  background-color: #fff;
+  border: none;
+}
+
+
+.idealTypeTestPageFooter__button__text {
+  color: #4b4949;
+  font-weight: bold;
+  font-size: 1.6rem;
+  cursor: pointer;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+}
+
+
+
+.idealTypeTestPageBody__loading {
+  position: absolute;
+  top: 77vh;
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Adjust the height as needed */
+}
+
+.idealTypeTestPageBody__loading__circle {
+  width: 20px; /* Adjust the size of the circle */
+  height: 20px; /* Adjust the size of the circle */
+  background-color: #f6c358; /* Adjust the color of the circle */
+  border-radius: 50%;
+  margin: 0 5px; /* Adjust the spacing between circles */
+  animation: loadingAnimation 1s ease-in-out infinite;
+  -webkit-animation: loadingAnimation 1s ease-in-out infinite; /* Webkit prefix */
+}
+
+.idealTypeTestPageBody__loading__circle:nth-child(2) {
+  animation-delay: 0.2s; /* Adjust the delay for the second circle */
+  -webkit-animation-delay: 0.2s; /* Webkit prefix */
+}
+
+.idealTypeTestPageBody__loading__circle:nth-child(3) {
+  animation-delay: 0.4s; /* Adjust the delay for the third circle */
+  -webkit-animation-delay: 0.4s; /* Webkit prefix */
+}
+
+@keyframes loadingAnimation {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes loadingAnimation {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+  }
+}

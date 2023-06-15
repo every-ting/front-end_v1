@@ -33,6 +33,7 @@ const LoginPage = () => {
           } else {
             localStorage.setItem('key', result[1]?.data?.token);
             localStorage.setItem('isLogedIn', 'true');
+            localStorage.setItem('gender', result[1]?.data?.data?.gender);
             sessionStorage.setItem('tokenRefresh', 'true');
             navigate('/');
             window.location.reload();
@@ -45,11 +46,11 @@ const LoginPage = () => {
   const handleDemoLogin = async () => {
     try {
       const response = await basicApi.get(`/ting/1`);
-      console.log(response);
       alert('로그인 되었습니다.');
       if (response.status === 200) {
         localStorage.setItem('key', response?.data?.data?.token);
         localStorage.setItem('isLogedIn', 'true');
+        localStorage.setItem('gender', response?.data?.data?.gender);
         sessionStorage.setItem('tokenRefresh', 'true');
         navigate('/');
         return [false, response.data];

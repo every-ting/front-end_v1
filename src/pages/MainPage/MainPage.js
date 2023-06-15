@@ -22,6 +22,12 @@ const MainPage = () => {
     }
   }, []);
 
+  const onClickBanner = title => {
+    if ((title = 'idealTypeTest')) {
+      navigate('/idealTypeTest');
+    }
+  };
+
   return (
     <motion.div
       className="mainContainer"
@@ -41,14 +47,22 @@ const MainPage = () => {
           </Link> */}
         </div>
         <div className="recomendSliderWrapper">
-          <div className="recommendSliderItem">
+          <div
+            className="recommendSliderItem"
+            onClick={() => {
+              onClickBanner('idealTypeTest');
+            }}
+          >
             <div className="recommendSliderItemImg">
-              <img src="assets/images/blog.png" alt="recommend" />
+              <img
+                src="assets/images/main/idealPhotoBanner.png"
+                alt="recommend"
+              />
             </div>
             <div className="recommendSliderItemText">
-              <div className="recommendSliderItemTitle">이상형 테스트</div>
+              {/* <div className="recommendSliderItemTitle">이상형 테스트</div> */}
               <div className="recommendSliderItemSub">
-                이상형을 만들어보아요
+                이상형을 재설정 할 수 있어요
               </div>
             </div>
           </div>

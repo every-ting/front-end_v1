@@ -65,46 +65,83 @@ const FavoritePage = ({ blindLikesData, setIsModify }) => {
               key={favorite.id}
               variants={itemVariants}
             >
-              <div className="favoriteItem__image">
+              {/* <div className="favoriteItem__image">
                 <img
                   src={favorite.blindDateResponse.idealPhoto}
                   alt="user_img"
                 />
               </div>
 
-              <div className="blindDateItem__text__wrapper">
-                <div className="blindDateItem__text__header">
+              <div className="favoriteItem__text__wrapper">
+                <div className="favoriteItem__text__header">
                   {favorite.blindDateResponse.username}
                 </div>
-                <div className="blindDateItem__text">
-                  <div className="blindDateItem__label">
-                    <p className="blindDateItem__label__text">
+                <div className="favoriteItem__text">
+                  <div className="favoriteItem__label">
+                    <p className="favoriteItem__label__text">
                       {favorite.blindDateResponse.mbti}
                     </p>
                   </div>
-                  <div className="blindDateItem__label">
-                    <p className="blindDateItem__label__text">
+                  <div className="favoriteItem__label">
+                    <p className="favoriteItem__label__text">
                       {favorite.blindDateResponse.weight}{' '}
                     </p>
                   </div>
                 </div>
-                <div className="blindDateItem__text">
-                  <div className="blindDateItem__label">
-                    <p className="blindDateItem__label__text">
+                <div className="favoriteItem__text">
+                  <div className="favoriteItem__label">
+                    <p className="favoriteItem__label__text">
                       {favorite.blindDateResponse.height}{' '}
                     </p>
                   </div>
                 </div>
 
-                <div className="blindDateItem__major">
-                  <p className="blindDateItem__major__text">
+                <div className="favoriteItem__major">
+                  <p className="favoriteItem__major__text">
+                    {favorite.blindDateResponse.major}
+                  </p>
+                </div>
+              </div> */}
+              <div className="favoriteItem__image__box">
+                <img
+                  className="favoriteItem__image"
+                  src={favorite.blindDateResponse.idealPhoto}
+                  alt="user"
+                />
+              </div>
+              <div className="favoriteItem__text__wrapper">
+                <div className="favoriteItem__text__header">
+                  {favorite.blindDateResponse.username}
+                </div>
+                <div className="favoriteItem__text">
+                  <div className="favoriteItem__label">
+                    <p className="favoriteItem__label__text">
+                      {favorite.blindDateResponse.mbti}
+                    </p>
+                  </div>
+                  <div className="favoriteItem__label">
+                    <p className="favoriteItem__label__text">
+                      {favorite.blindDateResponse.weight}{' '}
+                    </p>
+                  </div>
+                </div>
+                <div className="favoriteItem__text">
+                  <div className="favoriteItem__label">
+                    <p className="favoriteItem__label__text">
+                      {favorite.blindDateResponse.height}{' '}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="favoriteItem__major">
+                  <p className="favoriteItem__major__text">
                     {favorite.blindDateResponse.major}
                   </p>
                 </div>
               </div>
-              <div className="blindDateItem__button__wrapper">
+              <div className="favoriteItem__button__wrapper">
                 <button
-                  className="blindDateItem__button__fav"
+                  className="favoriteItem__button__fav"
                   onClick={() => {
                     handleOnClickDeleteFavoriteButton(
                       favorite.blindDateResponse.id
@@ -113,9 +150,16 @@ const FavoritePage = ({ blindLikesData, setIsModify }) => {
                 >
                   <AiFillStar />
                 </button>
-                {favorite.requestStatus === 'EMPTY' ? (
+                {favorite.requestStatus === 'DISABLED' ? (
                   <button
-                    className="blindDateItem__button__text"
+                    className="favoriteItem__button__text"
+                    style={{ backgroundColor: '#ebebeb' }}
+                  >
+                    매칭됨
+                  </button>
+                ) : favorite.requestStatus === 'EMPTY' ? (
+                  <button
+                    className="favoriteItem__button__text"
                     onClick={() => {
                       handleOnClickRequestButton(favorite.blindDateResponse.id);
                     }}
@@ -124,7 +168,7 @@ const FavoritePage = ({ blindLikesData, setIsModify }) => {
                   </button>
                 ) : (
                   <button
-                    className="blindDateItem__button__text"
+                    className="favoriteItem__button__text"
                     onClick={() => {
                       handleOnClickRequestCancleButton(
                         favorite.blindDateResponse.id
