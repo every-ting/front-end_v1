@@ -36,7 +36,7 @@ const UserInfoPage = ({ socialEmail }) => {
               localStorage.setItem('gender', res[1]?.data?.gender);
               sessionStorage.setItem('tokenRefresh', 'true');
               alert('회원가입이 완료되었습니다.');
-              navigate('/');
+              navigate('/idealTypeTest');
             } else {
               alert('회원가입에 실패하였습니다.');
             }

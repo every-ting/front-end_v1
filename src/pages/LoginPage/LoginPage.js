@@ -33,7 +33,7 @@ const LoginPage = () => {
           } else {
             localStorage.setItem('key', result[1]?.data?.token);
             localStorage.setItem('isLogedIn', 'true');
-            localStorage.setItem('gender', result[1]?.data?.data?.gender);
+            localStorage.setItem('gender', result[1]?.data?.gender);
             sessionStorage.setItem('tokenRefresh', 'true');
             navigate('/');
             window.location.reload();

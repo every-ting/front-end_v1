@@ -27,6 +27,10 @@ const IdealTypeTestPage = () => {
       console.log(result);
       setIdealPhotoData(result[1]);
     });
+    if (sessionStorage.getItem('tokenRefresh') === 'true') {
+      sessionStorage.setItem('tokenRefresh', 'false');
+      window.location.reload();
+    }
   }, []);
 
   useEffect(() => {
