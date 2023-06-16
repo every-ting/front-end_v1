@@ -92,28 +92,30 @@ const GroupManagerLeaderModal = ({
               <p>팀원</p>
             </div>
             <div className="groupManagerBodyItem__member__image__wrapper">
-              {groupMembersData?.map(member => (
-                <div
-                  className="groupManagerBodyItem__member__image__box"
-                  key={member.member.id}
-                  onClick={() => {
-                    setSelectedMemberId(member.member.id);
-                    setSelectedMemberName(member.member.username);
-                  }}
-                  style={{
-                    border:
-                      selectedMemberId === member.member.id
-                        ? '2px solid #FFD262'
-                        : 'none',
-                  }}
-                >
-                  <img
-                    className="groupManagerBodyItem__member__image"
-                    src={member.member.idealPhoto}
-                    alt="user"
-                  />
-                </div>
-              ))}
+              {groupMembersData
+                ?.filter(member => member.role === 'MEMBER')
+                ?.map(member => (
+                  <div
+                    className="groupManagerBodyItem__member__image__box"
+                    key={member.member.id}
+                    onClick={() => {
+                      setSelectedMemberId(member.member.id);
+                      setSelectedMemberName(member.member.username);
+                    }}
+                    style={{
+                      border:
+                        selectedMemberId === member.member.id
+                          ? '2px solid #FFD262'
+                          : 'none',
+                    }}
+                  >
+                    <img
+                      className="groupManagerBodyItem__member__image"
+                      src={member.member.idealPhoto}
+                      alt="user"
+                    />
+                  </div>
+                ))}
             </div>
             {groupDetailData?.myRole === 'LEADER' && (
               <div className="groupManagerBodyItem__button__wrapper">
@@ -134,10 +136,10 @@ const GroupManagerLeaderModal = ({
               <p>팀 소개</p>
             </div>
             <div className="groupManagerBodyItem__text">
-              <p>{groupDetailData?.memo}</p>
+              <p>{groupDetailData?.group?.memo}</p>
             </div>
             <div className="groupManagerBodyItem__button__wrapper">
-              <button className="groupManagerBodyItem__button">수정하기</button>
+              {/* <button className="groupManagerBodyItem__button">수정하기</button> */}
             </div>
           </div>
         </div>
